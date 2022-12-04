@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="stx">
+	<Package name="effects">
+		<Key ID="STR_stx_effects_component">
+			<English>Simplex Effects</English>
+		</Key>
+		<Key ID="STR_stx_effects_category">
+			<English>STX Effects</English>
+		</Key>
+
+		<!-- Infinite modules -->
+		<Key ID="STR_stx_effects_moduleInfiniteSmokeName">
+			<English>Infinite Smoke</English>
+		</Key>
+		<Key ID="STR_stx_effects_moduleInfiniteSmokeInfo">
+			<English>Creates infinite smoke grenade</English>
+		</Key>
+		<Key ID="STR_stx_effects_moduleInfiniteChemlightName">
+			<English>Infinite Chemlight</English>
+		</Key>
+		<Key ID="STR_stx_effects_moduleInfiniteChemlightInfo">
+			<English>Creates infinite chemlight</English>
+		</Key>
+		<Key ID="STR_stx_effects_moduleInfiniteFlareName">
+			<English>Infinite Flare</English>
+		</Key>
+		<Key ID="STR_stx_effects_moduleInfiniteFlareInfo">
+			<English>Creates infinite flare</English>
+		</Key>
+		<Key ID="STR_stx_effects_moduleInfiniteIRName">
+			<English>Infinite IR</English>
+		</Key>
+		<Key ID="STR_stx_effects_moduleInfiniteIRInfo">
+			<English>Creates infinite IR grenade</English>
+		</Key>
+		<Key ID="STR_stx_effects_colorName">
+			<English>Color</English>
+		</Key>
+		<Key ID="STR_stx_effects_colorInfo">
+			<English>Item color</English>
+		</Key>
+		<Key ID="STR_stx_effects_White">
+			<English>White</English>
+		</Key>
+		<Key ID="STR_stx_effects_Blue">
+			<English>Blue</English>
+		</Key>
+		<Key ID="STR_stx_effects_Green">
+			<English>Green</English>
+		</Key>
+		<Key ID="STR_stx_effects_Purple">
+			<English>Purple</English>
+		</Key>
+		<Key ID="STR_stx_effects_Red">
+			<English>Red</English>
+		</Key>
+		<Key ID="STR_stx_effects_Orange">
+			<English>Orange</English>
+		</Key>
+		<Key ID="STR_stx_effects_Yellow">
+			<English>Yellow</English>
+		</Key>
+	</Package>
+</Project>

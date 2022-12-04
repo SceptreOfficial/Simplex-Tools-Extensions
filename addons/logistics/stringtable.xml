@@ -1,0 +1,400 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="stx">
+	<Package name="logistics">
+		<Key ID="STR_stx_logistics_component">
+			<English>Simplex Logistics</English>
+		</Key>
+		<Key ID="STR_stx_logistics_category">
+			<English>STX Logistics</English>
+		</Key>
+		<!-- Hub -->
+		<Key ID="STR_stx_logistics_moduleHubName">
+			<English>Logistics hub</English>
+		</Key>
+		<Key ID="STR_stx_logistics_moduleHubInfo">
+			<English>Assigns synced objects as logistics hubs</English>
+		</Key>
+		<Key ID="STR_stx_logistics_CanteenTapName">
+			<English>Canteen tap</English>
+		</Key>
+		<Key ID="STR_stx_logistics_CanteenTapInfo">
+			<English>Adds a canteen tap to the hub</English>
+		</Key>
+		<Key ID="STR_stx_logistics_ConstructionResupplyName">
+			<English>Construction resupply</English>
+		</Key>
+		<Key ID="STR_stx_logistics_ConstructionResupplyInfo">
+			<English>Allows resupplying construction vehicles</English>
+		</Key>
+		<Key ID="STR_stx_logistics_EditInventoriesName">
+			<English>Edit inventories</English>
+		</Key>
+		<Key ID="STR_stx_logistics_EditInventoriesInfo">
+			<English>Allows editing the inventories of nearby containers</English>
+		</Key>
+		<Key ID="STR_stx_logistics_BoxSpawnName">
+			<English>Box spawner</English>
+		</Key>
+		<Key ID="STR_stx_logistics_BoxSpawnInfo">
+			<English>Allows spawning boxes near the hub</English>
+		</Key>
+		<Key ID="STR_stx_logistics_ArsenalName">
+			<English>Arsenal</English>
+		</Key>
+		<Key ID="STR_stx_logistics_ArsenalInfo">
+			<English>Adds arsenal actions to the hub</English>
+		</Key>
+		<Key ID="STR_stx_logistics_constructionResupplied">
+			<English>%1 has been resupplied.</English>
+		</Key>
+		<Key ID="STR_stx_logistics_editInventory">
+			<English>Edit Inventory</English>
+		</Key>
+		<Key ID="STR_stx_logistics_spawnBox">
+			<English>Spawn equipment box</English>
+		</Key>
+		<!-- Canteen -->
+		<Key ID="STR_stx_logistics_canteen">
+			<English>Canteen</English>
+		</Key>
+		<Key ID="STR_stx_logistics_moduleCanteenTapName">
+			<English>Canteen tap</English>
+		</Key>
+		<Key ID="STR_stx_logistics_moduleCanteenTapInfo">
+			<English>Adds a canteen tap to synced objects</English>
+		</Key>
+		<Key ID="STR_stx_logistics_enableCanteenName">
+			<English>Enable</English>
+		</Key>
+		<Key ID="STR_stx_logistics_enableCanteenInfo">
+			<English>Enable canteen feature</English>
+		</Key>
+		<Key ID="STR_stx_logistics_canteenCapacityName">
+			<English>Capacity</English>
+		</Key>
+		<Key ID="STR_stx_logistics_canteenCapacityInfo">
+			<English>How many times the canteen can be used</English>
+		</Key>
+		<Key ID="STR_stx_logistics_fillCanteen">
+			<English>Fill canteen</English>
+		</Key>
+		<Key ID="STR_stx_logistics_canteenFull">
+			<English>Canteen full.</English>
+		</Key>
+		<Key ID="STR_stx_logistics_getCanteen">
+			<English>Get canteen</English>
+		</Key>
+		<Key ID="STR_stx_logistics_canteenRetrieved">
+			<English>Canteen retrieved.</English>
+		</Key>
+		<Key ID="STR_stx_logistics_drinkCanteen">
+			<English>Drink canteen</English>
+		</Key>
+		<Key ID="STR_stx_logistics_drinkCanteenFormat">
+			<English>Drink canteen (%1%2)</English>
+		</Key>
+		<Key ID="STR_stx_logistics_canteenBusy">
+			<English>Already hydrating.</English>
+		</Key>
+		<Key ID="STR_stx_logistics_canteenEmpty">
+			<English>Canteen is empty.</English>
+		</Key>
+		<Key ID="STR_stx_logistics_canteenDoneEmpty">
+			<English>You feel refreshed. Canteen is empty.</English>
+		</Key>
+		<Key ID="STR_stx_logistics_canteenDoneFormat">
+			<English>You feel refreshed. Canteen %1%2 full.</English>
+		</Key>
+		<!-- Construction -->
+		<Key ID="STR_stx_logistics_moduleConstructionVehicleName">
+			<English>Construction vehicle</English>
+		</Key>
+		<Key ID="STR_stx_logistics_moduleConstructionVehicleInfo">
+			<English>Adds building feature to synced vehicles</English>
+		</Key>
+		<Key ID="STR_stx_logistics_MaxBudgetName">
+			<English>Budget</English>
+		</Key>
+		<Key ID="STR_stx_logistics_MaxBudgetInfo">
+			<English>Sets the maximum credit the vehicle has</English>
+		</Key>
+		<Key ID="STR_stx_logistics_ConstructionInventoryName">
+			<English>Inventory</English>
+		</Key>
+		<Key ID="STR_stx_logistics_ConstructionInventoryInfo">
+			<English>Building inventory array.\nEach item takes the following arguments:\n0: Class\n1: Custom name ("" for default)\n2: Cost\n3: Build time\n4: Init code</English>
+		</Key>
+		<Key ID="STR_stx_logistics_InitFncName">
+			<English>Universal Init</English>
+		</Key>
+		<Key ID="STR_stx_logistics_InitFncInfo">
+			<English>Code executed on every object built</English>
+		</Key>
+		<Key ID="STR_stx_logistics_construction">
+			<English>Construction</English>
+		</Key>
+		<Key ID="STR_stx_logistics_constructionFormat">
+			<English>Construction ($%1)</English>
+		</Key>
+		<Key ID="STR_stx_logistics_constructionActions">
+			<English>Construction Actions</English>
+		</Key>
+		<Key ID="STR_stx_logistics_constructionNoCredit">
+			<English>Cannot build. Not enough credit.</English>
+		</Key>
+		<Key ID="STR_stx_logistics_build">
+			<English>Build</English>
+		</Key>
+		<Key ID="STR_stx_logistics_building">
+			<English>Building... (%1%2)</English>
+		</Key>
+		<Key ID="STR_stx_logistics_refund">
+			<English>Refund</English>
+		</Key>
+		<Key ID="STR_stx_logistics_constructionRemoved">
+			<English>Parent vehicle refunded.</English>
+		</Key>
+		<Key ID="STR_stx_logistics_constructionRemovedMax">
+			<English>Parent vehicle refunded. Vehicle is at max capacity.</English>
+		</Key>
+		<Key ID="STR_stx_logistics_constructionRemovedNoParent">
+			<English>Object removed. No parent vehicle to refund.</English>
+		</Key>
+		<Key ID="STR_stx_logistics_remove">
+			<English>Remove</English>
+		</Key>
+		<Key ID="STR_stx_logistics_removing">
+			<English>Removing...</English>
+		</Key>
+		<Key ID="STR_stx_logistics_nudge">
+			<English>Nudge</English>
+		</Key>
+		<Key ID="STR_stx_logistics_nudging">
+			<English>Nudging...</English>
+		</Key>
+		<Key ID="STR_stx_logistics_outOfReach">
+			<English>OBJECT OUT OF REACH</English>
+		</Key>
+		<Key ID="STR_stx_logistics_visualAidName">
+			<English>Visual aid</English>
+		</Key>
+		<Key ID="STR_stx_logistics_visualAidInfo">
+			<English>How unbuilt objects appear when in placement mode</English>
+		</Key>
+		<Key ID="STR_stx_logistics_flashingFrequencyName">
+			<English>Flashing frequency</English>
+		</Key>
+		<Key ID="STR_stx_logistics_flashingFrequencyInfo">
+			<English>How fast unbuilt objects flash</English>
+		</Key>
+		<Key ID="STR_stx_logistics_nudgeSizeCoefName">
+			<English>Nudge size coefficient</English>
+		</Key>
+		<Key ID="STR_stx_logistics_nudgeSizeCoefInfo">
+			<English>Time multiplier for nudging an object</English>
+		</Key>
+		<Key ID="STR_stx_logistics_off">
+			<English>Off</English>
+		</Key>
+		<Key ID="STR_stx_logistics_flashingAll">
+			<English>Flashing (all)</English>
+		</Key>
+		<Key ID="STR_stx_logistics_flashingSeq">
+			<English>Flashing (sequential)</English>
+		</Key>
+		<Key ID="STR_stx_logistics_static">
+			<English>Static</English>
+		</Key>
+		<!-- Fuel consumption -->
+		<Key ID="STR_stx_logistics_fuelConsumption">
+			<English>Fuel Consumption</English>
+		</Key>
+		<Key ID="STR_stx_logistics_enableFuelConsumptionName">
+			<English>Enable</English>
+		</Key>
+		<Key ID="STR_stx_logistics_enableFuelConsumptionInfo">
+			<English>Enable fuel consumption feature</English>
+		</Key>
+		<Key ID="STR_stx_logistics_minFuelConsumptionName">
+			<English>Min consumption time</English>
+		</Key>
+		<Key ID="STR_stx_logistics_minFuelConsumptionInfo">
+			<English>Minutes to run out of fuel at idle</English>
+		</Key>
+		<Key ID="STR_stx_logistics_maxFuelConsumptionName">
+			<English>Max consumption time</English>
+		</Key>
+		<Key ID="STR_stx_logistics_maxFuelConsumptionInfo">
+			<English>Minutes to run out of fuel at max speed</English>
+		</Key>
+		<!-- Resupply -->
+		<Key ID="STR_stx_logistics_moduleResupplyName">
+			<English>Resupply</English>
+		</Key>
+		<Key ID="STR_stx_logistics_moduleResupplyInfo">
+			<English>Spawns resupply boxes</English>
+		</Key>
+		<Key ID="STR_stx_logistics_ApplicationName">
+			<English>Application</English>
+		</Key>
+		<Key ID="STR_stx_logistics_ApplicationInfo">
+			<English>How the module should be applied</English>
+		</Key>
+		<Key ID="STR_stx_logistics_UnloadClassName">
+			<English>Unload Class</English>
+		</Key>
+		<Key ID="STR_stx_logistics_UnloadClassInfo">
+			<English>Object class to spawn when unloaded</English>
+		</Key>
+		<Key ID="STR_stx_logistics_UnloadTimeName">
+			<English>Unload Time</English>
+		</Key>
+		<Key ID="STR_stx_logistics_UnloadTimeInfo">
+			<English>Time it takes to unload</English>
+		</Key>
+		<Key ID="STR_stx_logistics_AirdopClassName">
+			<English>Airdrop class</English>
+		</Key>
+		<Key ID="STR_stx_logistics_AirdopClassInfo">
+			<English>Class name of the aircraft to spawn</English>
+		</Key>
+		<Key ID="STR_stx_logistics_AirdropHeightName">
+			<English>Airdrop height</English>
+		</Key>
+		<Key ID="STR_stx_logistics_AirdropHeightInfo">
+			<English>ATL flying height</English>
+		</Key>
+		<Key ID="STR_stx_logistics_LifetimeName">
+			<English>Lifetime</English>
+		</Key>
+		<Key ID="STR_stx_logistics_LifetimeInfo">
+			<English>Time until deletion after being unloaded, or after directly applied. \n-1 for no deletion</English>
+		</Key>
+		<Key ID="STR_stx_logistics_moduleDeployableResupplyName">
+			<English>Add deployable resupply</English>
+		</Key>
+		<Key ID="STR_stx_logistics_deployableResupplyCooldown">
+			<English>RESUPPLY WILL BE AVAILABLE IN %1</English>
+		</Key>
+		<Key ID="STR_stx_logistics_deployableResupplyReady">
+			<English>RESUPPLY IS READY</English>
+		</Key>
+		<Key ID="STR_stx_logistics_moduleSaveCargoName">
+			<English>Save cargo preset</English>
+		</Key>
+		<Key ID="STR_stx_logistics_countMultiply">
+			<English>Multiply count of items shared per player</English>
+		</Key>
+		<Key ID="STR_stx_logistics_MunitionDefaultsOnlyName">
+			<English>Munition Defaults Only</English>
+		</Key>
+		<Key ID="STR_stx_logistics_MunitionDefaultsOnlyInfo">
+			<English>Only default mags for equipped weapons</English>
+		</Key>
+		<Key ID="STR_stx_logistics_MedicalDefaultsOnlyName">
+			<English>Medical Defaults Only</English>
+		</Key>
+		<Key ID="STR_stx_logistics_MedicalDefaultsOnlyInfo">
+			<English>Only default medical items</English>
+		</Key>
+		<Key ID="STR_stx_logistics_MagazineCountName">
+			<English>Magazine Count</English>
+		</Key>
+		<Key ID="STR_stx_logistics_UnderbarrelCountName">
+			<English>Underbarrel Count</English>
+		</Key>
+		<Key ID="STR_stx_logistics_RocketCountName">
+			<English>Rocket Count</English>
+		</Key>
+		<Key ID="STR_stx_logistics_ThrowableCountName">
+			<English>Throwable Count</English>
+		</Key>
+		<Key ID="STR_stx_logistics_PlaceableCountName">
+			<English>Placeable Count</English>
+		</Key>
+		<Key ID="STR_stx_logistics_MedicalCountName">
+			<English>Medical Count</English>
+		</Key>
+		<Key ID="STR_stx_logistics_MagazinesMultiplyName">
+			<English>Magazines Multiply</English>
+		</Key>
+		<Key ID="STR_stx_logistics_UnderbarrelMultiplyName">
+			<English>Underbarrel Multiply</English>
+		</Key>
+		<Key ID="STR_stx_logistics_RocketMultiplyName">
+			<English>Rocket Multiply</English>
+		</Key>
+		<Key ID="STR_stx_logistics_ThrowableMultiplyName">
+			<English>Throwable Multiply</English>
+		</Key>
+		<Key ID="STR_stx_logistics_PlaceableMultiplyName">
+			<English>Placeable Multiply</English>
+		</Key>
+		<Key ID="STR_stx_logistics_MedicalMultiplyName">
+			<English>Medical Multiply</English>
+		</Key>
+		<Key ID="STR_stx_logistics_OnUnloadName">
+			<English>On Unload</English>
+		</Key>
+		<Key ID="STR_stx_logistics_OnUnloadInfo">
+			<English>Code executed when unloaded</English>
+		</Key>
+		<Key ID="STR_stx_logistics_OnDeleteName">
+			<English>On Delete</English>
+		</Key>
+		<Key ID="STR_stx_logistics_OnDeleteInfo">
+			<English>Code executed on deletion</English>
+		</Key>
+		<Key ID="STR_stx_logistics_Unload">
+			<English>Unloadable crate</English>
+		</Key>
+		<Key ID="STR_stx_logistics_Direct">
+			<English>Direct</English>
+		</Key>
+		<Key ID="STR_stx_logistics_VanillaArsenal">
+			<English>Vanilla Arsenal</English>
+		</Key>
+		<Key ID="STR_stx_logistics_AceArsenal">
+			<English>Ace Arsenal</English>
+		</Key>
+		<Key ID="STR_stx_logistics_ArmamentsCurrent">
+			<English>Current munitions in use</English>
+		</Key>
+		<Key ID="STR_stx_logistics_ArmamentsDefaults">
+			<English>Weapon default munitions</English>
+		</Key>
+		<Key ID="STR_stx_logistics_ArmamentsCombined">
+			<English>Current + Default</English>
+		</Key>
+		<Key ID="STR_stx_logistics_None">
+			<English>None</English>
+		</Key>
+		<Key ID="STR_stx_logistics_PresetName">
+			<English>Preset name</English>
+		</Key>
+		<Key ID="STR_stx_logistics_Disabled">
+			<English>Disabled</English>
+		</Key>
+		<Key ID="STR_stx_logistics_Setting">
+			<English>CBA setting</English>
+		</Key>
+		<Key ID="STR_stx_logistics_Custom">
+			<English>Custom</English>
+		</Key>
+		<Key ID="STR_stx_logistics_Both">
+			<English>Setting + Custom</English>
+		</Key>
+		<Key ID="STR_stx_logistics_ArsenalBlacklistName">
+			<English>Custom blacklist</English>
+		</Key>
+		<Key ID="STR_stx_logistics_ArsenalBlacklistUsageName">
+			<English>Arsenal blacklist</English>
+		</Key>
+		<Key ID="STR_stx_logistics_ArsenalWhitelistName">
+			<English>Custom whitelist</English>
+		</Key>
+		<Key ID="STR_stx_logistics_ArsenalWhitelistUsageName">
+			<English>Arsenal whitelist</English>
+		</Key>
+	</Package>
+</Project>

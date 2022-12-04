@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="stx">
+	<Package name="military">
+		<Key ID="STR_stx_military_component">
+			<English>Simplex Military</English>
+		</Key>
+		<Key ID="STR_stx_military_category">
+			<English>STX Military</English>
+		</Key>
+		
+		<!-- Setting Categories -->
+
+		<Key ID="STR_stx_military_SettingCategory_Development">
+			<English>Development</English>
+		</Key>
+		<Key ID="STR_stx_military_SettingCategory_Caching">
+			<English>Caching</English>
+		</Key>
+		<Key ID="STR_stx_military_SettingCategory_Spotting">
+			<English>Spotting</English>
+		</Key>
+
+		<!-- Settings -->
+
+		<Key ID="STR_stx_military_SettingName_debug">
+			<English>Debug</English>
+		</Key>
+		<Key ID="STR_stx_military_SettingInfo_debug">
+			<English>Enable debug messages</English>
+		</Key>
+		<Key ID="STR_stx_military_SettingName_cachingEnabled">
+			<English>Simple caching system</English>
+		</Key>
+		<Key ID="STR_stx_military_SettingInfo_cachingEnabled">
+			<English>Caches assigned AI when players are beyond caching distance</English>
+		</Key>
+		<Key ID="STR_stx_military_SettingName_cachingDefault">
+			<English>Cache by default</English>
+		</Key>
+		<Key ID="STR_stx_military_SettingInfo_cachingDefault">
+			<English>Automatically flags assigned groups to be cached</English>
+		</Key>
+		<Key ID="STR_stx_military_SettingName_cachingDistance">
+			<English>Caching distance</English>
+		</Key>
+		<Key ID="STR_stx_military_SettingInfo_cachingDistance">
+			<English>How far away players must before AI is cached</English>
+		</Key>
+		<Key ID="STR_stx_military_SettingName_RatingHelicopter">
+			<English>Rating: Helicopter</English>
+		</Key>
+		<Key ID="STR_stx_military_SettingInfo_RatingHelicopter">
+			<English>How AI rates the encountered threat</English>
+		</Key>
+		<Key ID="STR_stx_military_SettingName_RatingTank">
+			<English>Rating: Tank</English>
+		</Key>
+		<Key ID="STR_stx_military_SettingInfo_RatingTank">
+			<English>How AI rates the encountered threat</English>
+		</Key>
+		<Key ID="STR_stx_military_SettingName_RatingCar">
+			<English>Rating: Car</English>
+		</Key>
+		<Key ID="STR_stx_military_SettingInfo_RatingCar">
+			<English>How AI rates the encountered threat</English>
+		</Key>
+		<Key ID="STR_stx_military_SettingName_AssistCoef">
+			<English>Assistance multiplier</English>
+		</Key>
+		<Key ID="STR_stx_military_SettingInfo_AssistCoef">
+			<English>Ratio of units needed to confront enemies \n(Threat rating * Assistance multiplier)</English>
+		</Key>
+		<Key ID="STR_stx_military_SettingName_QRFRatio">
+			<English>QRF ratio</English>
+		</Key>
+		<Key ID="STR_stx_military_SettingInfo_QRFRatio">
+			<English>Percentage of assistance pool that should be QRF \n(QRF has higher priority to respond to threats compared to other assignments)</English>
+		</Key>
+		<Key ID="STR_stx_military_SettingName_flaresEnabled">
+			<English>Flares</English>
+		</Key>
+		<Key ID="STR_stx_military_SettingInfo_flaresEnabled">
+			<English>Enable flares on detection</English>
+		</Key>
+		<Key ID="STR_stx_military_SettingName_flaresChance">
+			<English>Flare chance</English>
+		</Key>
+		<Key ID="STR_stx_military_SettingInfo_flaresChance">
+			<English>Chance AI will launch flares</English>
+		</Key>
+		<Key ID="STR_stx_military_SettingName_smokeEnabled">
+			<English>Smoke grenades</English>
+		</Key>
+		<Key ID="STR_stx_military_SettingInfo_smokeEnabled">
+			<English>Enable AI throwing smoke grenades when engaged</English>
+		</Key>
+		<Key ID="STR_stx_military_SettingName_smokeChance">
+			<English>Smoke chance</English>
+		</Key>
+		<Key ID="STR_stx_military_SettingInfo_smokeChance">
+			<English>Chance of AI throwing smoke</English>
+		</Key>
+		<Key ID="STR_stx_military_SettingName_smokeColorWEST">
+			<English>Smoke color - BLUFOR</English>
+		</Key>
+		<Key ID="STR_stx_military_SettingInfo_smokeColorWEST">
+			<English>Smoke color used for side: BLUFOR</English>
+		</Key>
+		<Key ID="STR_stx_military_SettingName_smokeColorEAST">
+			<English>Smoke color - OPFOR</English>
+		</Key>
+		<Key ID="STR_stx_military_SettingInfo_smokeColorEAST">
+			<English>Smoke color used for side: OPFOR</English>
+		</Key>
+		<Key ID="STR_stx_military_SettingName_smokeColorGUER">
+			<English>Smoke color - INDEPENDENT</English>
+		</Key>
+		<Key ID="STR_stx_military_SettingInfo_smokeColorGUER">
+			<English>Smoke color used for side: INDEPENDENT</English>
+		</Key>
+
+		<!-- Other -->
+
+		<Key ID="STR_stx_military_White">
+			<English>White</English>
+		</Key>
+		<Key ID="STR_stx_military_Blue">
+			<English>Blue</English>
+		</Key>
+		<Key ID="STR_stx_military_Green">
+			<English>Green</English>
+		</Key>
+		<Key ID="STR_stx_military_Yellow">
+			<English>Yellow</English>
+		</Key>
+		<Key ID="STR_stx_military_Red">
+			<English>Red</English>
+		</Key>
+
+		<!-- Modules -->
+		
+		<Key ID="STR_stx_military_Module_AssignFree">
+			<English>Assign: Free</English>
+		</Key>
+		<Key ID="STR_stx_military_Module_AssignGarrison">
+			<English>Assign: Garrison</English>
+		</Key>
+		<Key ID="STR_stx_military_Module_AssignPatrol">
+			<English>Assign: Patrol</English>
+		</Key>
+		<Key ID="STR_stx_military_Module_AssignQRF">
+			<English>Assign: QRF</English>
+		</Key>
+		<Key ID="STR_stx_military_Module_AssignSentry">
+			<English>Assign: Sentry</English>
+		</Key>
+		<Key ID="STR_stx_military_Module_Occupy">
+			<English>Occupy</English>
+		</Key>
+		<Key ID="STR_stx_military_Module_ToggleCaching">
+			<English>Toggle caching</English>
+		</Key>
+		<Key ID="STR_stx_military_Module_Unassign">
+			<English>Unassign</English>
+		</Key>
+	</Package>
+</Project>

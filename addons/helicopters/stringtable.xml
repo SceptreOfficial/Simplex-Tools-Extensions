@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="stx">
+	<Package name="helicopters">
+		<Key ID="STR_stx_helicopters_component">
+			<English>Simplex Helicopters</English>
+		</Key>
+		<Key ID="STR_stx_helicopters_category">
+			<English>STX Helicopters</English>
+		</Key>	
+
+		<Key ID="STR_stx_helicopters_moduleLandName">
+			<English>Land</English>
+		</Key>
+		<Key ID="STR_stx_helicopters_moduleHoverName">
+			<English>Hover</English>
+		</Key>
+		<Key ID="STR_stx_helicopters_moduleHelocastName">
+			<English>Helocast</English>
+		</Key>
+		<Key ID="STR_stx_helicopters_moduleSlingloadName">
+			<English>Slingload</English>
+		</Key>
+		<Key ID="STR_stx_helicopters_moduleReleaseName">
+			<English>Release control</English>
+		</Key>
+	</Package>
+</Project>

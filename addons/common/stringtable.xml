@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="stx">
+	<Package name="common">
+		<Key ID="STR_stx_common_component">
+			<English>Simplex Common</English>
+		</Key>
+		<Key ID="STR_stx_common_category">
+			<English>STX Common</English>
+		</Key>
+
+		<Key ID="STR_stx_common_day">
+			<English>%1 day</English>
+		</Key>
+		<Key ID="STR_stx_common_hour">
+			<English>%1 hour</English>
+		</Key>
+		<Key ID="STR_stx_common_minute">
+			<English>%1 minute</English>
+		</Key>
+		<Key ID="STR_stx_common_second">
+			<English>%1 second</English>
+		</Key>
+		<Key ID="STR_stx_common_dayPlural">
+			<English>%1 days</English>
+		</Key>
+		<Key ID="STR_stx_common_hourPlural">
+			<English>%1 hours</English>
+		</Key>
+		<Key ID="STR_stx_common_minutePlural">
+			<English>%1 minutes</English>
+		</Key>
+		<Key ID="STR_stx_common_secondPlural">
+			<English>%1 seconds</English>
+		</Key>
+
+		<Key ID="STR_stx_common_zeusSelectionItems">
+			<English>SELECT ITEMS, THEN PRESS ENTER</English>
+		</Key>
+		<Key ID="STR_stx_common_zeusSelectionUnits">
+			<English>SELECT UNITS, THEN PRESS ENTER</English>
+		</Key>
+		<Key ID="STR_stx_common_zeusSelectionObjects">
+			<English>SELECT OBJECTS, THEN PRESS ENTER</English>
+		</Key>
+		<Key ID="STR_stx_common_zeusSelectionVehicles">
+			<English>SELECT VEHICLES, THEN PRESS ENTER</English>
+		</Key>
+		<Key ID="STR_stx_common_zeusSelectionCancelled">
+			<English>SELECTION CANCELLED</English>
+		</Key>
+		<Key ID="STR_stx_common_zeusSelectionSubmitted">
+			<English>SELECTION SUBMITTED</English>
+		</Key>
+		<Key ID="STR_stx_common_zeusNothingSelected">
+			<English>NOTHING SELECTED</English>
+		</Key>
+
+		<!-- Arsenal -->
+		<Key ID="STR_stx_common_arsenal">
+			<English>Arsenal</English>
+		</Key>
+		<Key ID="STR_stx_common_arsenalWhitelistName">
+			<English>Whitelist</English>
+		</Key>
+		<Key ID="STR_stx_common_arsenalWhitelistInfo">
+			<English>Classes whitelisted in the ACE arsenal</English>
+		</Key>
+		<Key ID="STR_stx_common_arsenalBlacklistName">
+			<English>Blacklist</English>
+		</Key>
+		<Key ID="STR_stx_common_arsenalBlacklistInfo">
+			<English>Classes blacklisted in the ACE arsenal</English>
+		</Key>
+		<Key ID="STR_stx_common_arsenalDummyEnabledName">
+			<English>Arsenal dummy</English>
+		</Key>
+		<Key ID="STR_stx_common_arsenalDummyEnabledInfo">
+			<English>Use a local dummy character for arsenal customization to minimize MP lag/stutter</English>
+		</Key>
+		<Key ID="STR_stx_common_arsenalAnimEnabledName">
+			<English>Arsenal idle animations</English>
+		</Key>
+		<Key ID="STR_stx_common_arsenalAnimEnabledInfo">
+			<English>Ambient character animations when using the arsenal</English>
+		</Key>
+
+		<!-- Preferences -->
+		<Key ID="STR_stx_common_preferences">
+			<English>Preferences</English>
+		</Key>
+		<Key ID="STR_stx_common_hintTypeName">
+			<English>Hint type</English>
+			<Japanese>注意表示の種類</Japanese>
+			<German>Hinweistyp</German>
+		</Key>
+		<Key ID="STR_stx_common_hintTypeInfo">
+			<English>Style of on-screen messages</English>
+		</Key>
+		<Key ID="STR_stx_common_hintType_hint">
+			<English>Hint</English>
+			<Japanese>ヒント</Japanese>
+			<German>Hinweis</German>
+		</Key>
+		<Key ID="STR_stx_common_hintType_hintSilent">
+			<English>Hint (silent)</English>
+			<Japanese>ヒント (通知音なし)</Japanese>
+			<German>Hinweis (stumm)</German>
+		</Key>
+		<Key ID="STR_stx_common_hintType_titleEffect">
+			<English>Title effect</English>
+			<Japanese>タイトルエフェクト</Japanese>
+			<German>Titeleffekt</German>
+		</Key>
+		<Key ID="STR_stx_common_hintType_systemChat">
+			<English>System chat</English>
+			<Japanese>システムチャットメッセージ</Japanese>
+			<German>Systemchat</German>
+		</Key>
+
+		<!-- Skills -->
+		<Key ID="STR_stx_common_subSkills">
+			<English>AI Sub-skills</English>
+		</Key>
+		<Key ID="STR_stx_common_applySubSkillsName">
+			<English>Automatically apply skills</English>
+		</Key>
+		<Key ID="STR_stx_common_applySubSkillsInfo">
+			<English>Applies on spawn and locality transfer. Set "stx_setSkills" variable false on unit to disable.</English>
+		</Key>
+		<Key ID="STR_stx_common_skillGeneralName">
+			<English>Skill: General</English>
+		</Key>
+		<Key ID="STR_stx_common_skillGeneralInfo">
+			<English>Affects the AI decision making\nRaw "Skill", value is distributed to sub-skills unless defined otherwise</English>
+		</Key>
+		<Key ID="STR_stx_common_skillCommandingName">
+			<English>Skill: Commanding</English>
+		</Key>
+		<Key ID="STR_stx_common_skillCommandingInfo">
+			<English>Higher values make AI report targets faster</English>
+		</Key>
+		<Key ID="STR_stx_common_skillCourageName">
+			<English>Skill: Courage</English>
+		</Key>
+		<Key ID="STR_stx_common_skillCourageInfo">
+			<English>Higher values make AI have more courage/morale</English>
+		</Key>
+		<Key ID="STR_stx_common_skillAimingAccuracyName">
+			<English>Skill: Aiming Accuracy</English>
+		</Key>
+		<Key ID="STR_stx_common_skillAimingAccuracyInfo">
+			<English>Higher values make AI lead targets better\nHigher values make AI estimate range and calculate bullet drop more precicely\nHigher values make AI compensate weapon dispersion better\nHigher values make AI control recoil better\nHigher values can make AI open fire with less target knowledge</English>
+		</Key>
+		<Key ID="STR_stx_common_skillAimingShakeName">
+			<English>Skill: Aiming Shake</English>
+		</Key>
+		<Key ID="STR_stx_common_skillAimingShakeInfo">
+			<English>Higher values make AI hold weapons more steady for better precision</English>
+		</Key>
+		<Key ID="STR_stx_common_skillAimingSpeedName">
+			<English>Skill: Aiming Speed</English>
+		</Key>
+		<Key ID="STR_stx_common_skillAimingSpeedInfo">
+			<English>Higher values make AI rotate and stabilize aim faster</English>
+		</Key>
+		<Key ID="STR_stx_common_skillReloadSpeedName">
+			<English>Skill: Reload Speed</English>
+		</Key>
+		<Key ID="STR_stx_common_skillReloadSpeedInfo">
+			<English>Higher values make AI switch or reload weapons faster</English>
+		</Key>
+		<Key ID="STR_stx_common_skillSpotDistanceName">
+			<English>Skill: Spot Distance</English>
+		</Key>
+		<Key ID="STR_stx_common_skillSpotDistanceInfo">
+			<English>Higher values make AI better at spotting targets\nHigher values make AI collect information about targets more precisely</English>
+		</Key>
+		<Key ID="STR_stx_common_skillSpotTimeName">
+			<English>Skill: Spot Time</English>
+		</Key>
+		<Key ID="STR_stx_common_skillSpotTimeInfo">
+			<English>Higher values make AI react faster to death, damage, or enemies</English>
+		</Key>
+	</Package>
+</Project>

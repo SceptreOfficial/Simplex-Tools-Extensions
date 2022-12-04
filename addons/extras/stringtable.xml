@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="stx">
+	<Package name="extras">
+		<Key ID="STR_stx_extras_component">
+			<English>Simplex Extras</English>
+		</Key>
+		<Key ID="STR_stx_extras_category">
+			<English>STX Extras</English>
+		</Key>	
+
+		<Key ID="STR_stx_extras_moduleGetClassName">
+			<English>Get class names</English>
+		</Key>
+		
+		<!-- Reset Objects -->
+		<Key ID="STR_stx_extras_moduleResetObjectsName">
+			<English>Reset objects</English>
+		</Key>
+
+		<!-- HALO -->
+		<Key ID="STR_stx_extras_moduleHALOName">
+			<English>HALO drop</English>
+		</Key>
+
+		<!-- Virtual Driver -->
+		<Key ID="STR_stx_extras_virtualDriver">
+			<English>Virtual driver</English>
+		</Key>
+		<Key ID="STR_stx_extras_virtualDriverAllowName">
+			<English>Enable virtual drivers</English>
+		</Key>
+		<Key ID="STR_stx_extras_virtualDriverAllowInfo">
+			<English>Allows creating virtual drivers</English>
+		</Key>
+		<Key ID="STR_stx_extras_virtualDriverRemoveOnExitName">
+			<English>Remove on exit</English>
+		</Key>
+		<Key ID="STR_stx_extras_virtualDriverRemoveOnExitInfo">
+			<English>Removes virtual driver when the requester leaves the vehicle</English>
+		</Key>
+		<Key ID="STR_stx_extras_virtualDriverCloneName">
+			<English>Clone character</English>
+		</Key>
+		<Key ID="STR_stx_extras_virtualDriverCloneInfo">
+			<English>Create a clone of the requester instead of an invisible entity</English>
+		</Key>
+		<Key ID="STR_stx_extras_create">
+			<English>Create</English>
+		</Key>
+		<Key ID="STR_stx_extras_remove">
+			<English>Remove</English>
+		</Key>
+		<Key ID="STR_stx_extras_toggleEngine">
+			<English>Toggle engine</English>
+		</Key>
+		<Key ID="STR_stx_extras_virtualDriverOccupied">
+			<English>Driver seat already occupied</English>
+		</Key>
+	</Package>
+</Project>

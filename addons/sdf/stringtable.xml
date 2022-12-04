@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="SDF">
+	<Key ID="STR_SDF_CONFIRM">
+		<English>CONFIRM</English>
+		<French>VALIDER</French>
+	</Key>
+	<Key ID="STR_SDF_CANCEL">
+		<English>CANCEL</English>
+		<French>ANNULER</French>
+	</Key>
+	<Key ID="STR_SDF_MapToolTip">
+		<English>Rotate: CTRL\nResize: ALT</English>
+	</Key>
+	<Key ID="STR_SDF_MapToolTipSpecial">
+		<English>Rotate: CTRL\nResize: ALT\n%1: SHIFT</English>
+	</Key>
+	<Key ID="STR_SDF_Special">
+		<English>Special</English>
+	</Key>
+</Project>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="stx">
+	<Package name="main">
+		<Key ID="STR_stx_main_stx">
+			<English>Simplex Tools and Extensions</English>
+		</Key>
+		<Key ID="STR_stx_main_category">
+			<English>STX Main</English>
+		</Key>
+		<Key ID="STR_stx_main_categoryGeneral">
+			<English>General</English>
+		</Key>
+		<Key ID="STR_stx_main_debugName">
+			<English>Debug</English>
+		</Key>
+		<Key ID="STR_stx_main_debugInfo">
+			<English>Enable debugging info</English>
+		</Key>
+	</Package>
+</Project>

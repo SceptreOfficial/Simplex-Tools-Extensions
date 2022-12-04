@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="stx">
+	<Package name="civilians">
+		<Key ID="STR_stx_civilians_component">
+			<English>Simplex Civilians</English>
+		</Key>
+		<Key ID="STR_stx_civilians_category">
+			<English>STX Civilians</English>
+		</Key>
+
+		<!-- Setting Categories -->
+		
+		<Key ID="STR_stx_civilians_SettingCategory_AmbientAircraft">
+			<English>Ambient Aircraft</English>
+		</Key>
+		<Key ID="STR_stx_civilians_SettingCategory_AmbientCivilians">
+			<English>Ambient Civilians</English>
+		</Key>
+		<Key ID="STR_stx_civilians_SettingCategory_CiviliansExperimental">
+			<English>Civilians: Experimental</English>
+		</Key>
+		
+		<!-- Settings -->
+
+		<Key ID="STR_stx_civilians_SettingName_autoStartAircraft">
+			<English>Auto-start (server)</English>
+		</Key>
+		<Key ID="STR_stx_civilians_SettingInfo_autoStartAircraft">
+			<English>Starts the ambient aircraft systxm on the server when the mission loads</English>
+		</Key>
+		<Key ID="STR_stx_civilians_SettingName_aircraftChance">
+			<English>Chance</English>
+		</Key>
+		<Key ID="STR_stx_civilians_SettingInfo_aircraftChance">
+			<English>Chance of aircraft spawning after random time has elapsed</English>
+		</Key>
+		<Key ID="STR_stx_civilians_SettingName_aircraftMinTime">
+			<English>Min time</English>
+		</Key>
+		<Key ID="STR_stx_civilians_SettingInfo_aircraftMinTime">
+			<English>Minimum time between spawn chances</English>
+		</Key>
+		<Key ID="STR_stx_civilians_SettingName_aircraftMaxTime">
+			<English>Max time</English>
+		</Key>
+		<Key ID="STR_stx_civilians_SettingInfo_aircraftMaxTime">
+			<English>Maximum time between spawn chances</English>
+		</Key>
+		<Key ID="STR_stx_civilians_SettingName_aircraftAltitude">
+			<English>Altitude</English>
+		</Key>
+		<Key ID="STR_stx_civilians_SettingInfo_aircraftAltitude">
+			<English>Aircraft flying height</English>
+		</Key>
+		<Key ID="STR_stx_civilians_SettingName_aircraftSpawnDistance">
+			<English>Spawn distance</English>
+		</Key>
+		<Key ID="STR_stx_civilians_SettingInfo_aircraftSpawnDistance">
+			<English>How far away should aircraft spawn/de-spawn from selected player</English>
+		</Key>
+		<Key ID="STR_stx_civilians_SettingName_aircraftTTL">
+			<English>Time to live</English>
+		</Key>
+		<Key ID="STR_stx_civilians_SettingInfo_aircraftTTL">
+			<English>Aircraft will be deleted after set time (0 to disable)</English>
+		</Key>
+		<Key ID="STR_stx_civilians_SettingName_aircraftClassesStr">
+			<English>Aircraft classes (weighted)</English>
+		</Key>
+		<Key ID="STR_stx_civilians_SettingInfo_aircraftClassesStr">
+			<English>Array of aircraft classes and weight/chance they will spawn (weighted array)</English>
+		</Key>
+		<Key ID="STR_stx_civilians_SettingName_autoStart">
+			<English>Auto-start (server)</English>
+		</Key>
+		<Key ID="STR_stx_civilians_SettingInfo_autoStart">
+			<English>Starts the ambient civilian systxm on the server when the mission loads</English>
+		</Key>
+		<Key ID="STR_stx_civilians_SettingName_pedSpawnRadius">
+			<English>Pedestrian spawn radius</English>
+		</Key>
+		<Key ID="STR_stx_civilians_SettingInfo_pedSpawnRadius">
+			<English>Radius of sector around players to spawn pedestrians</English>
+		</Key>
+		<Key ID="STR_stx_civilians_SettingName_driverSpawnRadius">
+			<English>Driving vehicle spawn radius</English>
+		</Key>
+		<Key ID="STR_stx_civilians_SettingInfo_driverSpawnRadius">
+			<English>Radius of sector around players to spawn driving vehicles</English>
+		</Key>
+		<Key ID="STR_stx_civilians_SettingName_parkedSpawnRadius">
+			<English>Parked vehicle spawn radius</English>
+		</Key>
+		<Key ID="STR_stx_civilians_SettingInfo_parkedSpawnRadius">
+			<English>Radius of sector around players to spawn unnoccupied vehicles</English>
+		</Key>
+		<Key ID="STR_stx_civilians_SettingName_pedestrianCount">
+			<English>Pedestrians</English>
+		</Key>
+		<Key ID="STR_stx_civilians_SettingInfo_pedestrianCount">
+			<English>Amount of pedestrians to spawn in every sector</English>
+		</Key>
+		<Key ID="STR_stx_civilians_SettingName_driverCount">
+			<English>Driving vehicles</English>
+		</Key>
+		<Key ID="STR_stx_civilians_SettingInfo_driverCount">
+			<English>Amount of driven/moving vehicles to spawn in every sector</English>
+		</Key>
+		<Key ID="STR_stx_civilians_SettingName_parkedCount">
+			<English>Parked vehicles</English>
+		</Key>
+		<Key ID="STR_stx_civilians_SettingInfo_parkedCount">
+			<English>Amount of unnoccupied vehicles to spawn in every sector</English>
+		</Key>
+		<Key ID="STR_stx_civilians_SettingName_unitClassesStr">
+			<English>Unit classes</English>
+		</Key>
+		<Key ID="STR_stx_civilians_SettingInfo_unitClassesStr">
+			<English>Civilian unit classes. Leave empty for defaults</English>
+		</Key>
+		<Key ID="STR_stx_civilians_SettingName_vehClassesStr">
+			<English>Vehicle classes</English>
+		</Key>
+		<Key ID="STR_stx_civilians_SettingInfo_vehClassesStr">
+			<English>Vehicle classes. Leave empty for defaults</English>
+		</Key>
+		<Key ID="STR_stx_civilians_SettingName_pedSpawnDelay">
+			<English>Pedestrian spawn delay</English>
+		</Key>
+		<Key ID="STR_stx_civilians_SettingInfo_pedSpawnDelay">
+			<English>Delay between each pedestrian being spawned</English>
+		</Key>
+		<Key ID="STR_stx_civilians_SettingName_driverSpawnDelay">
+			<English>Driver spawn delay</English>
+		</Key>
+		<Key ID="STR_stx_civilians_SettingInfo_driverSpawnDelay">
+			<English>Delay between each driving vehicle being spawned</English>
+		</Key>
+		<Key ID="STR_stx_civilians_SettingName_parkedSpawnDelay">
+			<English>Parked spawn delay</English>
+		</Key>
+		<Key ID="STR_stx_civilians_SettingInfo_parkedSpawnDelay">
+			<English>Delay between each parked vehicle being spawned</English>
+		</Key>
+		<Key ID="STR_stx_civilians_SettingName_minPanicTime">
+			<English>Minimum panic time</English>
+		</Key>
+		<Key ID="STR_stx_civilians_SettingInfo_minPanicTime">
+			<English>Minimum time in seconds civilians will stay in a panicked state</English>
+		</Key>
+
+		<!-- Modules -->
+
+		<Key ID="STR_stx_civilians_Module_AddPanic">
+			<English>Add Panic Feature</English>
+		</Key>
+		<Key ID="STR_stx_civilians_Module_AddPanic_Added">
+			<English>PANIC FEATURE ADDED</English>
+		</Key>
+		<Key ID="STR_stx_civilians_Module_AddPanic_NotCiv">
+			<English>NOT A CIVILIAN</English>
+		</Key>
+
+		<Key ID="STR_stx_civilians_Module_BlacklistArea">
+			<English>Blacklist Area</English>
+		</Key>
+		<Key ID="STR_stx_civilians_Module_BlacklistArea_Added">
+			<English>BLACKLIST ADDED</English>
+		</Key>
+
+		<Key ID="STR_stx_civilians_Module_Populate">
+			<English>Populate</English>
+		</Key>
+		<Key ID="STR_stx_civilians_Module_Populate_AreaPopulated">
+			<English>AREA POPULATED</English>
+		</Key>
+
+		<Key ID="STR_stx_civilians_Module_ToggleAircraft">
+			<English>Toggle Ambient Aircraft</English>
+		</Key>
+		<Key ID="STR_stx_civilians_Module_ToggleAircraft_Title">
+			<English>Enable Ambient Aircraft</English>
+		</Key>
+		<Key ID="STR_stx_civilians_Module_ToggleAircraft_Enabled">
+			<English>AMBIENT AIRCRAFT ENABLED</English>
+		</Key>
+		<Key ID="STR_stx_civilians_Module_ToggleAircraft_Disabled">
+			<English>AMBIENT AIRCRAFT DISABLED</English>
+		</Key>
+
+		<Key ID="STR_stx_civilians_Module_ToggleCivilians">
+			<English>Toggle Ambient Civilians</English>
+		</Key>
+		<Key ID="STR_stx_civilians_Module_ToggleCivilians_Title">
+			<English>Enable Ambient Civilians</English>
+		</Key>
+		<Key ID="STR_stx_civilians_Module_ToggleCivilians_Enabled">
+			<English>AMBIENT CIVILIANS ENABLED</English>
+		</Key>
+		<Key ID="STR_stx_civilians_Module_ToggleCivilians_Disabled">
+			<English>AMBIENT CIVILIANS DISABLED</English>
+		</Key>
+
+		<!-- Other -->
+		
+		<Key ID="STR_stx_civilians_Locality">
+			<English>Locality</English>
+		</Key>
+		<Key ID="STR_stx_civilians_LocalityGroupsInfo">
+			<English>Spawns groups on specified machine</English>
+		</Key>
+		<Key ID="STR_stx_civilians_LocalityToggleInfo">
+			<English>Start on specified machine</English>
+		</Key>
+		<Key ID="STR_stx_civilians_Locality">
+			<English>Locality</English>
+		</Key>
+		<Key ID="STR_stx_civilians_Local">
+			<English>Local</English>
+		</Key>
+		<Key ID="STR_stx_civilians_Server">
+			<English>Server</English>
+		</Key>
+		<Key ID="STR_stx_civilians_HC">
+			<English>HC: </English>
+		</Key>
+		<Key ID="STR_stx_civilians_GoAwayAction">
+			<English>"Go away!"</English>
+		</Key>
+	</Package>
+</Project>
