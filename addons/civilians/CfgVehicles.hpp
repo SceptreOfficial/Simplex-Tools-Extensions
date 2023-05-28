@@ -30,11 +30,17 @@ class CfgVehicles {
 		isDisposable = 0;
 	};
 
-	class GVAR(Module_AddPanic) : GVAR(Module_Base) {
-		displayName = CSTRING(Module_AddPanic);
+	class GVAR(ModuleAddPanic) : Module_F {
+		author = "Simplex Team";
+		category = QGVAR(modules);
+		displayName = CSTRING(ModuleAddPanicName);
 		icon = "\A3\Ui_f\data\IGUI\Cfg\simpleTasks\types\danger_ca.paa";
+		portrait = "\A3\Ui_f\data\IGUI\Cfg\simpleTasks\types\danger_ca.paa";
 		function = QFUNC(moduleAddPanic);
+		isGlobal = 1;
+		scope = 1;
 		scopeCurator = 2;
+		curatorCanAttach = 1;
 	};
 
 	class GVAR(ModuleBlacklistArea): Module_F {

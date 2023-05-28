@@ -23,9 +23,9 @@ if (!local _logic) exitWith {};
 	} else {
 		if (side group _obj == civilian) then {
 			_obj call FUNC(addPanic);
-			[objNull,LLSTRING(Module_AddPanic_Added)] call BIS_fnc_showCuratorFeedbackMessage;
+			[objNull,LLSTRING(ModuleAddPanic_Added)] call BIS_fnc_showCuratorFeedbackMessage;
 		} else {
-			[objNull,LLSTRING(Module_AddPanic_NotCiv)] call BIS_fnc_showCuratorFeedbackMessage;
+			[objNull,LLSTRING(ModuleAddPanic_NotCiv)] call BIS_fnc_showCuratorFeedbackMessage;
 		};
 	};
 },_this] call CBA_fnc_directCall;

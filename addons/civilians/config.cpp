@@ -7,7 +7,7 @@ class CfgPatches {
 		authors[] = {"Simplex Team"};
 		url = "";
 		units[] = {
-			QGVAR(Module_AddPanic),
+			QGVAR(ModuleAddPanic),
 			QGVAR(ModuleBlacklistArea),
 			QGVAR(Module_Populate),
 			QGVAR(Module_ToggleAircraft),

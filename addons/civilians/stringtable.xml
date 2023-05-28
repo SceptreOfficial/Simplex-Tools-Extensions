@@ -151,13 +151,13 @@
 
 		<!-- Modules -->
 
-		<Key ID="STR_stx_civilians_Module_AddPanic">
+		<Key ID="STR_stx_civilians_ModuleAddPanicName">
 			<English>Add Panic Feature</English>
 		</Key>
-		<Key ID="STR_stx_civilians_Module_AddPanic_Added">
+		<Key ID="STR_stx_civilians_ModuleAddPanic_Added">
 			<English>PANIC FEATURE ADDED</English>
 		</Key>
-		<Key ID="STR_stx_civilians_Module_AddPanic_NotCiv">
+		<Key ID="STR_stx_civilians_ModuleAddPanic_NotCiv">
 			<English>NOT A CIVILIAN</English>
 		</Key>
 
