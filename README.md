@@ -30,7 +30,7 @@
 ### Description
 
 Simplex Tools and Extensions is a collection of various features for mission makers, zeus game masters, and players to utilize.
-Many of these features are still in development and **very experimental** and you may encounter issues, so use them at your own risk.
+Many of these features are still in development and **very experimental**. So use them at your own risk.
 
 You can find a list of features and documentation via the [wiki](https://github.com/SceptreOfficial/Simplex-Tools-Extensions/wiki).
 Please submit any issues you find via Github, or make a comment in our Discord server.
