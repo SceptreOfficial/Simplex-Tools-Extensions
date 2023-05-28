@@ -37,11 +37,33 @@ class CfgVehicles {
 		scopeCurator = 2;
 	};
 
-	class GVAR(Module_BlacklistArea) : GVAR(Module_Base) {
-		displayName = CSTRING(Module_BlacklistArea);
+	class GVAR(ModuleBlacklistArea): Module_F {
+		author = "Simplex Team";
+		category = QGVAR(modules);
+		displayName = CSTRING(ModuleBlacklistAreaName);
 		icon = "\A3\Ui_f\data\IGUI\Cfg\simpleTasks\types\use_ca.paa";
-		function = QFUNC(moduleBlacklistArea);
+		portrait = "\A3\Ui_f\data\IGUI\Cfg\simpleTasks\types\use_ca.paa";
+		function = QFUNC(ModuleBlacklistArea);
+		isGlobal = 1;
+		scope = 2;
 		scopeCurator = 2;
+		curatorCanAttach = 0;
+		canSetArea = 1;
+		canSetAreaHeight = 0;
+		canSetAreaShape = 1;
+
+		class AttributeValues {
+			isRectangle = 1;
+			size3[] = {25,25,-1};
+		};
+
+		class Attributes: AttributesBase {
+			class ModuleDescription: ModuleDescription {};
+		};
+		
+		class ModuleDescription: ModuleDescription {
+			description = CSTRING(ModuleBlacklistAreaInfo);
+		};
 	};
 
 	class GVAR(Module_Populate) : GVAR(Module_Base) {

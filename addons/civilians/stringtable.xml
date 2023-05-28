@@ -161,10 +161,13 @@
 			<English>NOT A CIVILIAN</English>
 		</Key>
 
-		<Key ID="STR_stx_civilians_Module_BlacklistArea">
+		<Key ID="STR_stx_civilians_ModuleBlacklistAreaName">
 			<English>Blacklist Area</English>
 		</Key>
-		<Key ID="STR_stx_civilians_Module_BlacklistArea_Added">
+		<Key ID="STR_stx_civilians_ModuleBlacklistAreaInfo">
+			<English>Blacklist the ambient civilian system from populating the defined area</English>
+		</Key>
+		<Key ID="STR_stx_civilians_ModuleBlacklistArea_Added">
 			<English>BLACKLIST ADDED</English>
 		</Key>
 

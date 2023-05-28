@@ -8,7 +8,7 @@ class CfgPatches {
 		url = "";
 		units[] = {
 			QGVAR(Module_AddPanic),
-			QGVAR(Module_BlacklistArea),
+			QGVAR(ModuleBlacklistArea),
 			QGVAR(Module_Populate),
 			QGVAR(Module_ToggleAircraft),
 			QGVAR(Module_ToggleCivilians)
