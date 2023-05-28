@@ -32,10 +32,10 @@
 Simplex Tools and Extensions is a collection of various features for mission makers, zeus game masters, and players to utilize.
 
 Many of these features are still **very experimental** and you may encounter issues, so use them at your own risk.
-You can find a list of features and documentation via the [url](https://github.com/SceptreOfficial/Simplex-Tools-Extensions/wiki]wiki[/url]).
+You can find a list of features and documentation via the [wiki](https://github.com/SceptreOfficial/Simplex-Tools-Extensions/wiki).
 Please submit any issues you find via Github, or make a comment in our Discord server.
 
 **Discord:** https://discord.gg/zNPxjHvb8X
 
 **LICENSE**
-This project is licensed under the GNU General Public License (GPLv2[github.com]).
+This project is licensed under the GNU General Public License ([GPLv2](../main/LICENSE)).
