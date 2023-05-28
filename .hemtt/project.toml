@@ -1,0 +1,21 @@
+name = "Simplex Tools and Extensions"
+mainprefix = "z"
+prefix = "stx"
+author = "Simplex Team"
+
+[files]
+include = [
+    "mod.cpp",
+    "assets/stx.paa",
+    "LICENSE",
+    "authors.txt"
+]
+
+[version]
+major = 0
+minor = 1
+patch = 0
+git_hash = 0
+
+[asc]
+enabled = true

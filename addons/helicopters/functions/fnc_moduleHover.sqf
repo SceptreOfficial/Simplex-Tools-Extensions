@@ -33,7 +33,7 @@ if (!local _logic) exitWith {};
 		_logic setPosASL _posASL;
 		_logic setDir 0;
 		_logic setVariable [QGVAR(hoverData),[typeOf _vehicle,getModelInfo _vehicle # 3]];
-		["zen_common_addObjects",[[_logic],getAssignedCuratorLogic player]] call CBA_fnc_serverEvent;
+		[_logic,true,getAssignedCuratorLogic player] call zen_common_fnc_updateEditableObjects;
 		
 		[_logic,"Deleted",{
 			params ["_logic"];
@@ -59,30 +59,38 @@ if (!local _logic) exitWith {};
 				true
 			};
 
-			private _endDir = [getDirVisual _logic,-1] select (isNull (_logic getVariable [QGVAR(hoverHelper),objNull]));
+			private _posASL = getPosASLVisual _logic;
+			private _endDir = -1;
+			private _hoverHeight = 15;
+			
+			if (!isNull (_logic getVariable [QGVAR(hoverHelper),objNull])) then {
+				_endDir = getDirVisual _logic;
+				private _ix = lineIntersectsSurfaces [_posASL vectorAdd [0,0,50],_posASL vectorAdd [0,0,-50],_logic,_logic getVariable [QGVAR(hoverHelper),objNull],true,1,"GEOM","FIRE"];
+				_hoverHeight = if (_ix isNotEqualTo []) then {
+					0 max (abs ((_ix # 0 # 0 # 2) - _posASL # 2)) min 50
+				} else {50};
+			};
 
 			// Enter
 			if (_key == 0x1C) exitWith {
 				_display displayRemoveEventHandler [_thisType,_thisID];
 
 				[LLSTRING(moduleHoverName),[
-					["SLIDER",["Hold time","Minimum hold time. -1 for indefinite / require manual release"],[[-1,600,0],30]],
-					["SLIDER",["End azimuth","-1 to ignore"],[[-1,360,0],_endDir]],
-					["EDITBOX",["Fly height",""],"50"],
+					["SLIDER",["Timeout","Minimum hold time. -1 for indefinite / require manual release"],[[-1,600,0],30]],
+					["SLIDER",["Hover height","Helicopter will hover at this height above the surface"],[[0,50,1],_hoverHeight]],
+					["SLIDER",["Final azimuth","-1 for auto"],[[-1,360,0],_endDir]],
 					["SLIDER",["Approach distance","Distance to start matching the target height"],[[10,600,0],100]]
 				],{
-					_values params ["_holdTime","_endDir","_flyHeight","_approachDistance"];
+					_values params ["_timeout","_hoverHeight","_endDir","_approach"];
 					_arguments params ["_vehicle","_posASL"];
 
 					private _waypoint = (group driver _vehicle) addWaypoint [ASLtoAGL _posASL,0];
 					_waypoint setWaypointType "SCRIPTED";
 					_waypoint setWaypointScript format ["%1 %2",QPATHTOEF(common,functions\fnc_wpHover.sqf),[
-						_posASL,
+						_timeout,
+						_hoverHeight,
 						_endDir,
-						parseNumber _flyHeight,
-						_approachDistance,
-						nil,
-						_holdTime
+						_approach
 					]];
 					_waypoint setWaypointPosition [_posASL,-1];
 					

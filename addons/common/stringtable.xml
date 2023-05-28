@@ -181,5 +181,16 @@
 		<Key ID="STR_stx_common_skillSpotTimeInfo">
 			<English>Higher values make AI react faster to death, damage, or enemies</English>
 		</Key>
+
+		<!-- Slingloading -->
+		<Key ID="STR_stx_common_slingloading">
+			<English>Slingloading</English>
+		</Key>
+		<Key ID="STR_stx_common_slingloadMassOverrideName">
+			<English>Mass override</English>
+		</Key>
+		<Key ID="STR_stx_common_slingloadMassOverrideInfo">
+			<English>Ignore vanilla mass limits</English>
+		</Key>
 	</Package>
 </Project>

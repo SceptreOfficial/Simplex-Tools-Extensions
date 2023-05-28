@@ -1,8 +1,6 @@
 #include "script_component.hpp"
 
-if (canSuspend) exitWith {
-	[FUNC(slingload),_this] call CBA_fnc_directCall;
-};
+if (canSuspend) exitWith {[FUNC(slingload),_this] call CBA_fnc_directCall};
 
 params [
 	["_vehicle",objNull,[objNull]],
@@ -13,9 +11,7 @@ params [
 
 {ropeDestroy _x} forEach (_vehicle getVariable [QGVAR(slingloadRopes),[]]);
 
-private _cargoMass = getMass _cargo;
-
-if (!alive _vehicle || _cargoMass <= 0 || !simulationEnabled _cargo || isSimpleObject _cargo) exitWith {false};
+if !([_vehicle,_cargo,_massOverride] call FUNC(canSlingLoad)) exitWith {false};
 
 // Run locally
 if (!local _vehicle) exitWith {
@@ -23,12 +19,11 @@ if (!local _vehicle) exitWith {
 };
 
 private _maxMass = getNumber (configOf _vehicle >> "slingLoadMaxCargoMass") max 1;
+private _cargoMass = getMass _cargo;
 
 if (isNil {_cargo getVariable QGVAR(defaultMass)}) then {
 	_cargo setVariable [QGVAR(defaultMass),getMass _cargo,true];
 };
-
-if (!_massOverride && _cargoMass > _maxMass) exitWith {false};
 
 if (_massOverride && _cargoMass > _maxMass * 0.75) then {
 	[QGVAR(execute),[[_cargo,_maxMass * 0.75],{

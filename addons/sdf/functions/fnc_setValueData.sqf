@@ -67,7 +67,7 @@ switch _type do {
 	};
 
 	case "COMBOBOX" : {
-		_valueData params [["_items",[],[[]]],["_selection",0,[0]],["_returnData",[],[[]]]];
+		_valueData params [["_items",[],[[]]],["_selection",0],["_returnData",[],[[]]]];
 
 		if (!_forceDefault) then {
 			_selection = GVAR(cache) getVariable [[_title,_description,_type,_items] joinString "~",_selection];
@@ -472,7 +472,7 @@ switch _type do {
 
 		_params set [2,_valueData];
 		_ctrl setVariable [QGVAR(parameters),_params];
-		_ctrl setVariable [QGVAR(value),_value];
+		_ctrl setVariable [QGVAR(value),+_value];
 		_ctrl setVariable [QGVAR(modeCache),_modeCache];
 		_ctrl setVariable [QGVAR(mode),_mode];
 

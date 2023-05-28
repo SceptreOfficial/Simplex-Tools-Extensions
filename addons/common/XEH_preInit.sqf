@@ -4,6 +4,8 @@ ADDON = false;
 #include "cba_settings.sqf"
 #include "command_events.sqf"
 
+GVAR(slingLoadConditions) = [];
+
 // Misc
 if (isServer) then {
 	[QGVAR(addWaypointServer),{
@@ -72,8 +74,8 @@ if (isServer) then {
 	_logic addEventHandler ["CuratorObjectEdited",{
 		params ["_curator","_object"];
 	
-		if (_object getVariable [QGVAR(flyHelicopter),false]) then {
-			[_object,[0,0,0]] call FUNC(flyHelicopter);
+		if (_object getVariable [QGVAR(pilotHelicopter),false]) then {
+			[_object,[0,0,0]] call FUNC(pilotHelicopter);
 		};
 	}];
 },true,[],true] call CBA_fnc_addClassEventHandler;
@@ -87,6 +89,13 @@ if (isServer) then {
 	[_object,0,["ACE_MainActions"],
 		[QGVAR(arsenal),"Arsenal","\A3\Ui_f\data\IGUI\Cfg\simpleTasks\types\rifle_ca.paa",FUNC(openArsenal),{true}] call ace_interact_menu_fnc_createAction
 	] call ace_interact_menu_fnc_addActionToObject;
+}] call CBA_fnc_addEventHandler;
+
+// Fastroping
+[QGVAR(fastroping),FUNC(fastropeUnitLocal)] call CBA_fnc_addEventHandler;
+[QGVAR(fastropingDone),{
+	params ["_unit","_vehicle"];
+	_vehicle setVariable [QPVAR(fastropeUnits),(_vehicle getVariable [QPVAR(fastropeUnits),[]]) - [_unit],true];
 }] call CBA_fnc_addEventHandler;
 
 ADDON = true;

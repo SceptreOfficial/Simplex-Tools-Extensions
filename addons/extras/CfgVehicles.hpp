@@ -30,8 +30,8 @@ class CfgVehicles {
 		author = "Simplex Team";
 		category = QGVAR(modules);
 		displayName = CSTRING(moduleResetObjectsName);
-		icon = PATHTOF(data\reset.paa);
-		portrait = PATHTOF(data\reset.paa);
+		icon = QPATHTOF(data\reset.paa);
+		portrait = QPATHTOF(data\reset.paa);
 		function = QFUNC(moduleResetObjects);
 		isGlobal = 1;
 		scope = 1;

@@ -6,7 +6,7 @@
 #define SURFACE_SIZE_COEF 0.6
 
 if (canSuspend) exitWith {
-	[FUNC(getSafePosAndNormal),_this] call CBA_fnc_directCall;
+	[FUNC(getSafePosAndUp),_this] call CBA_fnc_directCall;
 };
 
 params [
@@ -48,7 +48,7 @@ private _angleStep = ANGLE_STEP_SIZE_COEF / _objectRadius;
 private _searchRadius = 0.01;
 private _searchAngle = 360;
 private _safePos = [];
-private _safeNormal = [0,0,1];
+private _safeUp = [0,0,1];
 private _surfaceSize = _objectRadius * SURFACE_SIZE_COEF;
 private _surfaceChecks = [0,60,120,180,240,300];
 private _drop = [0,0,-(0 max _dropLimit max 10)];
@@ -66,7 +66,7 @@ while {
 		if (_ix isNotEqualTo [] && {acos ([0,0,1] vectorCos (_ix # 0 # 1)) < _maxSurfaceAngle}) then {
 			if (_ix # 0 # 0 # 2 - _searchPos # 2 > _dropLimit) exitWith {_safe = false};
 			
-			_safeNormal = _ix # 0 # 1;
+			_safeUp = _ix # 0 # 1;
 			_searchPos = _ix # 0 # 0;
 
 			{
@@ -86,17 +86,17 @@ while {
 		private _angle = 0;
 		
 		for "_height" from 0.05 to _objectHeight step 0.005 do {
-			private _center = _searchPos vectorAdd (_safeNormal vectorMultiply _height);
-			private _ix = lineIntersectsSurfaces [_center,_center vectorAdd ([_objectRadius * cos _angle,_objectRadius * sin _angle,0] vectorCrossProduct _safeNormal),objNull,objNull,true,1,"GEOM","FIRE"];
+			private _center = _searchPos vectorAdd (_safeUp vectorMultiply _height);
+			private _ix = lineIntersectsSurfaces [_center,_center vectorAdd ([_objectRadius * cos _angle,_objectRadius * sin _angle,0] vectorCrossProduct _safeUp),objNull,objNull,true,1,"GEOM","FIRE"];
 
 			//[{drawLine3D _this},{},[
 			//	ASLtoAGL (_center),
-			//	ASLtoAGL (_center vectorAdd ([_objectRadius * cos _angle,_objectRadius * sin _angle,0] vectorCrossProduct _safeNormal)),
+			//	ASLtoAGL (_center vectorAdd ([_objectRadius * cos _angle,_objectRadius * sin _angle,0] vectorCrossProduct _safeUp)),
 			//	[1,0,0,0.5]
 			//],10] call CBA_fnc_waitUntilAndExecute;
 
 			if (_ix isNotEqualTo []) then {	
-				_safe = _height < TOLERATION_HEIGHT && {acos (_safeNormal vectorCos (_ix # 0 # 1)) < TOLERATION_ANGLE};
+				_safe = _height < TOLERATION_HEIGHT && {acos (_safeUp vectorCos (_ix # 0 # 1)) < TOLERATION_ANGLE};
 				if (!_safe) then {breakTo "search"};
 			};
 
@@ -107,7 +107,7 @@ while {
 	};
 
 	if (_safe) exitWith {
-		_safePos = _searchPos vectorAdd (_safeNormal vectorMultiply 0.1);
+		_safePos = _searchPos vectorAdd (_safeUp vectorMultiply 0.1);
 	};
 
 	_searchAngle = _searchAngle + (RADIUS_ANGLE_COEF / _searchRadius);
@@ -119,10 +119,10 @@ while {
 
 	_searchRadius < _maxSearchRadius
 } do {};
-//systemChat str ["PERF m/s",(diag_tickTime - _dt) * 1000];
+//systemChat str ["getSafePosAndUp ms",ceil ((diag_tickTime - _dt) * 1000)];
 
 if (_safePos isNotEqualTo []) then {
-	[_safePos,_safeNormal]
+	[_safePos,_safeUp]
 } else {
 	[[],[]]
 };

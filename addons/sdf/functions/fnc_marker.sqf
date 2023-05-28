@@ -7,7 +7,7 @@ private _isRectangle = false;
 private _width = 100;
 private _height = 100;
 private _direction = 0;
-private _markers = allMapMarkers select {markerPos _x distance2D _posASL < 100 && {toUpper markerShape _x in ["RECTANGLE","ELLIPSE"]}};
+private _markers = allMapMarkers select {markerPos _x distance2D _posASL < 100 && {toUpper markerShape _x in ["ELLIPSE","RECTANGLE"]}};
 private _markerFound = false;
 
 if (_markers isNotEqualTo []) then {

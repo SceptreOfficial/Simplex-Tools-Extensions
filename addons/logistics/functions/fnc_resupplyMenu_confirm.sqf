@@ -40,7 +40,11 @@ switch (lbCurSel _ctrlContents) do {
 		if (cbChecked _ctrlCapacityLimit) then {
 			[_box,GVAR(resupplyInventory)] call EFUNC(common,validateCargo)
 		} else {
-			[{(_this # 0) setMaxLoad (_this # 1)},[_box,(maxLoad _box) max loadAbs _box],1] call CBA_fnc_waitAndExecute;
+			[{
+				params ["_box","_defaultMax"];
+				_box setMaxLoad (_defaultMax max loadAbs _box)
+			},[_box,maxLoad _box],1] call CBA_fnc_waitAndExecute;
+
 			_box setMaxLoad MAX_LOAD;
 			
 			GVAR(resupplyInventory)
@@ -83,25 +87,23 @@ switch (lbCurSel _ctrlContents) do {
 
 		};
 
-		[{(_this # 0) setMaxLoad (_this # 1)},[_box,(maxLoad _box) max loadAbs _box],1] call CBA_fnc_waitAndExecute;
+		[{
+			params ["_box","_defaultMax"];
+			_box setMaxLoad (_defaultMax max loadAbs _box)
+		},[_box,maxLoad _box],1] call CBA_fnc_waitAndExecute;
+		
 		_box setMaxLoad MAX_LOAD;
 		
 		{_box addItemCargoGlobal _x} forEach ([
 			_units,
 			lbCurSel _ctrlMunitions == 0,
 			lbCurSel _ctrlMedical == 0,
-			sliderPosition _ctrlMagazineCount,
-			sliderPosition _ctrlUnderbarrelCount,
-			sliderPosition _ctrlRocketCount,
-			sliderPosition _ctrlThrowableCount,
-			sliderPosition _ctrlPlaceableCount,
-			sliderPosition _ctrlMedicalCount,
-			cbChecked (_ctrlContentsGroup controlsGroupCtrl IDC_RESUPPLY_MAGAZINE_MULTIPLY),
-			cbChecked (_ctrlContentsGroup controlsGroupCtrl IDC_RESUPPLY_UNDERBARREL_MULTIPLY),
-			cbChecked (_ctrlContentsGroup controlsGroupCtrl IDC_RESUPPLY_ROCKET_MULTIPLY),
-			cbChecked (_ctrlContentsGroup controlsGroupCtrl IDC_RESUPPLY_THROWABLE_MULTIPLY),
-			cbChecked (_ctrlContentsGroup controlsGroupCtrl IDC_RESUPPLY_PLACEABLE_MULTIPLY),
-			cbChecked (_ctrlContentsGroup controlsGroupCtrl IDC_RESUPPLY_MEDICAL_MULTIPLY)
+			[sliderPosition _ctrlMagazineCount,cbChecked (_ctrlContentsGroup controlsGroupCtrl IDC_RESUPPLY_MAGAZINE_MULTIPLY)],
+			[sliderPosition _ctrlUnderbarrelCount,cbChecked (_ctrlContentsGroup controlsGroupCtrl IDC_RESUPPLY_UNDERBARREL_MULTIPLY)],
+			[sliderPosition _ctrlRocketCount,cbChecked (_ctrlContentsGroup controlsGroupCtrl IDC_RESUPPLY_ROCKET_MULTIPLY)],
+			[sliderPosition _ctrlThrowableCount,cbChecked (_ctrlContentsGroup controlsGroupCtrl IDC_RESUPPLY_THROWABLE_MULTIPLY)],
+			[sliderPosition _ctrlPlaceableCount,cbChecked (_ctrlContentsGroup controlsGroupCtrl IDC_RESUPPLY_PLACEABLE_MULTIPLY)],
+			[sliderPosition _ctrlMedicalCount,cbChecked (_ctrlContentsGroup controlsGroupCtrl IDC_RESUPPLY_MEDICAL_MULTIPLY)]
 		] call FUNC(resupplyAutoFill));
 	};
 	case 2 : {
@@ -155,7 +157,7 @@ switch (lbCurSel _ctrlApplication) do {
 	case 2 : {
 		GVAR(resupplyPosASL) set [2,parseNumber ctrlText _ctrlHeight];
 		_box setPos GVAR(resupplyPosASL);
-		[_box,_ctrlSignal1 lbData lbCurSel _ctrlSignal1,_ctrlSignal2 lbData lbCurSel _ctrlSignal2] call EFUNC(common,paradrop);
+		[_box,getPos _box # 2,"",_ctrlSignal1 lbData lbCurSel _ctrlSignal1,_ctrlSignal2 lbData lbCurSel _ctrlSignal2] call EFUNC(common,paradropObject);
 		_box allowDamage true;
 
 		["RESUPPLY AIRDROPPED AT MODULE POSITION"] call EFUNC(common,zeusMessage);

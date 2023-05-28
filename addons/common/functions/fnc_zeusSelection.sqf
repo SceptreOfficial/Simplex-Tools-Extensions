@@ -1,5 +1,4 @@
 #include "script_component.hpp"
-#include "\a3\ui_f\hpp\definedikcodes.inc"
 #include "\A3\ui_f_curator\ui\defineResinclDesign.inc"
 
 disableSerialization;

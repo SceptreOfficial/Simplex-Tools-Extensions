@@ -19,8 +19,10 @@ PREP(gridCtrlText);
 PREP(gridCtrlToolbox);
 PREP(gridCtrlTree);
 PREP(gridDialog);
+PREP(handleMap);
 PREP(handleSlider);
 PREP(initialize);
+PREP(lbSelection);
 PREP(listCtrlArray);
 PREP(listCtrlButton);
 PREP(listCtrlButton2);
@@ -49,5 +51,3 @@ PREP(setValueData);
 PREP(show);
 PREP(treeAdd);
 PREP(treeDelete);
-
-

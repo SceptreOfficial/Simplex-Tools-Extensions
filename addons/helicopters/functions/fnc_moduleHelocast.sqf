@@ -31,7 +31,7 @@ if (!local _logic) exitWith {};
 		_logic setPosASL _posASL;
 		_logic setDir 0;
 		_logic setVariable [QGVAR(hoverData),[typeOf _vehicle,getModelInfo _vehicle # 3]];
-		["zen_common_addObjects",[[_logic],getAssignedCuratorLogic player]] call CBA_fnc_serverEvent;
+		[_logic,true,getAssignedCuratorLogic player] call zen_common_fnc_updateEditableObjects;
 		
 		[_logic,"Deleted",{
 			params ["_logic"];
@@ -74,29 +74,25 @@ if (!local _logic) exitWith {};
 				};
 
 				[LLSTRING(moduleHelocastName),[
+					["SLIDER",["Timeout","Helicopter will drift at X m/s for Y seconds\nMake sure you have enough distance"],[[-1,600,0],60]],
+					["SLIDER",["Drift height","Helicopter will hover at this height above water"],[[0,50,1],_driftHeight]],
 					["SLIDER",["Drift speed","Helicopter will drift at X m/s for Y seconds\nMake sure you have enough distance"],[[0,10,1],2]],
-					["SLIDER",["Hold time","Helicopter will drift at X m/s for Y seconds\nMake sure you have enough distance"],[[-1,600,0],60]],
-					["SLIDER",["Drift height","Helicopter will hover at this height"],[[0,50,1],_driftHeight]],
-					["SLIDER",["End azimuth","-1 to ignore"],[[-1,360,0],_endDir]],
-					["EDITBOX",["Fly height",""],"50"],
+					["SLIDER",["Final azimuth","-1 for auto"],[[-1,360,0],_endDir]],
 					["SLIDER",["Approach distance","Distance to start matching the target height"],[[10,600,0],100]]
 				],{
-					_values params ["_driftSpeed","_holdTime","_driftHeight","_endDir","_flyHeight","_approachDistance"];
+					_values params ["_timeout","_driftHeight","_driftSpeed","_endDir","_approach"];
 					_arguments params ["_vehicle","_posASL"];
 
-					_posASL = _posASL vectorAdd [0,0,_driftHeight];
+					//_posASL = _posASL vectorAdd [0,0,_driftHeight];
 
 					private _waypoint = (group driver _vehicle) addWaypoint [ASLtoAGL _posASL,0];
 					_waypoint setWaypointType "SCRIPTED";
 					_waypoint setWaypointScript format ["%1 %2",QPATHTOEF(common,functions\fnc_wpHelocast.sqf),[
-						_posASL,
-						_endDir,
-						parseNumber _flyHeight,
-						_approachDistance,
-						nil,
+						_timeout,
+						_driftHeight,
 						_driftSpeed,
-						_holdTime,
-						_driftHeight
+						_endDir,
+						_approach
 					]];
 					_waypoint setWaypointPosition [_posASL,-1];
 					

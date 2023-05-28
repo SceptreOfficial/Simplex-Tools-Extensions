@@ -52,35 +52,35 @@ class CfgVehicles {
 				tooltip = CSTRING(EditInventoriesInfo);
 				property = QGVAR(moduleHub_EditInventories);
 				typeName = "BOOL";
-				defaultValue = true;
+				defaultValue = 1;
 			};
 			class BoxSpawn : Checkbox {
 				displayName = CSTRING(BoxSpawnName);
 				tooltip = CSTRING(BoxSpawnInfo);
 				property = QGVAR(moduleHub_BoxSpawn);
 				typeName = "BOOL";
-				defaultValue = true;
+				defaultValue = 1;
 			};
 			class CanteenTap : Checkbox {
 				displayName = CSTRING(CanteenTapName);
 				tooltip = CSTRING(CanteenTapInfo);
 				property = QGVAR(moduleHub_CanteenTap);
 				typeName = "BOOL";
-				defaultValue = true;
+				defaultValue = 1;
 			};
 			class ConstructionResupply : Checkbox {
 				displayName = CSTRING(ConstructionResupplyName);
 				tooltip = CSTRING(ConstructionResupplyInfo);
 				property = QGVAR(moduleHub_ConstructionResupply);
 				typeName = "BOOL";
-				defaultValue = true;
+				defaultValue = 1;
 			};
 			class Arsenal : Checkbox {
 				displayName = CSTRING(ArsenalName);
 				tooltip = CSTRING(ArsenalInfo);
 				property = QGVAR(moduleHub_Arsenal);
 				typeName = "BOOL";
-				defaultValue = true;
+				defaultValue = 1;
 			};
 			class ArsenalWhitelistUsage : Combo {
 				displayName = CSTRING(ArsenalWhitelistUsageName);
@@ -178,10 +178,10 @@ class CfgVehicles {
 				tooltip = CSTRING(ConstructionInventoryInfo);
 				property = QGVAR(moduleConstructionVehicle_ConstructionInventory);
 				typeName = "STRING";
-				defaultValue = "[ \
-					[""Land_BagFence_Round_F"","""",100,5,{}], \
-					[""Land_BagFence_Long_F"","""",100,5,{}], \
-					[""Land_BagBunker_Small_F"","""",1000,15,{}] \
+				defaultValue = "[
+					[""Land_BagFence_Round_F"","""",100,5,{}],
+					[""Land_BagFence_Long_F"","""",100,5,{}],
+					[""Land_BagBunker_Small_F"","""",1000,15,{}]
 				]";
 				control = "EditCodeMulti3";
 				validate = "expression";
@@ -235,14 +235,14 @@ class CfgVehicles {
 				tooltip = CSTRING(MunitionDefaultsOnlyInfo);
 				property = QGVAR(moduleDeployableResupply_MunitionDefaultsOnly);
 				typeName = "BOOL";
-				defaultValue = false;
+				defaultValue = 0;
 			};
 			class MedicalDefaultsOnly : Checkbox {
 				displayName = CSTRING(MedicalDefaultsOnlyName);
 				tooltip = CSTRING(MedicalDefaultsOnlyInfo);
 				property = QGVAR(moduleDeployableResupply_MedicalDefaultsOnly);
 				typeName = "BOOL";
-				defaultValue = true;
+				defaultValue = 1;
 			};
 			class MagazineCount : Edit {
 				displayName = CSTRING(MagazineCountName);
@@ -285,42 +285,42 @@ class CfgVehicles {
 				tooltip = CSTRING(countMultiply);
 				property = QGVAR(moduleDeployableResupply_MagazinesMultiply);
 				typeName = "BOOL";
-				defaultValue = false;
+				defaultValue = 0;
 			};
 			class UnderbarrelMultiply : Checkbox {
 				displayName = CSTRING(UnderbarrelMultiplyName);
 				tooltip = CSTRING(countMultiply);
 				property = QGVAR(moduleDeployableResupply_UnderbarrelMultiply);
 				typeName = "BOOL";
-				defaultValue = false;
+				defaultValue = 0;
 			};
 			class RocketMultiply : Checkbox {
 				displayName = CSTRING(RocketMultiplyName);
 				tooltip = CSTRING(countMultiply);
 				property = QGVAR(moduleDeployableResupply_RocketMultiply);
 				typeName = "BOOL";
-				defaultValue = false;
+				defaultValue = 0;
 			};
 			class ThrowableMultiply : Checkbox {
 				displayName = CSTRING(ThrowableMultiplyName);
 				tooltip = CSTRING(countMultiply);
 				property = QGVAR(moduleDeployableResupply_ThrowableMultiply);
 				typeName = "BOOL";
-				defaultValue = false;
+				defaultValue = 0;
 			};
 			class PlaceableMultiply : Checkbox {
 				displayName = CSTRING(PlaceableMultiplyName);
 				tooltip = CSTRING(countMultiply);
 				property = QGVAR(moduleDeployableResupply_PlaceableMultiply);
 				typeName = "BOOL";
-				defaultValue = false;
+				defaultValue = 0;
 			};
 			class MedicalMultiply : Checkbox {
 				displayName = CSTRING(MedicalMultiplyName);
 				tooltip = CSTRING(countMultiply);
 				property = QGVAR(moduleDeployableResupply_MedicalMultiply);
 				typeName = "BOOL";
-				defaultValue = false;
+				defaultValue = 0;
 			};
 
 			class ModuleDescription: ModuleDescription {};

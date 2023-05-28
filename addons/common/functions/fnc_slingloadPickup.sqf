@@ -1,5 +1,7 @@
 #include "script_component.hpp"
 
+if (canSuspend) exitWith {[FUNC(slingloadPickup),_this] call CBA_fnc_directCall};
+
 params [
 	["_vehicle",objNull,[objNull]],
 	["_cargo",objNull,[objNull]],
@@ -12,9 +14,11 @@ if (!isNull (_vehicle getVariable [QGVAR(slingloadCargo),objNull])) then {
 
 (boundingBoxReal _cargo) params ["_min","_max"];
 
+private _com = getCenterOfMass _cargo;
+
 [
 	_vehicle,
-	getPosASL _cargo vectorAdd [0,0,13 + abs (_min # 2 - _max # 2)],
+	getPosASL _cargo vectorAdd [_com # 0,_com # 1,13 + abs (_min # 2 - _max # 2)],//getPosASL _cargo vectorAdd [0,0,13 + abs (_min # 2 - _max # 2)],
 	getDir _cargo,
 	getPos _cargo # 2 + 30,
 	100,
@@ -28,4 +32,4 @@ if (!isNull (_vehicle getVariable [QGVAR(slingloadCargo),objNull])) then {
 
 		true
 	},[_cargo,_massOverride]]
-] call FUNC(flyHelicopter);
+] call FUNC(pilotHelicopter);

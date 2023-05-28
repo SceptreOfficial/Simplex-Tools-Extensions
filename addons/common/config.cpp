@@ -2,7 +2,7 @@
 
 class CfgPatches {
 	class ADDON {
-		name = COMPONENT;
+		name = QUOTE(COMPONENT);
 		author = "Simplex Team";
 		authors[] = {"Simplex Team"};
 		url = "";
@@ -15,4 +15,5 @@ class CfgPatches {
 };
 
 #include "CfgEventHandlers.hpp"
+#include "CfgMoves.hpp"
 #include "CfgSounds.hpp"

@@ -4,19 +4,20 @@ params [
 	["_units",[player],[[]]],
 	["_munitionDefaultsOnly",false,[false]],
 	["_medicalDefaultsOnly",true,[false]],
-	["_magazineCount",20,[0]],
-	["_underbarrelCount",10,[0]],
-	["_rocketCount",10,[0]],
-	["_throwableCount",10,[0]],
-	["_placeableCount",10,[0]],
-	["_medicalCount",20,[0]],
-	["_magazinesMultiply",false,[false]],
-	["_underbarrelMultiply",false,[false]],
-	["_rocketsMultiply",false,[false]],
-	["_throwablesMultiply",false,[false]],
-	["_placeablesMultiply",false,[false]],
-	["_medicalMultiply",false,[false]]
+	"_magazineCount",
+	"_underbarrelCount",
+	"_rocketCount",
+	"_throwableCount",
+	"_placeableCount",
+	"_medicalCount"
 ];
+
+_magazineCount params [["_magazineCount",20,[0]],["_magazinesMultiply",false,[false]]];
+_underbarrelCount params [["_underbarrelCount",10,[0]],["_underbarrelMultiply",false,[false]]];
+_rocketCount params [["_rocketCount",10,[0]],["_rocketsMultiply",false,[false]]];
+_throwableCount params [["_throwableCount",10,[0]],["_throwablesMultiply",false,[false]]];
+_placeableCount params [["_placeableCount",10,[0]],["_placeablesMultiply",false,[false]]];
+_medicalCount params [["_medicalCount",20,[0]],["_medicalMultiply",false,[false]]];
 
 private _magazines = createHashMap;
 private _underbarrel = createHashMap;

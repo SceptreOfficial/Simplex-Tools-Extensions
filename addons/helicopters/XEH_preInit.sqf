@@ -25,18 +25,4 @@ ADDON = false;
 	}];
 },true,[],true] call CBA_fnc_addClassEventHandler;
 
-[QEGVAR(common,flyToCancelled),{
-	params ["_vehicle"];
-	if (local _vehicle) then {
-		_vehicle setVariable [QGVAR(helocastPos),nil,true];
-	};
-}] call CBA_fnc_addEventHandler;
-
-[QEGVAR(common,flyToCompleted),{
-	params ["_vehicle"];
-	if (local _vehicle) then {
-		_vehicle setVariable [QGVAR(helocastPos),nil,true];
-	};
-}] call CBA_fnc_addEventHandler;
-
 ADDON = true;

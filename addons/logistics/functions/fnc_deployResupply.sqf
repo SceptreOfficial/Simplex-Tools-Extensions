@@ -14,30 +14,30 @@ if (_ix isNotEqualTo []) then {
 	_normal = _ix # 0 # 1;
 };
 
-private _object = "Box_NATO_Ammo_F" createVehicle [0,0,0];
-_object setDir (getDirVisual _unit - 90);
-_object setPosASL _posASL;
-_object setVectorUp _normal;
+private _box = "Box_NATO_Ammo_F" createVehicle [0,0,0];
+_box setDir (getDirVisual _unit - 90);
+_box setPosASL _posASL;
+_box setVectorUp _normal;
 
-clearItemCargoGlobal _object;
-clearMagazineCargoGlobal _object;
-clearWeaponCargoGlobal _object;
-clearBackpackCargoGlobal _object;
+clearItemCargoGlobal _box;
+clearMagazineCargoGlobal _box;
+clearWeaponCargoGlobal _box;
+clearBackpackCargoGlobal _box;
 
-[QEGVAR(common,execute),[[_unit,_object],{
-	params ["_unit","_object"];
+[QEGVAR(common,execute),[[_unit,_box],{
+	params ["_unit","_box"];
 
 	private _group = group _unit;
 
-	[{_this setMaxLoad loadAbs _this},_object,1] call CBA_fnc_waitAndExecute;
-	_object setMaxLoad MAX_LOAD;
-	{_object addItemCargoGlobal _x} forEach ([units _group] + (_group getVariable [QGVAR(deployableResupplyArgs),[]]) call FUNC(resupplyAutoFill));
+	[{_this setMaxLoad loadAbs _this},_box,1] call CBA_fnc_waitAndExecute;
+	_box setMaxLoad MAX_LOAD;
+	{_box addItemCargoGlobal _x} forEach ([units _group] + (_group getVariable [QGVAR(deployableResupplyArgs),[]]) call FUNC(resupplyAutoFill));
 
 	private _expiration = _unit getVariable [QGVAR(deployableResupplyExpiration),parseNumber GVAR(deployableResupplyExpiration)];
 	private _cooldown = _unit getVariable [QGVAR(deployableResupplyCooldown),parseNumber GVAR(deployableResupplyCooldown)];
 
 	if (_expiration > 0) then {
-		[{deleteVehicle _this},_object,_expiration] call CBA_fnc_waitAndExecute;
+		[{deleteVehicle _this},_box,_expiration] call CBA_fnc_waitAndExecute;
 	};
 
 	if (_cooldown > 0) then {
@@ -49,5 +49,5 @@ clearBackpackCargoGlobal _object;
 		toUpper format [LLSTRING(deployableResupplyCooldown),_cooldown call EFUNC(common,properTime)] call EFUNC(common,hint);
 	};
 
-	[QGVAR(resupplyDeployed),[_unit,_object]] call CBA_fnc_globalEvent;
+	[QGVAR(resupplyDeployed),[_unit,_box]] call CBA_fnc_globalEvent;
 }]] call CBA_fnc_serverEvent;

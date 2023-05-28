@@ -1,5 +1,7 @@
 #include "script_component.hpp"
 
+if (canSuspend) exitWith {[FUNC(positionAvg),_this] call CBA_fnc_directCall};
+
 if !(_this isEqualType []) exitWith {[0,0,0]};
 
 if (_this # 0 isEqualType objNull) then {

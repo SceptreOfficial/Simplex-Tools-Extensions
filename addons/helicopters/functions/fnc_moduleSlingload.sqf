@@ -33,27 +33,25 @@ if (!local _logic) exitWith {};
 			if (isNull _cargo) then {
 				private _cargo = (curatorSelected # 0) param [0,objNull];
 
-				if (getMass _cargo <= 0 || !simulationEnabled _cargo || isSimpleObject _cargo) then {
+				if !([_vehicle,_cargo,EGVAR(common,slingloadMassOverride)] call EFUNC(common,canSlingLoad)) then {
 					_cargo = objNull;
 				};
 
 				if (!isNull _cargo) then {
-					private _cargoID = format ["%1$%2",QGVAR(slingload),[CBA_missionTime,random 1]];
-					_vehicle setVariable [_cargoID,_cargo,true];
-
 					private _waypoint = (group driver _vehicle) addWaypoint [ASLtoAGL _posASL,0];
 					_waypoint setWaypointType "SCRIPTED";
-					_waypoint setWaypointScript format ["%1 %2",QPATHTOEF(common,functions\fnc_wpSlingloadPickup.sqf),[_cargoID]];
+					_waypoint setWaypointScript QPATHTOEF(common,functions\fnc_wpSlingloadPickup.sqf);
 					_waypoint setWaypointPosition [_posASL,-1];
+					_waypoint waypointAttachVehicle _cargo;
 					
 					"SLINGLOAD PICKUP CONFIRMED" call EFUNC(common,zeusMessage);
 				} else {
-					"NO CARGO SELECTED" call EFUNC(common,zeusMessage);
+					"NO VALID CARGO SELECTED" call EFUNC(common,zeusMessage);
 				};
 			} else {
 				private _waypoint = (group driver _vehicle) addWaypoint [ASLtoAGL _posASL,0];
 				_waypoint setWaypointType "SCRIPTED";
-				_waypoint setWaypointScript format ["%1 %2",QPATHTOEF(common,functions\fnc_wpSlingloadDropoff.sqf),[_posASL]];
+				_waypoint setWaypointScript QPATHTOEF(common,functions\fnc_wpSlingloadDropoff.sqf);
 				_waypoint setWaypointPosition [_posASL,-1];
 
 				"SLINGLOAD DROPOFF CONFIRMED" call EFUNC(common,zeusMessage);

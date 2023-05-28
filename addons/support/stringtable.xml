@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="stx">
+	<Package name="support">
+		<Key ID="STR_stx_support_component">
+			<English>Simplex Support</English>
+		</Key>
+		<Key ID="STR_stx_support_category">
+			<English>STX Support</English>
+		</Key>	
+		<Key ID="STR_stx_support_moduleStrafeName">
+			<English>Strafe</English>
+		</Key>
+	</Package>
+</Project>

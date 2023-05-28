@@ -8,7 +8,9 @@ if (_message isEqualType "") then {
 	};
 
 	if (_args isNotEqualTo []) then {
-		_message = format ([_message] + _args);
+		_message = format ([_message] + (_args apply {
+			if (_x isEqualType "" && {isLocalized _x}) then {localize _x} else {_x}
+		}));
 	};
 } else {
 	_message = _args call _message;

@@ -28,7 +28,7 @@ _ctrl setVariable [QGVAR(parameters),[_type,_description,_valueData]];
 _ctrl setVariable [QGVAR(position),_position];
 _ctrl setVariable [QGVAR(onValueChanged),_onValueChanged];
 _ctrl setVariable [QGVAR(enableCondition),_enableCondition];
-_ctrl setVariable [QGVAR(value),[_points,_area,_path] # _mode];
+_ctrl setVariable [QGVAR(value),+([_points,_area,_path] # _mode)];
 _ctrl setVariable [QGVAR(pointData),_pointData];
 _ctrl setVariable [QGVAR(areaData),_areaData];
 _ctrl setVariable [QGVAR(lineData),_lineData];
@@ -72,7 +72,7 @@ _controls pushBack _ctrl;
 			//};
 		};
 		case 2 : {
-			_ctrl setVariable [QGVAR(value),[_pos]];
+			_ctrl setVariable [QGVAR(value),[+_pos]];
 
 			if (GVAR(skipOnValueChanged)) exitWith {};
 
@@ -118,7 +118,7 @@ _controls pushBack _ctrl;
 	};
 	
 	_ctrl setVariable [QGVAR(markers),_markers];
-	_ctrl setVariable [QGVAR(value),_value];
+	_ctrl setVariable [QGVAR(value),+_value];
 
 	if (GVAR(skipOnValueChanged)) exitWith {};
 		
@@ -171,7 +171,7 @@ _controls pushBack _ctrl;
 		_marker setMarkerDirLocal _dir;
 
 		_value set [3,markerDir _marker];
-		_ctrl setVariable [QGVAR(value),_value];
+		_ctrl setVariable [QGVAR(value),+_value];
 
 		if (GVAR(skipOnValueChanged)) exitWith {};
 
@@ -187,7 +187,7 @@ _controls pushBack _ctrl;
 
 		_marker setMarkerSizeLocal [_width,_height];
 
-		_ctrl setVariable [QGVAR(value),[_value # 0,_width,_height,_value # 3,_isRectangle]];
+		_ctrl setVariable [QGVAR(value),+[_value # 0,_width,_height,_value # 3,_isRectangle]];
 
 		if (GVAR(skipOnValueChanged)) exitWith {};
 
@@ -200,7 +200,7 @@ _controls pushBack _ctrl;
 		_marker setMarkerPosLocal _center;
 
 		_value set [0,_center];
-		_ctrl setVariable [QGVAR(value),_value];
+		_ctrl setVariable [QGVAR(value),+_value];
 
 		if (GVAR(skipOnValueChanged)) exitWith {};
 
@@ -216,7 +216,7 @@ _controls pushBack _ctrl;
 	_marker setMarkerPosLocal _center;
 	_marker setMarkerDirLocal 0;
 
-	_ctrl setVariable [QGVAR(value),[_center,_width,_height,0,_isRectangle]];
+	_ctrl setVariable [QGVAR(value),+[_center,_width,_height,0,_isRectangle]];
 
 	if (GVAR(skipOnValueChanged)) exitWith {};
 
@@ -246,7 +246,7 @@ _controls pushBack _ctrl;
 		(_markers # 0) setMarkerPolylineLocal flatten (_value apply {[_x # 0,_x # 1]});
 	};
 
-	_ctrl setVariable [QGVAR(value),_value];
+	_ctrl setVariable [QGVAR(value),+_value];
 
 	if (GVAR(skipOnValueChanged)) exitWith {};
 

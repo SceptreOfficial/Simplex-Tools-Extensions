@@ -176,3 +176,32 @@
 	{},
 	false
 ] call CBA_fnc_addSetting;
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Slingloading
+
+[
+	QGVAR(slingloadMassOverride),
+	"CHECKBOX",
+	[LSTRING(slingloadMassOverrideName),LSTRING(slingloadMassOverrideInfo)],
+	[LSTRING(category),LSTRING(slingloading)],
+	true,
+	true,
+	{},
+	false
+] call CBA_fnc_addSetting;
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Auto-deploy parachute
+
+[
+	QGVAR(autoParachute),
+	"CHECKBOX",
+	["Auto deploy parachute"],//[LSTRING(slingloadMassOverrideName),LSTRING(slingloadMassOverrideInfo)],
+	[LSTRING(category),"Parachute"],//[LSTRING(category),LSTRING(slingloading)],
+	true,
+	true,
+	{},
+	false
+] call CBA_fnc_addSetting;
+

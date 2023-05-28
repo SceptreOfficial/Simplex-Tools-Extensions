@@ -15,18 +15,12 @@ if (!local _logic) exitWith {};
 		private _arguments = [
 			_logic getVariable "MunitionDefaultsOnly",
 			_logic getVariable "MedicalDefaultsOnly",
-			_logic getVariable "MagazineCount",
-			_logic getVariable "UnderbarrelCount",
-			_logic getVariable "RocketCount",
-			_logic getVariable "ThrowableCount",
-			_logic getVariable "PlaceableCount",
-			_logic getVariable "MedicalCount",
-			_logic getVariable "MagazinesMultiply",
-			_logic getVariable "UnderbarrelMultiply",
-			_logic getVariable "RocketMultiply",
-			_logic getVariable "ThrowableMultiply",
-			_logic getVariable "PlaceableMultiply",
-			_logic getVariable "MedicalMultiply"
+			[_logic getVariable "MagazineCount",_logic getVariable "MagazinesMultiply"],
+			[_logic getVariable "UnderbarrelCount",_logic getVariable "UnderbarrelMultiply"],
+			[_logic getVariable "RocketCount",_logic getVariable "RocketMultiply"],
+			[_logic getVariable "ThrowableCount",_logic getVariable "ThrowableMultiply"],
+			[_logic getVariable "PlaceableCount",_logic getVariable "PlaceableMultiply"],
+			[_logic getVariable "MedicalCount",_logic getVariable "MedicalMultiply"]
 		];
 
 		private _groups = [];
@@ -48,21 +42,47 @@ if (!local _logic) exitWith {};
 			["CHECKBOX",[LLSTRING(MunitionDefaultsOnlyName),LLSTRING(MunitionDefaultsOnlyInfo)],false,false],
 			["CHECKBOX",[LLSTRING(MedicalDefaultsOnlyName),LLSTRING(MedicalDefaultsOnlyInfo)],true,false],
 			["SLIDER",LLSTRING(MagazineCountName),[[0,100,0],20],false],
-			["SLIDER",LLSTRING(UnderbarrelCountName),[[0,100,0],10],false],
-			["SLIDER",LLSTRING(RocketCountName),[[0,100,0],10],false],
-			["SLIDER",LLSTRING(ThrowableCountName),[[0,100,0],10],false],
-			["SLIDER",LLSTRING(PlaceableCountName),[[0,100,0],10],false],
-			["SLIDER",LLSTRING(MedicalCountName),[[0,100,0],20],false],
 			["CHECKBOX",[LLSTRING(MagazinesMultiplyName),LLSTRING(countMultiply)],false,false],
+			["SLIDER",LLSTRING(UnderbarrelCountName),[[0,100,0],10],false],
 			["CHECKBOX",[LLSTRING(UnderbarrelMultiplyName),LLSTRING(countMultiply)],false,false],
+			["SLIDER",LLSTRING(RocketCountName),[[0,100,0],10],false],
 			["CHECKBOX",[LLSTRING(RocketMultiplyName),LLSTRING(countMultiply)],false,false],
+			["SLIDER",LLSTRING(ThrowableCountName),[[0,100,0],10],false],
 			["CHECKBOX",[LLSTRING(ThrowableMultiplyName),LLSTRING(countMultiply)],false,false],
+			["SLIDER",LLSTRING(PlaceableCountName),[[0,100,0],10],false],
 			["CHECKBOX",[LLSTRING(PlaceableMultiplyName),LLSTRING(countMultiply)],false,false],
+			["SLIDER",LLSTRING(MedicalCountName),[[0,100,0],20],false],
 			["CHECKBOX",[LLSTRING(MedicalMultiplyName),LLSTRING(countMultiply)],false,false]
 		],{
 			params ["_values","_object"];
+			_values params [
+				"_munitionDefaultsOnly",
+				"_medicalDefaultsOnly",
+				"_magazineCount",
+				"_magazinesMultiply",
+				"_underbarrelCount",
+				"_underbarrelMultiply",
+				"_rocketCount",
+				"_rocketsMultiply",
+				"_throwableCount",
+				"_throwablesMultiply",
+				"_placeableCount",
+				"_placeablesMultiply",
+				"_medicalCount",
+				"_medicalMultiply"
+			];
+
 			_object setVariable [QGVAR(hasResupply),true,true];
-			group _object setVariable [QGVAR(deployableResupplyArgs),_values,true];
+			group _object setVariable [QGVAR(deployableResupplyArgs),[
+				_munitionDefaultsOnly,
+				_medicalDefaultsOnly,
+				[_magazineCount,_magazinesMultiply],
+				[_underbarrelCount,_underbarrelMultiply],
+				[_rocketCount,_rocketsMultiply],
+				[_throwableCount,_throwablesMultiply],
+				[_placeableCount,_placeablesMultiply],
+				[_medicalCount,_medicalMultiply]
+			],true];
 		},_object] call EFUNC(sdf,dialog);
 	};
 

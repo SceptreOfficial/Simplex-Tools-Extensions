@@ -1,7 +1,7 @@
 [
 	QGVAR(medicalClassesStr),
 	"EDITBOX",
-	["Medical item classes","Array of every medical type class"],
+	["Medical item classes","Array of every available medical item class"],
 	[LSTRING(category),"Resupply"],
 	str [
 		"FirstAidKit",
@@ -107,7 +107,7 @@ if (isServer) then {
 		} else {
 			_box setDir getDir _aircraft;
 			_box setPosWorld (_aircraft modelToWorldVisualWorld [0,-((sizeOf typeOf _aircraft + sizeOf typeOf _box) / 2),-0.5]);
-			private _parachute = [_box,_signal1Class,_signal2Class] call EFUNC(common,paradrop);
+			private _parachute = [_box,getPos _box # 2,"",_signal1Class,_signal2Class] call EFUNC(common,paradropObject);
 			_parachute setVelocity (velocity _aircraft vectorMultiply 0.9);
 		};
 	}] call CBA_fnc_addEventHandler;
@@ -138,10 +138,10 @@ if (isServer) then {
 			_transport removeAction _id;
 
 			private _pos = getPosASL _transport;
-			[_cargo,_pos vectorAdd ((getPosASL _caller vectorDiff _pos) vectorMultiply 0.5)] call EFUNC(common,getSafePosAndNormal) params ["_safePos","_safeNormal"];
+			[_cargo,_pos vectorAdd ((getPosASL _caller vectorDiff _pos) vectorMultiply 0.5)] call EFUNC(common,getSafePosAndUp) params ["_safePos","_safeUp"];
 
 			if (_safePos isNotEqualTo []) then {
-				[_cargo,_safePos,[vectorDir _caller,_safeNormal]] call FUNC(cargoUnload);
+				[_cargo,_safePos,[vectorDir _caller,_safeUp]] call FUNC(cargoUnload);
 			} else {
 				[_cargo,ATLToASL [0,0,0],[vectorDir _caller,[0,0,1]]] call FUNC(cargoUnload);
 				_cargo setVehiclePosition [_caller modelToWorldVisual [0,1.5,0],[],0,"NONE"];

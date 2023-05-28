@@ -25,7 +25,7 @@ private _fnc_PFH = {
 	private _element = (_this # 0 # 0) deleteAt 0;
 	_element call _thisCode;
 
-	if (array isEqualTo []) then {
+	if (_array isEqualTo []) then {
 		_element call _endCode;
 	};
 };

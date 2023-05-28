@@ -14,7 +14,7 @@ if (!local _logic) exitWith {};
 		"NO HELICOPTER SELECTED" call EFUNC(common,zeusMessage);
 	};
 
-	[_vehicle,[0,0,0]] call EFUNC(common,flyHelicopter);
+	[_vehicle,[0,0,0]] call EFUNC(common,pilotHelicopter);
 	
 	"HELICOPTER RELEASED" call EFUNC(common,zeusMessage);
 },_this] call CBA_fnc_execNextFrame;

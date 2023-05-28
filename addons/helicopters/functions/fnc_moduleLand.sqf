@@ -34,25 +34,21 @@ if (!local _logic) exitWith {};
 		_posASL = _posASL vectorAdd [0,0,_height];
 
 		[LLSTRING(moduleLandName),[
+			["SLIDER",["Timeout","Minimum hold time. -1 for indefinite / require manual release"],[[-1,600,0],30]],
 			["CHECKBOX",["Engine on","Leaves engine running after landing"],true],
-			["SLIDER",["Hold time","Minimum hold time. -1 for indefinite / require manual release"],[[-1,600,0],30]],
-			["SLIDER",["End azimuth","-1 to ignore"],[[-1,360,0],-1]],
-			["EDITBOX",["Fly height",""],"50"],
+			["SLIDER",["Final azimuth","-1 for auto"],[[-1,360,0],-1]],
 			["SLIDER",["Approach distance","Distance to start matching the target height"],[[10,600,0],100]]
 		],{
-			_values params ["_engineOn","_holdTime","_endDir","_flyHeight","_approachDistance"];
+			_values params ["_timeout","_engine","_endDir","_approach"];
 			_arguments params ["_vehicle","_posASL"];
 
 			private _waypoint = (group driver _vehicle) addWaypoint [ASLtoAGL _posASL,0];
 			_waypoint setWaypointType "SCRIPTED";
 			_waypoint setWaypointScript format ["%1 %2",QPATHTOEF(common,functions\fnc_wpLand.sqf),[
-				_posASL,
+				_timeout,
+				_engine,
 				_endDir,
-				parseNumber _flyHeight,
-				_approachDistance,
-				nil,
-				_holdTime,
-				_engineOn
+				_approach
 			]];
 			_waypoint setWaypointPosition [_posASL,-1];
 

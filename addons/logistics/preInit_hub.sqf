@@ -59,13 +59,13 @@
 
 					private _pos = getPosASL _target;
 					private _box = "Box_NATO_Equip_F" createVehicle [0,0,0];
-					[_box,_pos vectorAdd ((getPosASL _caller vectorDiff _pos) vectorMultiply 0.5)] call EFUNC(common,getSafePosAndNormal) params ["_safePos","_safeNormal"];
+					[_box,_pos vectorAdd ((getPosASL _caller vectorDiff _pos) vectorMultiply 0.5)] call EFUNC(common,getSafePosAndUp) params ["_safePos","_safeUp"];
 
 					_box setDir (getDirVisual (_this # 1) - 90);
 
 					if (_safePos isNotEqualTo []) then {
 						_box setPosASL _safePos;
-						_box setVectorUp _safeNormal;
+						_box setVectorUp _safeUp;
 					} else {
 						_box setVehiclePosition [_caller modelToWorldVisual [0,1.5,0],[],0,"NONE"];
 					};

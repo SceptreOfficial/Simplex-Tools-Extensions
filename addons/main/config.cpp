@@ -2,7 +2,7 @@
 
 class CfgPatches {
 	class ADDON {
-		name = CSTRING(stx);
+		name = QUOTE(COMPONENT);
 		author = "Simplex Team";
 		authors[] = {"Simplex Team"};
 		url = "https://github.com/SceptreOfficial/Simplex-Tools-Extensions";
