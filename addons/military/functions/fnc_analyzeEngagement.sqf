@@ -1,7 +1,7 @@
 #include "script_component.hpp"
-#define RATING_HELI 7
-#define RATING_TANK 6
-#define RATING_CAR 3
+#define RATING_HELI GVAR(RatingHelicopter)
+#define RATING_TANK GVAR(RatingTank)
+#define RATING_CAR GVAR(RatingCar)
 
 params ["_respondingGroups","_side","_knownTargets"];
 
