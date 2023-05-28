@@ -31,6 +31,8 @@ class CfgVehicles {
 				tooltip = CSTRING(ColorInfo);
 				property = QGVAR(moduleInfiniteSmoke_Color);
 				typeName = "STRING";
+				defaultValue = "SmokeShell_Infinite";
+
 				class Values {
 					class White {
 						name = CSTRING(White);
@@ -97,6 +99,8 @@ class CfgVehicles {
 				tooltip = CSTRING(ColorInfo);
 				property = QGVAR(moduleInfiniteChemlight_Color);
 				typeName = "STRING";
+				defaultValue = "Chemlight_blue_Infinite";
+
 				class Values {
 					class Blue {
 						name = CSTRING(Blue);
@@ -148,6 +152,8 @@ class CfgVehicles {
 				tooltip = CSTRING(ColorInfo);
 				property = QGVAR(moduleInfiniteFlare_Color);
 				typeName = "STRING";
+				defaultValue = "F_40mm_White_Infinite";
+				
 				class Values {
 					class White {
 						name = CSTRING(White);

@@ -13,11 +13,11 @@ if (!local _logic) exitWith {};
 		};
 
 		private _arguments = [
-			(_logic getVariable ["EditInventories",true]) call EFUNC(common,parseCheckbox),
-			(_logic getVariable ["BoxSpawn",true]) call EFUNC(common,parseCheckbox),
-			(_logic getVariable ["CanteenTap",true]) call EFUNC(common,parseCheckbox),
-			(_logic getVariable ["ConstructionResupply",true]) call EFUNC(common,parseCheckbox),
-			(_logic getVariable ["Arsenal",true]) call EFUNC(common,parseCheckbox),
+			_logic getVariable ["EditInventories",true],
+			_logic getVariable ["BoxSpawn",true],
+			_logic getVariable ["CanteenTap",true],
+			_logic getVariable ["ConstructionResupply",true],
+			_logic getVariable ["Arsenal",true],
 			_logic getVariable ["ArsenalWhitelistUsage",0],
 			(_logic getVariable ["ArsenalWhitelist",""]) call EFUNC(common,parseList),
 			_logic getVariable ["ArsenalBlacklistUsage",1],

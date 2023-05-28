@@ -24,7 +24,6 @@ PREP(openArsenal);
 PREP(paradropObject);
 PREP(paradropUnit);
 PREP(parseArray);
-PREP(parseCheckbox);
 PREP(parseList);
 PREP(parseMessage);
 PREP(pilotHelicopter);

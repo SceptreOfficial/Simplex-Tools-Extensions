@@ -52,41 +52,43 @@ class CfgVehicles {
 				tooltip = CSTRING(EditInventoriesInfo);
 				property = QGVAR(moduleHub_EditInventories);
 				typeName = "BOOL";
-				defaultValue = 1;
+				defaultValue = "true";
 			};
 			class BoxSpawn : Checkbox {
 				displayName = CSTRING(BoxSpawnName);
 				tooltip = CSTRING(BoxSpawnInfo);
 				property = QGVAR(moduleHub_BoxSpawn);
 				typeName = "BOOL";
-				defaultValue = 1;
+				defaultValue = "false";
 			};
 			class CanteenTap : Checkbox {
 				displayName = CSTRING(CanteenTapName);
 				tooltip = CSTRING(CanteenTapInfo);
 				property = QGVAR(moduleHub_CanteenTap);
 				typeName = "BOOL";
-				defaultValue = 1;
+				defaultValue = "true";
 			};
 			class ConstructionResupply : Checkbox {
 				displayName = CSTRING(ConstructionResupplyName);
 				tooltip = CSTRING(ConstructionResupplyInfo);
 				property = QGVAR(moduleHub_ConstructionResupply);
 				typeName = "BOOL";
-				defaultValue = 1;
+				defaultValue = "true";
 			};
 			class Arsenal : Checkbox {
 				displayName = CSTRING(ArsenalName);
 				tooltip = CSTRING(ArsenalInfo);
 				property = QGVAR(moduleHub_Arsenal);
 				typeName = "BOOL";
-				defaultValue = 1;
+				defaultValue = "true";
 			};
 			class ArsenalWhitelistUsage : Combo {
 				displayName = CSTRING(ArsenalWhitelistUsageName);
 				tooltip = CSTRING(ArsenalWhitelistUsageInfo);
 				property = QGVAR(moduleHub_ArsenalWhitelistUsage);
 				typeName = "NUMBER";
+				defaultValue = 0;
+
 				class Values {
 					class Disabled {
 						name = CSTRING(Disabled);
@@ -118,6 +120,8 @@ class CfgVehicles {
 				tooltip = CSTRING(ArsenalBlacklistUsageInfo);
 				property = QGVAR(moduleHub_ArsenalBlacklistUsage);
 				typeName = "NUMBER";
+				defaultValue = 1;
+
 				class Values {
 					class Disabled {
 						name = CSTRING(Disabled);
@@ -235,14 +239,14 @@ class CfgVehicles {
 				tooltip = CSTRING(MunitionDefaultsOnlyInfo);
 				property = QGVAR(moduleDeployableResupply_MunitionDefaultsOnly);
 				typeName = "BOOL";
-				defaultValue = 0;
+				defaultValue = "false";
 			};
 			class MedicalDefaultsOnly : Checkbox {
 				displayName = CSTRING(MedicalDefaultsOnlyName);
 				tooltip = CSTRING(MedicalDefaultsOnlyInfo);
 				property = QGVAR(moduleDeployableResupply_MedicalDefaultsOnly);
 				typeName = "BOOL";
-				defaultValue = 1;
+				defaultValue = "true";
 			};
 			class MagazineCount : Edit {
 				displayName = CSTRING(MagazineCountName);
@@ -285,42 +289,42 @@ class CfgVehicles {
 				tooltip = CSTRING(countMultiply);
 				property = QGVAR(moduleDeployableResupply_MagazinesMultiply);
 				typeName = "BOOL";
-				defaultValue = 0;
+				defaultValue = "false";
 			};
 			class UnderbarrelMultiply : Checkbox {
 				displayName = CSTRING(UnderbarrelMultiplyName);
 				tooltip = CSTRING(countMultiply);
 				property = QGVAR(moduleDeployableResupply_UnderbarrelMultiply);
 				typeName = "BOOL";
-				defaultValue = 0;
+				defaultValue = "false";
 			};
 			class RocketMultiply : Checkbox {
 				displayName = CSTRING(RocketMultiplyName);
 				tooltip = CSTRING(countMultiply);
 				property = QGVAR(moduleDeployableResupply_RocketMultiply);
 				typeName = "BOOL";
-				defaultValue = 0;
+				defaultValue = "false";
 			};
 			class ThrowableMultiply : Checkbox {
 				displayName = CSTRING(ThrowableMultiplyName);
 				tooltip = CSTRING(countMultiply);
 				property = QGVAR(moduleDeployableResupply_ThrowableMultiply);
 				typeName = "BOOL";
-				defaultValue = 0;
+				defaultValue = "false";
 			};
 			class PlaceableMultiply : Checkbox {
 				displayName = CSTRING(PlaceableMultiplyName);
 				tooltip = CSTRING(countMultiply);
 				property = QGVAR(moduleDeployableResupply_PlaceableMultiply);
 				typeName = "BOOL";
-				defaultValue = 0;
+				defaultValue = "false";
 			};
 			class MedicalMultiply : Checkbox {
 				displayName = CSTRING(MedicalMultiplyName);
 				tooltip = CSTRING(countMultiply);
 				property = QGVAR(moduleDeployableResupply_MedicalMultiply);
 				typeName = "BOOL";
-				defaultValue = 0;
+				defaultValue = "false";
 			};
 
 			class ModuleDescription: ModuleDescription {};
