@@ -2,4 +2,4 @@
 
 params ["_value"];
 
-[_value,_value == 1] select (_value isEqualType 0)
+[_value,_value isEqualTo 1] select (_value isEqualType 0)
