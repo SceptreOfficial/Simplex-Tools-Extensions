@@ -7,7 +7,7 @@ params [
 	["_height",500,[0]],
 	["_aircraftClass","",[""]],
 	["_offset",0,[0]],
-	["_scriptedWaypoint",[],[[]]]
+	["_scriptedWaypoint",[],[[],""]]
 ];
 
 if (_aircraftClass isEqualTo "") then {
@@ -19,7 +19,6 @@ _startPos set [2,_height];
 private _endPos = _pos getPos [_distance,_dir];
 _endPos set [2,_height];
 _pos = _pos getPos [_offset,_dir - 180];
-_pos set [2,_height];
 
 private _aircraft = createVehicle [_aircraftClass,[0,0,1000],[],0,"FLY"];
 _aircraft setDir _dir;
@@ -49,13 +48,13 @@ _group setVariable [QGVAR(aircraft),_aircraft,true];
 if (_scriptedWaypoint isNotEqualTo []) then {
 	_scriptedWaypoint params [["_script","",[""]],["_args",[],[[]]]];
 
-	private _wp1 = _group addWaypoint [ASLToAGL _pos,0];
+	private _wp1 = _group addWaypoint [_pos,0];
 	_wp1 setWaypointType "SCRIPTED";
 	_wp1 setWaypointScript format ["%1 %2",_script,_args];
-	_wp1 setWaypointPosition [_pos,-1];
+	_wp1 setWaypointPosition [ATLtoASL _pos,-1];
 	_wp1 setWaypointDescription QGVAR(flyby1);
 } else {
-	private _wp1 = _group addWaypoint [ASLToAGL _pos,0];
+	private _wp1 = _group addWaypoint [_pos,0];
 	_wp1 setWaypointType "MOVE";
 	_wp1 setWaypointDescription QGVAR(flyby1);
 };

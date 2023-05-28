@@ -168,7 +168,7 @@ switch (lbCurSel _ctrlApplication) do {
 		
 		if (_aircraftClass isKindOf "Helicopter") then {
 			private _pos = +GVAR(resupplyPosASL);
-			private _aircraft = [_pos,random 360,5000,_altitude,_aircraftClass,0,[QPATHTOEF(common,functions\fnc_wpSlingloadDropoff.sqf),[_pos,_altitude]]] call EFUNC(common,flyby);
+			private _aircraft = [_pos,random 360,5000,_altitude,_aircraftClass,0,QPATHTOEF(common,functions\fnc_wpSlingloadDropoff.sqf)] call EFUNC(common,flyby);
 
 			_box setDir getDirVisual _aircraft;
 			[_aircraft,_box,true,true] call EFUNC(common,slingload);
