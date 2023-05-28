@@ -13,14 +13,14 @@ if (!local _logic) exitWith {};
 		};
 
 		private _arguments = [
-			_logic getVariable "MunitionDefaultsOnly",
-			_logic getVariable "MedicalDefaultsOnly",
-			[_logic getVariable "MagazineCount",_logic getVariable "MagazinesMultiply"],
-			[_logic getVariable "UnderbarrelCount",_logic getVariable "UnderbarrelMultiply"],
-			[_logic getVariable "RocketCount",_logic getVariable "RocketMultiply"],
-			[_logic getVariable "ThrowableCount",_logic getVariable "ThrowableMultiply"],
-			[_logic getVariable "PlaceableCount",_logic getVariable "PlaceableMultiply"],
-			[_logic getVariable "MedicalCount",_logic getVariable "MedicalMultiply"]
+			(_logic getVariable "MunitionDefaultsOnly") call EFUNC(common,parseCheckbox),
+			(_logic getVariable "MedicalDefaultsOnly") call EFUNC(common,parseCheckbox),
+			[_logic getVariable "MagazineCount",(_logic getVariable "MagazinesMultiply") call EFUNC(common,parseCheckbox)],
+			[_logic getVariable "UnderbarrelCount",(_logic getVariable "UnderbarrelMultiply") call EFUNC(common,parseCheckbox)],
+			[_logic getVariable "RocketCount",(_logic getVariable "RocketMultiply") call EFUNC(common,parseCheckbox)],
+			[_logic getVariable "ThrowableCount",(_logic getVariable "ThrowableMultiply") call EFUNC(common,parseCheckbox)],
+			[_logic getVariable "PlaceableCount",(_logic getVariable "PlaceableMultiply") call EFUNC(common,parseCheckbox)],
+			[_logic getVariable "MedicalCount",(_logic getVariable "MedicalMultiply") call EFUNC(common,parseCheckbox)]
 		];
 
 		private _groups = [];

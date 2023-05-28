@@ -8,9 +8,9 @@
 		["_canteenTap",true,[false]],
 		["_constructionResupply",true,[false]],
 		["_arsenal",true,[false]],
-		["_arsenalWhitelistUsage",0,[0]],
+		["_arsenalWhitelistUsage",0],
 		["_arsenalWhitelist",[],[[]]],
-		["_arsenalBlacklistUsage",1,[0]],
+		["_arsenalBlacklistUsage",1],
 		["_arsenalBlacklist",[],[[]]]
 	];
 
@@ -35,6 +35,8 @@
 	};
 
 	if (_arsenal) then {
+		if (_arsenalWhitelistUsage isEqualType "") then {_arsenalWhitelistUsage = 0};
+		if (_arsenalBlacklistUsage isEqualType "") then {_arsenalBlacklistUsage = 1};
 		[_hub,_arsenalWhitelistUsage,_arsenalWhitelist,_arsenalBlacklistUsage,_arsenalBlacklist] call EFUNC(common,addArsenal);
 	};
 
