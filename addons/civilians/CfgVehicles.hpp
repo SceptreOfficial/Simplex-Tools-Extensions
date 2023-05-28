@@ -1,11 +1,20 @@
+class CBA_Extended_EventHandlers_base;
+
 class CfgVehicles {
 	class Logic;
 	class Module_F : Logic {
-		class ModuleDescription;
+		class AttributesBase {
+			class Default;
+			class Combo;
+			class Edit;
+			class Checkbox;
+			class ModuleDescription;
+		};
+		class ModuleDescription;	
 	};
 
 	class GVAR(Module_Base): Module_F {
-		category = QGVAR(Modules);
+		category = QGVAR(modules);
 		author = "Simplex Team";
 		displayName = "";
 		icon = "";

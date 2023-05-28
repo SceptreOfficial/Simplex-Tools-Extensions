@@ -1,5 +1,5 @@
 class CfgFactionClasses {
-	class GVAR(Modules) {
+	class GVAR(modules) {
 		displayName = CSTRING(category);
 		priority = 2;
 		side = 7;
