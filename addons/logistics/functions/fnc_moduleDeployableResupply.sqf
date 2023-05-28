@@ -30,7 +30,7 @@ if (!local _logic) exitWith {};
 			_x setVariable [QGVAR(hasResupply),true,true];
 		} forEach _synced;
 
-		{_group setVariable [QGVAR(deployableResupplyArgs),_arguments,true]} forEach _groups;
+		{_x setVariable [QGVAR(deployableResupplyArgs),_arguments,true]} forEach _groups;
 	} else {
 		private _object = attachedTo _logic;
 
