@@ -60,7 +60,7 @@ class CfgVehicles {
 
 		class AttributeValues {
 			isRectangle = 1;
-			size3[] = {25,25,-1};
+			size3[] = {50,50,-1};
 		};
 
 		class Attributes: AttributesBase {
