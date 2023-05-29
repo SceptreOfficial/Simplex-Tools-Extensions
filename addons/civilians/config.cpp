@@ -9,7 +9,7 @@ class CfgPatches {
 		units[] = {
 			QGVAR(ModuleAddPanic),
 			QGVAR(ModuleBlacklistArea),
-			QGVAR(Module_Populate),
+			QGVAR(ModulePopulate),
 			QGVAR(Module_ToggleAircraft),
 			QGVAR(Module_ToggleCivilians)
 		};

@@ -72,11 +72,64 @@ class CfgVehicles {
 		};
 	};
 
-	class GVAR(Module_Populate) : GVAR(Module_Base) {
-		displayName = CSTRING(Module_Populate);
+	class GVAR(ModulePopulate): Module_F {
+		author = "Simplex Team";
+		category = QGVAR(modules);
+		displayName = CSTRING(ModulePopulateName);
 		icon = "\A3\Ui_f\data\IGUI\Cfg\simpleTasks\types\meet_ca.paa";
-		function = QFUNC(modulePopulate);
+		portrait = "\A3\Ui_f\data\IGUI\Cfg\simpleTasks\types\meet_ca.paa";
+		function = QFUNC(ModulePopulate);
+		isGlobal = 1;
+		scope = 2;
 		scopeCurator = 2;
+		curatorCanAttach = 0;
+		canSetArea = 1;
+		canSetAreaHeight = 0;
+		canSetAreaShape = 1;
+
+		class AttributeValues {
+			isRectangle = 1;
+			size3[] = {50,50,-1};
+		};
+
+		class Attributes: AttributesBase {
+			class UnitClasses : Edit {
+				displayName = CSTRING(SettingName_unitClassesStr);
+				property = QGVAR(ModulePopulate_UnitClasses);
+				typeName = "STRING";
+				defaultValue = "[""C_Man_casual_2_F"",""C_Man_casual_3_F"",""C_man_w_worker_F"",""C_man_polo_2_F"",""C_Man_casual_1_F"",""C_man_polo_4_F""]";
+			};
+			class VehicleClasses : Edit {
+				displayName = CSTRING(SettingName_vehClassesStr);
+				property = QGVAR(ModulePopulate_VehicleClasses);
+				typeName = "STRING";
+				defaultValue = "[""C_Truck_02_fuel_F"",""C_Truck_02_box_F"",""C_Truck_02_covered_F"",""C_Offroad_01_repair_F"",""C_Van_01_box_F"",""C_Offroad_01_F"",""C_Offroad_01_covered_F"",""C_SUV_01_F""]";
+			};
+			class Pedestrians : Edit {
+				displayName = CSTRING(SettingName_pedestrianCount);
+				property = QGVAR(ModulePopulate_Pedestrians);
+				typeName = "STRING";
+				defaultValue = "0";
+			};
+			class Driving : Edit {
+				displayName = CSTRING(SettingName_driverCount);
+				property = QGVAR(ModulePopulate_Driving);
+				typeName = "STRING";
+				defaultValue = "0";
+			};
+			class Parked : Edit {
+				displayName = CSTRING(SettingName_parkedCount);
+				property = QGVAR(ModulePopulate_Parked);
+				typeName = "STRING";
+				defaultValue = "0";
+			};
+
+			class ModuleDescription: ModuleDescription {};
+		};
+		
+		class ModuleDescription: ModuleDescription {
+			description = CSTRING(ModulePopulateInfo);
+		};
 	};
 
 	class GVAR(Module_ToggleAircraft) : GVAR(Module_Base) {

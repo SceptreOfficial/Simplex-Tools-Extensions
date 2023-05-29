@@ -171,10 +171,13 @@
 			<English>BLACKLIST ADDED</English>
 		</Key>
 
-		<Key ID="STR_stx_civilians_Module_Populate">
+		<Key ID="STR_stx_civilians_ModulePopulateName">
 			<English>Populate</English>
 		</Key>
-		<Key ID="STR_stx_civilians_Module_Populate_AreaPopulated">
+		<Key ID="STR_stx_civilians_ModulePopulateInfo">
+			<English>Populate an area with civilians</English>
+		</Key>
+		<Key ID="STR_stx_civilians_ModulePopulate_AreaPopulated">
 			<English>AREA POPULATED</English>
 		</Key>
 
