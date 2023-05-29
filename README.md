@@ -9,7 +9,7 @@
 
 <p align="center">
 	<a href="https://github.com/SceptreOfficial/Simplex-Tools-Extensions/releases/latest">
-		<img src="https://img.shields.io/badge/Version-0.1-blue?style=flat-square" alt="Version">
+		<img src="https://img.shields.io/badge/Version-0.1.1-blue?style=flat-square" alt="Version">
 	</a>
 	<a href="https://github.com/SceptreOfficial/Simplex-Tools-Extensions/issues">
 		<img src="https://img.shields.io/github/issues-raw/SceptreOfficial/Simplex-Tools-Extensions?style=flat-square&label=Issues" alt="Issues">
