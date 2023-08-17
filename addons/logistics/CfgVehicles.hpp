@@ -59,7 +59,7 @@ class CfgVehicles {
 				tooltip = CSTRING(BoxSpawnInfo);
 				property = QGVAR(moduleHub_BoxSpawn);
 				typeName = "BOOL";
-				defaultValue = "false";
+				defaultValue = "true";
 			};
 			class CanteenTap : Checkbox {
 				displayName = CSTRING(CanteenTapName);
