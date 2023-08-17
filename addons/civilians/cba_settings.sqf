@@ -195,3 +195,15 @@
 	{},
 	false
 ] call CBA_fnc_addSetting;
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+// Civilian Interaction
+
+[QGVAR(goAwayAction),"CHECKBOX",
+	[LSTRING(SettingName_goAwayAction),LSTRING(SettingInfo_goAwayAction)],
+	[LSTRING(category),LSTRING(SettingCategory_CivilianInteraction)],
+	true,
+	true,
+	{},
+	false
+] call CBA_fnc_addSetting;

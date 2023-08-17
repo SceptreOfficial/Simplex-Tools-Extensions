@@ -19,6 +19,9 @@
 		<Key ID="STR_stx_civilians_SettingCategory_CiviliansExperimental">
 			<English>Civilians: Experimental</English>
 		</Key>
+		<Key ID="STR_stx_civilians_SettingCategory_CivilianInteraction">
+			<English>Civilian Interaction</English>
+		</Key>
 		
 		<!-- Settings -->
 
@@ -147,6 +150,12 @@
 		</Key>
 		<Key ID="STR_stx_civilians_SettingInfo_minPanicTime">
 			<English>Minimum time in seconds civilians will stay in a panicked state</English>
+		</Key>
+		<Key ID="STR_stx_civilians_SettingName_goAwayAction">
+			<English>"Go away" action</English>
+		</Key>
+		<Key ID="STR_stx_civilians_SettingInfo_goAwayAction">
+			<English>Toggles the availabilty of the "Go away" action</English>
 		</Key>
 
 		<!-- Modules -->

@@ -18,7 +18,7 @@
 			};
 		} forEach (_center nearEntities 20);
 	},
-	{true}
+	{GVAR(goAwayAction)}
 ] call ace_interact_menu_fnc_createAction,true] call ace_interact_menu_fnc_addActionToClass;
 
 // Ambient aircraft
