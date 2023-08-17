@@ -20,9 +20,9 @@ private _endPos = _pos getPos [_distance,_dir];
 _endPos set [2,_height];
 _pos = _pos getPos [_offset,_dir - 180];
 
-private _aircraft = createVehicle [_aircraftClass,[0,0,1000],[],0,"FLY"];
+private _aircraft = createVehicle [_aircraftClass,_startPos,[],0,"FLY"];
 _aircraft setDir _dir;
-_aircraft setPos _startPos;
+//_aircraft setPos _startPos;
 _aircraft setVectorUp [0,0,1];
 _aircraft setVelocityModelSpace [0,getNumber (configOf _aircraft >> "maxSpeed") / 3.6,0];
 
