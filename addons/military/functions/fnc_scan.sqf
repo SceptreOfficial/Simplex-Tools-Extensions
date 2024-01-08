@@ -13,7 +13,8 @@ private _newTargets = (_targets - _sideTargets - _targetsToReport) select {
 	(_group knowsAbout _x) > 0.5 &&
 	{!(vehicle _x isKindOf "Air")} &&
 	{!(vehicle _x isKindOf "Ship")} &&
-	{{alive _x} count crew _x isNotEqualTo 0}
+	{{alive _x} count crew _x > 0} &&
+	{!(_x getVariable [QGVAR(ignore),false]) || !(group _x getVariable [QGVAR(ignore),false])}
 };
 
 if (_newTargets isEqualTo []) exitWith {};
@@ -28,7 +29,7 @@ if (_group getVariable [QGVAR(report),true]) then {
 	[{
 		_this setVariable [QGVAR(report),nil];
 		_this call FUNC(report);
-	},_group,8 + round random 6] call CBA_fnc_waitAndExecute;
+	},_group,8 + random 6] call CBA_fnc_waitAndExecute;
 };
 
 // Reveal the area around new targets for accurate intel

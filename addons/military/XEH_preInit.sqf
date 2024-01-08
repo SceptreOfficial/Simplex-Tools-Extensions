@@ -98,12 +98,16 @@ if (isServer) then {
 		DEBUG_2("%1: Targets dismissed: %2",_side,_targets);
 	}] call CBA_fnc_addEventHandler;
 
-	if (isNil QGVAR(EFID)) then {
-		GVAR(cache) = [];
-		GVAR(cacheHash) = createHashMap;
-		GVAR(list) = [];
-		GVAR(EFID) = addMissionEventHandler ["EachFrame",{call FUNC(clockwork)}];
-	};
+	// Always run on the server in case of locality transfer/disconnect
+	[QGVAR(groupAdded),{
+		if (isNil QGVAR(EFID)) then {
+			GVAR(cache) = [];
+			GVAR(cacheHash) = createHashMap;
+			GVAR(tick) = 0;
+			GVAR(list) = [];
+			GVAR(EFID) = addMissionEventHandler ["EachFrame",{call FUNC(clockwork)}];
+		};
+	}] call CBA_fnc_addEventHandler;
 };
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////

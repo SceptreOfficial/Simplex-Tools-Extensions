@@ -19,10 +19,10 @@ _assignment = toUpper _assignment;
 if (isNil QGVAR(EFID)) then {
 	GVAR(cache) = [];
 	GVAR(cacheHash) = createHashMap;
+	GVAR(tick) = 0;
 	GVAR(list) = [];
 	GVAR(EFID) = addMissionEventHandler ["EachFrame",{call FUNC(clockwork)}];
 };
-
 
 // Setup group
 _group call EFUNC(common,AICompat);
