@@ -49,7 +49,11 @@ if (_ambCiv) then {
 // Spawn parked vehicles
 [_parkedCount,FUNC(spawnParked),[_area,_blacklist,_vehicleClasses,_customInit,_customArgs,_ambCiv],_spawnDelays # 2,true] call EFUNC(common,iterate);
 
+GVAR(brainTick) = CBA_missionTime + 2;
+
 if (isNil QGVAR(brainEFID)) then {
 	GVAR(brainList) = [];
 	GVAR(brainEFID) = addMissionEventHandler ["EachFrame",{call FUNC(brain)}];
 };
+
+[QGVAR(populated),[_area]] call CBA_fnc_serverEvent;

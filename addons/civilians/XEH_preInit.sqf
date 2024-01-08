@@ -48,11 +48,6 @@ GVAR(ambientAircraft) = false;
 GVAR(ambientCivilians) = false;
 
 if (isServer) then {
-	if (isNil QGVAR(brainEFID)) then {
-		GVAR(brainList) = [];
-		GVAR(brainEFID) = addMissionEventHandler ["EachFrame",{call FUNC(brain)}];
-	};
-
 	// Handle HC disconnect
 	addMissionEventHandler ["HandleDisconnect",{
 		params ["_unit"];
@@ -118,6 +113,15 @@ if (isServer) then {
 
 		if (_localitySelection > 1) then {
 			[QEGVAR(common,execute),[[],_fncVar],EGVAR(common,headlessClients) # (_localitySelection - 2)] call CBA_fnc_targetEvent;
+		};
+	}] call CBA_fnc_addEventHandler;
+
+	// Always run on the server in case of locality transfer/disconnect
+	[QGVAR(populated),{
+		if (isNil QGVAR(brainEFID)) then {
+			GVAR(brainTick) = 0;
+			GVAR(brainList) = [];
+			GVAR(brainEFID) = addMissionEventHandler ["EachFrame",{call FUNC(brain)}];
 		};
 	}] call CBA_fnc_addEventHandler;
 
