@@ -60,6 +60,17 @@
 ] call CBA_fnc_addSetting;
 
 [
+	QGVAR(deployableResupplyClass),
+	"EDITBOX",
+	["Deployable resupply box class","The type of box deployed"],
+	[LSTRING(category),"Resupply"],
+	"Box_NATO_Ammo_F",
+	true,
+	{},
+	false
+] call CBA_fnc_addSetting;
+
+[
 	QGVAR(deployableResupplyCooldown),
 	"EDITBOX",
 	["Deployable resupply cooldown","Cooldown between using the action"],

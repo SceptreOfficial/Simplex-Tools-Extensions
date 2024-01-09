@@ -1,3 +1,14 @@
+[
+	QGVAR(boxSpawnerClassesStr),
+	"EDITBOX",
+	[LSTRING(boxSpawnerClassesStrName),LSTRING(boxSpawnerClassesStrInfo)],
+	[LSTRING(category),"Logistics Hub"],
+	"Box_NATO_Equip_F,B_supplyCrate_F,Box_NATO_Ammo_F,Box_NATO_Support_F,Box_NATO_Wps_F",
+	true,
+	{GVAR(boxSpawnerClasses) = _this call EFUNC(common,parseList)},
+	false
+] call CBA_fnc_addSetting;
+
 [QGVAR(hubCreated),{
 	params ["_hub"];
 
@@ -57,25 +68,35 @@
 				{
 					params ["_target","_caller"];
 
-					private _pos = getPosASL _target;
-					private _box = "Box_NATO_Equip_F" createVehicle [0,0,0];
-					[_box,_pos vectorAdd ((getPosASL _caller vectorDiff _pos) vectorMultiply 0.5)] call EFUNC(common,getSafePosAndUp) params ["_safePos","_safeUp"];
+					private _cfgVehicles = configFile >> "CfgVehicles";
+					private _boxNames = GVAR(boxSpawnerClasses) apply {getText (_cfgVehicles >> _x >> "displayName")};
 
-					_box setDir (getDirVisual (_this # 1) - 90);
+					[LLSTRING(spawnBox),[
+						["LISTNBOX","Box",[_boxNames,0,8,GVAR(boxSpawnerClasses)]]
+					],{
+						params ["_values","_args"];
+						_values params ["_boxClass"];
+						_args params ["_pos","_caller"];
 
-					if (_safePos isNotEqualTo []) then {
-						_box setPosASL _safePos;
-						_box setVectorUp _safeUp;
-					} else {
-						_box setVehiclePosition [_caller modelToWorldVisual [0,1.5,0],[],0,"NONE"];
-					};
+						private _box = _boxClass createVehicle [0,0,0];
+						[_box,_pos vectorAdd ((getPosASL _caller vectorDiff _pos) vectorMultiply 0.5)] call EFUNC(common,getSafePosAndUp) params ["_safePos","_safeUp"];
 
-					clearItemCargoGlobal _box;
-					clearWeaponCargoGlobal _box;
-					clearMagazineCargoGlobal _box;
-					clearBackpackCargoGlobal _box;
+						_box setDir (getDirVisual _caller - 180);
 
-					"Box spawned nearby" call EFUNC(common,hint);
+						if (_safePos isNotEqualTo [] && _safeUp isNotEqualTo []) then {
+							_box setPosASL _safePos;
+							_box setVectorUp _safeUp;
+						} else {
+							_box setVehiclePosition [_caller modelToWorldVisual [0,1.5,0],[],0,"NONE"];
+						};
+
+						clearItemCargoGlobal _box;
+						clearWeaponCargoGlobal _box;
+						clearMagazineCargoGlobal _box;
+						clearBackpackCargoGlobal _box;
+
+						"Box spawned nearby" call EFUNC(common,hint);
+					},[getPosASL _target,_caller]] call EFUNC(sdf,dialog);
 				},
 				{true}
 			] call ace_interact_menu_fnc_createAction

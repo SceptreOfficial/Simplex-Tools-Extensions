@@ -14,7 +14,7 @@ if (_ix isNotEqualTo []) then {
 	_normal = _ix # 0 # 1;
 };
 
-private _box = "Box_NATO_Ammo_F" createVehicle [0,0,0];
+private _box = GVAR(deployableResupplyClass) createVehicle [0,0,0];
 _box setDir (getDirVisual _unit - 90);
 _box setPosASL _posASL;
 _box setVectorUp _normal;
