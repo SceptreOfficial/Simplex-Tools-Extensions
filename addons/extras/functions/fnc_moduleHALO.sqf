@@ -38,16 +38,14 @@ if (!local _logic) exitWith {};
 					{
 						private _pos = getPosATLVisual _x;
 						_pos set [2,_altitude];
-						_x setPosATL _pos;
-						[_x,_AIOpenAltitude] call EFUNC(common,paradropUnit);
+						[QGVAR(haloPos),[_x,_pos,_AIOpenAltitude],_x] call CBA_fnc_targetEvent;
 					} forEach _objects;
 				};
 				case 1 : {
 					{
 						private _pos = _modulePos getPos [_forEachIndex * 10 min 150 max 20,_forEachIndex * 50];
 						_pos set [2,_altitude];
-						_x setPosATL _pos;
-						[_x,_AIOpenAltitude] call EFUNC(common,paradropUnit);
+						[QGVAR(haloPos),[_x,_pos,_AIOpenAltitude],_x] call CBA_fnc_targetEvent;
 					} forEach _objects;
 				};
 				case 2 : {

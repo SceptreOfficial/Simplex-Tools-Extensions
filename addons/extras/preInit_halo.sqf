@@ -27,3 +27,9 @@ if (isServer) then {
 		},_jumpDelay,[_aircraft,_AIOpenAltitude]] call CBA_fnc_addPerFrameHandler;
 	}] call CBA_fnc_addEventHandler;
 };
+
+[QGVAR(haloPos),{
+	params ["_unit","_pos","_AIOpenAltitude"];
+	_unit setPosATL _pos;
+	[_unit,_AIOpenAltitude,GVAR(parachuteClass)] call EFUNC(common,paradropUnit);
+}] call CBA_fnc_addEventHandler;
