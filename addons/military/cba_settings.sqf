@@ -100,7 +100,7 @@
 [QGVAR(flaresChance),"SLIDER",
 	[LSTRING(SettingName_flaresChance),LSTRING(SettingInfo_flaresChance)],
 	[LSTRING(category),LSTRING(SettingCategory_Spotting)],
-	[0,1,0.8,0,true],
+	[0,1,0.3,1,true],
 	true,
 	{},
 	false
