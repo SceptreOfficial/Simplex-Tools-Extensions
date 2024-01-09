@@ -163,5 +163,8 @@
 		<Key ID="STR_stx_military_Module_Unassign">
 			<English>Unassign</English>
 		</Key>
+		<Key ID="STR_stx_military_ModuleIgnore">
+			<English>Ignore</English>
+		</Key>
 	</Package>
 </Project>

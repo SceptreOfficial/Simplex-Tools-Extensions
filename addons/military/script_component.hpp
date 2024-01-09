@@ -26,6 +26,7 @@
 #define ICON_UNASSIGN "\A3\Ui_f\data\IGUI\Cfg\simpleTasks\types\run_ca.paa"
 #define ICON_TRASH "\A3\3DEN\Data\cfg3den\history\deleteitems_ca.paa"
 #define ICON_INHERIT "\A3\Ui_f\data\IGUI\Cfg\simpleTasks\types\upload_ca.paa"
+#define ICON_IGNORE "\A3\Ui_f\data\IGUI\Cfg\simpleTasks\types\use_ca.paa"
 
 #define SMOKE_TYPES [ \
 	["SmokeShell","SmokeShellMuzzle"], \

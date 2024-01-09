@@ -11,6 +11,7 @@ PREP(garrison);
 PREP(getAmmoUsageFlags);
 PREP(getTypes);
 PREP(moduleAssign);
+PREP(moduleIgnore);
 PREP(moduleOccupy);
 PREP(moduleToggleCaching);
 PREP(moduleUnassign);

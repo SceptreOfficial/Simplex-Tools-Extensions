@@ -88,4 +88,11 @@ class CfgVehicles {
 		function = QFUNC(moduleUnassign);
 		scopeCurator = 2;
 	};
+
+	class GVAR(ModuleIgnore) : GVAR(Module_Base) {
+		displayName = CSTRING(ModuleIgnore);
+		icon = ICON_IGNORE;
+		function = QFUNC(moduleIgnore);
+		scopeCurator = 2;
+	};
 };

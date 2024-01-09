@@ -14,7 +14,9 @@ class CfgPatches {
 			QGVAR(Module_AssignSentry),
 			QGVAR(Module_Occupy),
 			//QGVAR(Module_OccupyManage),
-			QGVAR(Module_Unassign)
+			QGVAR(Module_ToggleCaching),
+			QGVAR(Module_Unassign),
+			QGVAR(ModuleIgnore)
 		};
 		weapons[] = {};
 		requiredVersion = REQUIRED_VERSION;
