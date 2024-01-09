@@ -13,6 +13,7 @@ private _ctrlGroup = _display displayCtrl IDC_GROUP;
 	IDC_HUB_BOXSPAWN,
 	IDC_HUB_CANTEEN,
 	IDC_HUB_CONSTRUCTION,
+	IDC_HUB_CONSTRUCTION_SIDE,
 	IDC_HUB_ARSENAL,
 	IDC_HUB_WHITELIST,
 	IDC_HUB_WHITELIST_EDIT,
@@ -23,6 +24,7 @@ private _ctrlGroup = _display displayCtrl IDC_GROUP;
 	"_ctrlBoxSpawn",
 	"_ctrlCanteen",
 	"_ctrlConstruction",
+	"_ctrlConstructionSide",
 	"_ctrlArsenal",
 	"_ctrlWhitelist",
 	"_ctrlWhitelistEdit",
@@ -41,6 +43,7 @@ private _ctrlGroup = _display displayCtrl IDC_GROUP;
 		"_ctrlBoxSpawn",
 		"_ctrlCanteen",
 		"_ctrlConstruction",
+		"_ctrlConstructionSide",
 		"_ctrlArsenal",
 		"_ctrlWhitelist",
 		"_ctrlBlacklist"
@@ -52,6 +55,7 @@ private _ctrlGroup = _display displayCtrl IDC_GROUP;
 		[_ctrlBoxSpawn,"",cbChecked _ctrlBoxSpawn] call EFUNC(sdf,setCache),
 		[_ctrlCanteen,"",cbChecked _ctrlCanteen] call EFUNC(sdf,setCache),
 		[_ctrlConstruction,"",cbChecked _ctrlConstruction] call EFUNC(sdf,setCache),
+		[west,east,independent] param [[_ctrlConstructionSide,"",lbCurSel _ctrlConstructionSide] call EFUNC(sdf,setCache),sideUnknown],
 		[_ctrlArsenal,"",cbChecked _ctrlArsenal] call EFUNC(sdf,setCache),
 		[_ctrlWhitelist,"",lbCurSel _ctrlWhitelist] call EFUNC(sdf,setCache),
 		flatten (GVAR(hubWhitelist) apply {_x apply {_x # 0}}),
@@ -68,6 +72,7 @@ private _ctrlGroup = _display displayCtrl IDC_GROUP;
 	_ctrlBoxSpawn,
 	_ctrlCanteen,
 	_ctrlConstruction,
+	_ctrlConstructionSide,
 	_ctrlArsenal,
 	_ctrlWhitelist,
 	_ctrlBlacklist
@@ -78,6 +83,8 @@ _ctrlEditInv cbSetChecked ([_ctrlEditInv,"",true] call EFUNC(sdf,getCache));
 _ctrlBoxSpawn cbSetChecked ([_ctrlBoxSpawn,"",true] call EFUNC(sdf,getCache));
 _ctrlCanteen cbSetChecked ([_ctrlCanteen,"",true] call EFUNC(sdf,getCache));
 _ctrlConstruction cbSetChecked ([_ctrlConstruction,"",true] call EFUNC(sdf,getCache));
+
+_ctrlConstructionSide lbSetCurSel ([_ctrlConstructionSide,"",0] call EFUNC(sdf,getCache));
 
 // Handle arsenal checkbox and dropdowns
 [_ctrlArsenal,"CheckedChanged",{

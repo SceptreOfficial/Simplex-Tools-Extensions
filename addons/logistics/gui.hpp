@@ -15,7 +15,7 @@ class EGVAR(sdf,Toolbox);
 #define RESUPPLY_W 20
 #define RESUPPLY_H 12
 #define HUB_W 20
-#define HUB_H 5
+#define HUB_H 6
 
 class GVAR(HubMenu) {
 	idd = -1;
@@ -131,10 +131,39 @@ class GVAR(HubMenu) {
 					w = QUOTE(CTRL_W(1));
 					h = QUOTE(CTRL_H(1));
 				};
+				class GVAR(ConstructionSideText) : EGVAR(sdf,Text) {
+					idc = IDC_HUB_CONSTRUCTION_SIDE_TEXT;
+					x = QUOTE(CTRL_X(0));
+					y = QUOTE(CTRL_Y(2));
+					w = QUOTE(CTRL_W(8));
+					h = QUOTE(CTRL_H(1));
+					text = CSTRING(ConstructionSideName);
+					tooltip = CSTRING(ConstructionSideInfo);
+				};
+				class GVAR(ConstructionSide) : EGVAR(sdf,Combobox) {
+					idc = IDC_HUB_CONSTRUCTION_SIDE;
+					x = QUOTE(CTRL_X(8));
+					y = QUOTE(CTRL_Y(2));
+					w = QUOTE(CTRL_W(12));
+					h = QUOTE(CTRL_H(1));
+
+					class Items {
+						class West {
+							text = "BLUFOR";
+							default = 1;
+						};
+						class East {
+							text = "OPFOR";
+						};
+						class Independent {
+							text = "Independent";
+						};
+					};
+				};
 				class GVAR(ArsenalText) : EGVAR(sdf,Text) {
 					idc = IDC_HUB_ARSENAL_TEXT;
 					x = QUOTE(CTRL_X(0));
-					y = QUOTE(CTRL_Y(2));
+					y = QUOTE(CTRL_Y(3));
 					w = QUOTE(CTRL_W(8));
 					h = QUOTE(CTRL_H(1));
 					text = CSTRING(ArsenalName);
@@ -143,14 +172,14 @@ class GVAR(HubMenu) {
 				class GVAR(Arsenal) : EGVAR(sdf,Checkbox) {
 					idc = IDC_HUB_ARSENAL;
 					x = QUOTE(CTRL_X(8));
-					y = QUOTE(CTRL_Y(2));
+					y = QUOTE(CTRL_Y(3));
 					w = QUOTE(CTRL_W(1));
 					h = QUOTE(CTRL_H(1));
 				};
 				class GVAR(WhitelistText) : EGVAR(sdf,Text) {
 					idc = IDC_HUB_WHITELIST_TEXT;
 					x = QUOTE(CTRL_X(0));
-					y = QUOTE(CTRL_Y(3));
+					y = QUOTE(CTRL_Y(4));
 					w = QUOTE(CTRL_W(8));
 					h = QUOTE(CTRL_H(1));
 					text = "Arsenal whitelist";
@@ -158,7 +187,7 @@ class GVAR(HubMenu) {
 				class GVAR(Whitelist) : EGVAR(sdf,Combobox) {
 					idc = IDC_HUB_WHITELIST;
 					x = QUOTE(CTRL_X(8));
-					y = QUOTE(CTRL_Y(3));
+					y = QUOTE(CTRL_Y(4));
 					w = QUOTE(CTRL_W(11));
 					h = QUOTE(CTRL_H(1));
 
@@ -181,7 +210,7 @@ class GVAR(HubMenu) {
 				class GVAR(WhitelistEdit) : EGVAR(sdf,ButtonSimple) {
 					idc = IDC_HUB_WHITELIST_EDIT;
 					x = QUOTE(CTRL_X(19));
-					y = QUOTE(CTRL_Y(3));
+					y = QUOTE(CTRL_Y(4));
 					w = QUOTE(CTRL_W(1));
 					h = QUOTE(CTRL_H(1));
 					sizeEx = QUOTE(GD_H(0.8));
@@ -191,7 +220,7 @@ class GVAR(HubMenu) {
 				class GVAR(BlacklistText) : EGVAR(sdf,Text) {
 					idc = IDC_HUB_BLACKLIST_TEXT;
 					x = QUOTE(CTRL_X(0));
-					y = QUOTE(CTRL_Y(4));
+					y = QUOTE(CTRL_Y(5));
 					w = QUOTE(CTRL_W(8));
 					h = QUOTE(CTRL_H(1));
 					text = "Arsenal blacklist";
@@ -199,7 +228,7 @@ class GVAR(HubMenu) {
 				class GVAR(Blacklist) : EGVAR(sdf,Combobox) {
 					idc = IDC_HUB_BLACKLIST;
 					x = QUOTE(CTRL_X(8));
-					y = QUOTE(CTRL_Y(4));
+					y = QUOTE(CTRL_Y(5));
 					w = QUOTE(CTRL_W(11));
 					h = QUOTE(CTRL_H(1));
 
@@ -222,7 +251,7 @@ class GVAR(HubMenu) {
 				class GVAR(BlacklistEdit) : EGVAR(sdf,ButtonSimple) {
 					idc = IDC_HUB_BLACKLIST_EDIT;
 					x = QUOTE(CTRL_X(19));
-					y = QUOTE(CTRL_Y(4));
+					y = QUOTE(CTRL_Y(5));
 					w = QUOTE(CTRL_W(1));
 					h = QUOTE(CTRL_H(1));
 					sizeEx = QUOTE(GD_H(0.8));

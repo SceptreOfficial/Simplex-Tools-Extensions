@@ -44,6 +44,15 @@
 		<Key ID="STR_stx_logistics_ArsenalInfo">
 			<English>Adds arsenal actions to the hub</English>
 		</Key>
+		<Key ID="STR_stx_logistics_constructionSideName">
+			<English>Construction side</English>
+		</Key>
+		<Key ID="STR_stx_logistics_constructionSideInfo">
+			<English>Side of the global construction pool</English>
+		</Key>
+		<Key ID="STR_stx_logistics_constructionResupplyFormat">
+			<English>Construction resupply %1</English>
+		</Key>
 		<Key ID="STR_stx_logistics_constructionResupplied">
 			<English>%1 has been resupplied.</English>
 		</Key>

@@ -7,6 +7,7 @@
 		["_boxSpawn",true,[false]],
 		["_canteenTap",true,[false]],
 		["_constructionResupply",true,[false]],
+		["_constructionSide",sideUnknown,[sideUnknown]],
 		["_arsenal",true,[false]],
 		["_arsenalWhitelistUsage",0,[0]],
 		["_arsenalWhitelist",[],[[]]],
@@ -29,6 +30,7 @@
 	_hub setVariable [QGVAR(hubEditInventories),_editInventories,true];
 	_hub setVariable [QGVAR(hubBoxSpawn),_boxSpawn,true];
 	_hub setVariable [QGVAR(hubConstructionResupply),_constructionResupply,true];
+	_hub setVariable [QGVAR(constructionSide),_constructionSide,true];
 
 	if (_canteenTap) then {
 		_hub call FUNC(addCanteenTap);

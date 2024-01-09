@@ -89,14 +89,70 @@
 				LLSTRING(ConstructionResupplyName),
 				"\A3\Ui_f\data\IGUI\Cfg\simpleTasks\types\container_ca.paa",
 				{
+					params ["_hub"];
+
+					private _pool = _hub call FUNC(constructionPool);
+
+					if (_pool == 0) exitWith {
+						"No supplies left in global pool" call EFUNC(common,hint);
+					};
+
+					private _vehicles = [];
+					private _vehicleRows = [];
+
 					{
 						if (_x getVariable [QGVAR(constructionVehicle),false]) then {
-							_x setVariable [QGVAR(constructionBudget),_x getVariable QGVAR(constructionMaxBudget),true];
-							format [LLSTRING(constructionResupplied),getText (configOf _x >> "displayName")] call EFUNC(common,hint);
+							private _budget = _x getVariable [QGVAR(constructionBudget),1e39];
+							private _maxBudget = _x getVariable [QGVAR(constructionMaxBudget),1e39];
+
+							if (_budget >= _maxBudget) then {continue};
+
+							_vehicles pushBack _x;
+							_vehicleRows pushBack [
+								getText (configOf _x >> "displayName"),
+								"",
+								format ["($%1 / $%2)",_budget,_maxBudget]
+							];
+
+							//_x setVariable [QGVAR(constructionBudget),_x getVariable [QGVAR(constructionMaxBudget),1000],true];
+							//format [LLSTRING(constructionResupplied),getText (configOf _x >> "displayName")] call EFUNC(common,hint);
 						};
 					} forEach (_this # 0 nearEntities 20);
+
+					[LLSTRING(ConstructionResupplyName),[
+						["LISTNBOX",["Construction vehicle",""],[_vehicleRows,0,5,_vehicles]]
+					],{
+						params ["_values","_hub"];
+						_values params ["_vehicle"];
+
+						private _pool = _hub call FUNC(constructionPool);
+
+						if (_pool == 0) exitWith {
+							"No supplies left in global pool" call EFUNC(common,hint);
+						};
+
+						private _budget = _vehicle getVariable [QGVAR(constructionBudget),1e39];
+						private _maxBudget = _vehicle getVariable [QGVAR(constructionMaxBudget),1e39];
+						private _supply = (_maxBudget - _budget) min ([_pool,1e39] select (_pool == -1));
+
+						_vehicle setVariable [QGVAR(constructionBudget),_budget + _supply,true];
+						[_hub,-_supply] call FUNC(constructionPoolUpdate);
+						
+						format [LLSTRING(constructionResupplied),getText (configOf _vehicle >> "displayName")] call EFUNC(common,hint);
+					},_hub] call EFUNC(sdf,dialog);
+
 				},
-				{true}
+				{true},
+				{},
+				[],
+				nil,
+				nil,
+				nil,
+				{
+					params ["_hub","","","_actionData"];
+					private _pool = _hub call FUNC(constructionPool);
+					_actionData set [1,format [LLSTRING(ConstructionResupplyFormat),["(∞)",format ["($%1)",_pool]] select (_pool != -1)]];
+				}
 			] call ace_interact_menu_fnc_createAction
 		] call ace_interact_menu_fnc_addActionToObject;
 	};

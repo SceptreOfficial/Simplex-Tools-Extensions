@@ -75,6 +75,29 @@ class CfgVehicles {
 				typeName = "BOOL";
 				defaultValue = "true";
 			};
+			class ConstructionSide : Combo {
+				displayName = CSTRING(ConstructionSideName);
+				tooltip = CSTRING(ConstructionSideInfo);
+				property = QGVAR(moduleHub_ConstructionSide);
+				typeName = "NUMBER";
+				defaultValue = 0;
+
+				class Values {
+					class West {
+						name = "BLUFOR";
+						value = 0;
+						default = 1;
+					};
+					class East {
+						name = "OPFOR";
+						value = 1;
+					};
+					class Independent {
+						name = "Independent";
+						value = 2;
+					};
+				};
+			};
 			class Arsenal : Checkbox {
 				displayName = CSTRING(ArsenalName);
 				tooltip = CSTRING(ArsenalInfo);
