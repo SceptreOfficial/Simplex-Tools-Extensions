@@ -170,12 +170,7 @@ switch (lbCurSel _ctrlApplication) do {
 			private _pos = +GVAR(resupplyPosASL);
 			private _aircraft = [_pos,random 360,5000,_altitude,_aircraftClass,0,QPATHTOEF(common,functions\fnc_wpSlingloadDropoff.sqf)] call EFUNC(common,flyby);
 
-			_box setDir getDirVisual _aircraft;
 			[_aircraft,_box,true,true] call EFUNC(common,slingload);
-			_box setVelocity velocity _aircraft;
-			{
-				{_x setVelocity velocity _aircraft} forEach (ropeSegments _x);
-			} forEach (_aircraft getVariable [QEGVAR(common,slingloadRopes),[]]);
 
 			_aircraft setVariable [QGVAR(resupplyArgs),[_box,_ctrlSignal1 lbData lbCurSel _ctrlSignal1,_ctrlSignal2 lbData lbCurSel _ctrlSignal2],true];
 		} else {

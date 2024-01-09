@@ -18,35 +18,65 @@ private _ctrlMedical = _ctrlContentsGroup controlsGroupCtrl IDC_RESUPPLY_MEDICAL
 
 private _ctrlMagazineCount = _ctrlContentsGroup controlsGroupCtrl IDC_RESUPPLY_MAGAZINE_COUNT;
 private _ctrlMagazineCountEdit = _ctrlContentsGroup controlsGroupCtrl IDC_RESUPPLY_MAGAZINE_COUNT_EDIT;
-[_ctrlMagazineCount,_ctrlMagazineCountEdit,[0,100,0],[_ctrlMagazineCount,"",20] call EFUNC(sdf,getCache)] call EFUNC(sdf,handleSlider);
+[
+	_ctrlMagazineCount,
+	_ctrlMagazineCountEdit,
+	[0,100,0],
+	[_ctrlMagazineCount,"",missionNamespace getVariable [QGVAR(autoFillMagazineCount),20]] call EFUNC(sdf,getCache)
+] call EFUNC(sdf,manageSlider);
 
 private _ctrlUnderbarrelCount = _ctrlContentsGroup controlsGroupCtrl IDC_RESUPPLY_UNDERBARREL_COUNT;
 private _ctrlUnderbarrelCountEdit = _ctrlContentsGroup controlsGroupCtrl IDC_RESUPPLY_UNDERBARREL_COUNT_EDIT;
-[_ctrlUnderbarrelCount,_ctrlUnderbarrelCountEdit,[0,100,0],[_ctrlUnderbarrelCount,"",10] call EFUNC(sdf,getCache)] call EFUNC(sdf,handleSlider);
+[
+	_ctrlUnderbarrelCount,
+	_ctrlUnderbarrelCountEdit,
+	[0,100,0],
+	[_ctrlUnderbarrelCount,"",missionNamespace getVariable [QGVAR(autoFillUnderbarrelCount),10]] call EFUNC(sdf,getCache)
+] call EFUNC(sdf,manageSlider);
 
 private _ctrlRocketCount = _ctrlContentsGroup controlsGroupCtrl IDC_RESUPPLY_ROCKET_COUNT;
 private _ctrlRocketCountEdit = _ctrlContentsGroup controlsGroupCtrl IDC_RESUPPLY_ROCKET_COUNT_EDIT;
-[_ctrlRocketCount,_ctrlRocketCountEdit,[0,100,0],[_ctrlRocketCount,"",10] call EFUNC(sdf,getCache)] call EFUNC(sdf,handleSlider);
+[
+	_ctrlRocketCount,
+	_ctrlRocketCountEdit,
+	[0,100,0],
+	[_ctrlRocketCount,"",missionNamespace getVariable [QGVAR(autoFillRocketCount),10]] call EFUNC(sdf,getCache)
+] call EFUNC(sdf,manageSlider);
 
 private _ctrlThrowableCount = _ctrlContentsGroup controlsGroupCtrl IDC_RESUPPLY_THROWABLE_COUNT;
 private _ctrlThrowableCountEdit = _ctrlContentsGroup controlsGroupCtrl IDC_RESUPPLY_THROWABLE_COUNT_EDIT;
-[_ctrlThrowableCount,_ctrlThrowableCountEdit,[0,100,0],[_ctrlThrowableCount,"",10] call EFUNC(sdf,getCache)] call EFUNC(sdf,handleSlider);
+[
+	_ctrlThrowableCount,
+	_ctrlThrowableCountEdit,
+	[0,100,0],
+	[_ctrlThrowableCount,"",missionNamespace getVariable [QGVAR(autoFillThrowableCount),10]] call EFUNC(sdf,getCache)
+] call EFUNC(sdf,manageSlider);
 
 private _ctrlPlaceableCount = _ctrlContentsGroup controlsGroupCtrl IDC_RESUPPLY_PLACEABLE_COUNT;
 private _ctrlPlaceableCountEdit = _ctrlContentsGroup controlsGroupCtrl IDC_RESUPPLY_PLACEABLE_COUNT_EDIT;
-[_ctrlPlaceableCount,_ctrlPlaceableCountEdit,[0,100,0],[_ctrlPlaceableCount,"",10] call EFUNC(sdf,getCache)] call EFUNC(sdf,handleSlider);
+[
+	_ctrlPlaceableCount,
+	_ctrlPlaceableCountEdit,
+	[0,100,0],
+	[_ctrlPlaceableCount,"",missionNamespace getVariable [QGVAR(autoFillPlaceableCount),10]] call EFUNC(sdf,getCache)
+] call EFUNC(sdf,manageSlider);
 
 private _ctrlMedicalCount = _ctrlContentsGroup controlsGroupCtrl IDC_RESUPPLY_MEDICAL_COUNT;
 private _ctrlMedicalCountEdit = _ctrlContentsGroup controlsGroupCtrl IDC_RESUPPLY_MEDICAL_COUNT_EDIT;
-[_ctrlMedicalCount,_ctrlMedicalCountEdit,[0,100,0],[_ctrlMedicalCount,"",20] call EFUNC(sdf,getCache)] call EFUNC(sdf,handleSlider);
+[
+	_ctrlMedicalCount,
+	_ctrlMedicalCountEdit,
+	[0,100,0],
+	[_ctrlMedicalCount,"",missionNamespace getVariable [QGVAR(autoFillMedicalCount),20]] call EFUNC(sdf,getCache)
+] call EFUNC(sdf,manageSlider);
 
-{[_ctrlContentsGroup controlsGroupCtrl _x,"",false,true] call EFUNC(sdf,getCache)} forEach [
-	IDC_RESUPPLY_MAGAZINE_MULTIPLY,
-	IDC_RESUPPLY_UNDERBARREL_MULTIPLY,
-	IDC_RESUPPLY_ROCKET_MULTIPLY,
-	IDC_RESUPPLY_THROWABLE_MULTIPLY,
-	IDC_RESUPPLY_PLACEABLE_MULTIPLY,
-	IDC_RESUPPLY_MEDICAL_MULTIPLY
+{[_ctrlContentsGroup controlsGroupCtrl (_x # 0),"",_x # 1,true] call EFUNC(sdf,getCache)} forEach [
+	[IDC_RESUPPLY_MAGAZINE_MULTIPLY,missionNamespace getVariable [QGVAR(autoFillMagazineMultiply),false]],
+	[IDC_RESUPPLY_UNDERBARREL_MULTIPLY,missionNamespace getVariable [QGVAR(autoFillUnderbarrelMultiply),false]],
+	[IDC_RESUPPLY_ROCKET_MULTIPLY,missionNamespace getVariable [QGVAR(autoFillRocketMultiply),false]],
+	[IDC_RESUPPLY_THROWABLE_MULTIPLY,missionNamespace getVariable [QGVAR(autoFillThrowableMultiply),false]],
+	[IDC_RESUPPLY_PLACEABLE_MULTIPLY,missionNamespace getVariable [QGVAR(autoFillPlaceableMultiply),false]],
+	[IDC_RESUPPLY_MEDICAL_MULTIPLY,missionNamespace getVariable [QGVAR(autoFillMedicalMultiply),false]]
 ];
 
 private _ctrlUnitsToolbox = _ctrlContentsGroup controlsGroupCtrl IDC_RESUPPLY_UNITS_TOOLBOX;

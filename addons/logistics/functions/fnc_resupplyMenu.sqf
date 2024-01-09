@@ -48,7 +48,7 @@ private _ctrlCargoType = _ctrlApplicationGroup controlsGroupCtrl IDC_RESUPPLY_CA
 private _ctrlUnloadTime = _ctrlApplicationGroup controlsGroupCtrl IDC_RESUPPLY_UNLOAD_TIME;
 private _ctrlUnloadTimeEdit = _ctrlApplicationGroup controlsGroupCtrl IDC_RESUPPLY_UNLOAD_TIME_EDIT;
 
-[_ctrlUnloadTime,_ctrlUnloadTimeEdit,[0,20,0],[_ctrlUnloadTime,"",5] call EFUNC(sdf,getCache)] call EFUNC(sdf,handleSlider);
+[_ctrlUnloadTime,_ctrlUnloadTimeEdit,[0,20,0],[_ctrlUnloadTime,"",5] call EFUNC(sdf,getCache)] call EFUNC(sdf,manageSlider);
 
 private _ctrlHeight = _ctrlApplicationGroup controlsGroupCtrl IDC_RESUPPLY_HEIGHT;
 [_ctrlHeight,"","100",true] call EFUNC(sdf,getCache);

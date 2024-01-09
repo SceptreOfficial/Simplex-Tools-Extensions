@@ -54,8 +54,8 @@ private _nearestSpawnPoints = [objNull,objNull,objNull];
 	};
 
 	switch true do {
-		case (_distance <= (_spawnRadius * 1.15)) : {GVAR(activePoints) pushBackUnique _x};
-		case (_distance >= (_spawnRadius * 2)) : {GVAR(isolatedPoints) pushBackUnique _x};
+		case (_distance <= _spawnRadius * 1.15) : {GVAR(activePoints) pushBackUnique _x};
+		case (_distance >= _spawnRadius * 2) : {GVAR(isolatedPoints) pushBackUnique _x};
 		default {GVAR(inactivePoints) pushBackUnique _x};
 	};
 } forEach +GVAR(spawnPoints);

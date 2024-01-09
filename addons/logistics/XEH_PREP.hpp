@@ -1,6 +1,7 @@
 PREP(addCanteenTap);
 PREP(addConstructionVehicle);
 PREP(addHub);
+PREP(autoFill);
 PREP(canteenSip);
 PREP(cargoLoad);
 PREP(cargoUnload);

@@ -41,7 +41,7 @@ if (_respondingGroups isNotEqualTo []) then {
 // Flares
 if (GVAR(flaresEnabled) && !(call EFUNC(common,isDaytime)) && random 1 < GVAR(flaresChance)) then {
 	[{
-		for "_i" from 0 to (1 + round random 2) do {
+		for "_i" from 0 to (round random 1) do {
 			private _flare = createVehicle ["F_40mm_White",selectRandom _this getPos [random [20,45,70],random 360],[],0,"CAN_COLLIDE"];
 			_flare setPosATL [getPosATL _flare # 0,getPosATL _flare # 1,180 + random 60];
 			_flare setVelocity [0,0,-0.05];

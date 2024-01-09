@@ -84,7 +84,7 @@ if (isServer) then {
 [QGVAR(arsenalInit),{
 	params ["_object"];
 
-	_object addAction ["<img image='\A3\Ui_f\data\IGUI\Cfg\simpleTasks\types\rifle_ca.paa'/>Arsenal",FUNC(openArsenal),[],999,true,true,"","true",5];
+	//_object addAction ["<img image='\A3\Ui_f\data\IGUI\Cfg\simpleTasks\types\rifle_ca.paa'/>Arsenal",FUNC(openArsenal),[],999,true,true,"","true",5];
 
 	[_object,0,["ACE_MainActions"],
 		[QGVAR(arsenal),"Arsenal","\A3\Ui_f\data\IGUI\Cfg\simpleTasks\types\rifle_ca.paa",FUNC(openArsenal),{true}] call ace_interact_menu_fnc_createAction
