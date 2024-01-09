@@ -18,4 +18,4 @@ patch = 1
 git_hash = 0
 
 [asc]
-enabled = true
+enabled = false
