@@ -62,6 +62,12 @@
 		<Key ID="STR_stx_logistics_spawnBox">
 			<English>Spawn equipment box</English>
 		</Key>
+		<Key ID="STR_stx_logistics_boxSpawnerClassesStrName">
+			<English>Box spawner classes</English>
+		</Key>
+		<Key ID="STR_stx_logistics_boxSpawnerClassesStrInfo">
+			<English>Boxes available to spawn in</English>
+		</Key>
 		<!-- Canteen -->
 		<Key ID="STR_stx_logistics_canteen">
 			<English>Canteen</English>
