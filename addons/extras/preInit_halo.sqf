@@ -1,3 +1,14 @@
+[
+	QGVAR(parachuteClass),
+	"EDITBOX",
+	[LSTRING(parachuteClassName),LSTRING(parachuteClassInfo)],
+	[LSTRING(category),LSTRING(halo)],
+	"B_Parachute",
+	true,
+	{},
+	false
+] call CBA_fnc_addSetting;
+
 if (isServer) then {
 	[QEGVAR(common,flybyPosReached),{
 		params ["_aircraft"];
@@ -22,7 +33,7 @@ if (isServer) then {
 				[_unit] orderGetIn false;
 				moveOut _unit;
 				_unit setVelocity (velocity _aircraft vectorMultiply 0.9);
-				[_unit,_AIOpenAltitude] call EFUNC(common,paradropUnit);
+				[_unit,_AIOpenAltitude,GVAR(parachuteClass)] call EFUNC(common,paradropUnit);
 			}],_units # 0] call CBA_fnc_targetEvent;
 		},_jumpDelay,[_aircraft,_AIOpenAltitude]] call CBA_fnc_addPerFrameHandler;
 	}] call CBA_fnc_addEventHandler;

@@ -21,6 +21,15 @@
 		<Key ID="STR_stx_extras_moduleHALOName">
 			<English>HALO drop</English>
 		</Key>
+		<Key ID="STR_stx_extras_halo">
+			<English>HALO drop</English>
+		</Key>
+		<Key ID="STR_stx_extras_parachuteClassName">
+			<English>Parachute class</English>
+		</Key>
+		<Key ID="STR_stx_extras_parachuteClassInfo">
+			<English>The parachute given to units via the HALO drop module</English>
+		</Key>
 
 		<!-- Virtual Driver -->
 		<Key ID="STR_stx_extras_virtualDriver">
