@@ -39,12 +39,10 @@ waitUntil {
 [
 	_vehicle,
 	[_attachedObject,ATLtoASL waypointPosition [_group,currentWaypoint _group]] select (isNull _attachedObject),
-	_weapon,
+	[_weapon,[_duration,true],_triggerDelay],
 	_infiniteAmmo,
-	_approachDir,
 	_spread,
-	_duration,
-	_triggerDelay
+	_approachDir
 ] call EFUNC(common,strafe);
 
 waitUntil {

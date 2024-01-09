@@ -9,7 +9,7 @@ if (!local _logic) exitWith {};
 
 	if (isNull findDisplay IDD_RSCDISPLAYCURATOR) then {
 		if (_synced isEqualTo []) exitWith {
-			ALERT("No objects synced");
+			LOG_WARNING("No objects synced");
 		};
 
 		private _arguments = [
@@ -17,6 +17,7 @@ if (!local _logic) exitWith {};
 			_logic getVariable ["BoxSpawn",true],
 			_logic getVariable ["CanteenTap",true],
 			_logic getVariable ["ConstructionResupply",true],
+			[west,east,independent] param [_logic getVariable ["ConstructionSide",0],sideUnknown],
 			_logic getVariable ["Arsenal",true],
 			_logic getVariable ["ArsenalWhitelistUsage",0],
 			(_logic getVariable ["ArsenalWhitelist",""]) call EFUNC(common,parseList),

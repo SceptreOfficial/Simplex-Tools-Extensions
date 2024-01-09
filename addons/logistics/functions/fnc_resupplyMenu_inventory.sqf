@@ -18,7 +18,7 @@ private _ctrlPresetDelete = _ctrlContentsGroup controlsGroupCtrl IDC_RESUPPLY_PR
 	_thisArgs params ["_display","_ctrlCapacityLimit","_ctrlBoxClass"];
 	
 	private _boxClass = ctrlText _ctrlBoxClass;
-	if (!isClass (configFile >> "CfgVehicles" >> _boxClass)) exitWith {CHAT_WARNING("INVALID BOX CLASS")};
+	if (!isClass (configFile >> "CfgVehicles" >> _boxClass)) exitWith {LOG_WARNING("INVALID BOX CLASS")};
 	private _maxLoad = [nil,getNumber (configFile >> "CfgVehicles" >> _boxClass >> "maximumLoad")] select (cbChecked _ctrlCapacityLimit);
 
 	{_x ctrlShow false} forEach [
@@ -137,7 +137,7 @@ private _ctrlPresetDelete = _ctrlContentsGroup controlsGroupCtrl IDC_RESUPPLY_PR
 	if (_preset isEqualTo "") exitWith {};
 
 	private _boxClass = ctrlText _ctrlBoxClass;
-	if (!isClass (configFile >> "CfgVehicles" >> _boxClass)) exitWith {CHAT_WARNING("INVALID BOX CLASS")};
+	if (!isClass (configFile >> "CfgVehicles" >> _boxClass)) exitWith {LOG_WARNING("INVALID BOX CLASS")};
 	private _maxLoad = [nil,getNumber (configFile >> "CfgVehicles" >> _boxClass >> "maximumLoad")] select (cbChecked _ctrlCapacityLimit);
 
 	{_x ctrlShow false} forEach [

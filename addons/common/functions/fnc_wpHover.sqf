@@ -19,6 +19,7 @@ _vehicle engineOn true;
 [_vehicle,[0,0,0]] call EFUNC(common,pilotHelicopter);
 
 private _moveTick = 0;
+private _pilotDistance = [HELO_PILOT_DISTANCE,VTOL_PILOT_DISTANCE] select (_vehicle isKindOf "VTOL_Base_F");
 
 waitUntil {
 	if (CBA_missionTime > _moveTick) then {
@@ -33,12 +34,12 @@ waitUntil {
 
 	sleep 0.2;
 
-	!isTouchingGround _vehicle && _vehicle distance2D _wpPos < HELO_TAKEOVER_DISTANCE
+	!isTouchingGround _vehicle && _vehicle distance2D _wpPos < _pilotDistance
 };
 
 [
 	_vehicle,
-	[_vehicle,ATLtoASL waypointPosition [_group,currentWaypoint _group],"HOVER",_hoverHeight] call FUNC(heliSurfacePosASL),
+	[_vehicle,ATLtoASL waypointPosition [_group,currentWaypoint _group],"HOVER",_hoverHeight] call FUNC(surfacePosASL),
 	[_endDir],
 	(getPos _vehicle # 2) max 50,
 	_approach,

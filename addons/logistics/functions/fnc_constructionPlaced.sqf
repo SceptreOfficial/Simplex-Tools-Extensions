@@ -24,7 +24,7 @@ if (!isNil QGVAR(ghosts)) then {
 	GVAR(ghosts) pushBack _ghost;
 };
 
-private _distance = 2.5 max (sizeOf (_args # 2) * 0.65);
+private _distance = 2.5 max (0.65 * (_class call EFUNC(common,sizeOf)));
 
 // Main node action
 [_box,0,[],

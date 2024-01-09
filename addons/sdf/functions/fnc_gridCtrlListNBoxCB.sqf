@@ -1,6 +1,6 @@
 #include "script_component.hpp"
 
-_valueData params [["_rows",[],[[]]],["_selection",[],[[]]],["_returnData",[],[[]]]];
+_valueData params [["_rows",[],[[]]],["_selection",[],[[],false]],["_returnData",[],[[]]]];
 
 if (!_forceDefault) then {
 	_selection = GVAR(cache) getVariable [["",_description,_type,_rows] joinString "~",_selection];
@@ -49,8 +49,17 @@ private _columnsCount = 3;
 	} forEach _columns;
 } forEach _rows;
 
-_selection = _selection apply {
-	if !(_selection isEqualType 0) then {_returnData find _x} else {_x}
+if (_selection isEqualType []) then {
+	_selection = _selection apply {
+		if !(_selection isEqualType 0) then {_returnData find _x} else {_x}
+	};
+} else {
+	if (_selection) then {
+		_selection = [];
+		{_selection pushBack _forEachIndex} forEach _rows;
+	} else {
+		_selection = [];
+	};
 };
 
 {

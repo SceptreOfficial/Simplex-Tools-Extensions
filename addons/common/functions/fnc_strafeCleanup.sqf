@@ -1,34 +1,77 @@
 #include "script_component.hpp"
 
-removeMissionEventHandler ["EachFrame",_vehicle getVariable [QGVAR(strafeSimEHID),-1]];
-_vehicle removeEventHandler ["Fired",_vehicle getVariable [QGVAR(strafeFiredEHID),-1]];
+params ["_completed"];
 
+DEBUG_1("Shot counts: %1",_vehicle getVariable QGVAR(firedCounts));
+_vehicle setVariable [QGVAR(firedCounts),nil,true];
+
+removeMissionEventHandler ["EachFrame",_vehicle getVariable [QGVAR(strafeSimEHID),-1]];
 _vehicle setVariable [QGVAR(strafeSimEHID),nil];
-_vehicle setVariable [QGVAR(strafeFiredEHID),nil];
+
+_vehicle removeEventHandler ["Fired",_vehicle getVariable [QGVAR(firedEHID),-1]];
+_vehicle setVariable [QGVAR(firedEHID),nil];
+
 _vehicle setVariable [QGVAR(strafe),nil,true];
 _vehicle setVariable [QGVAR(strafeCancel),nil,true];
+_vehicle setVariable [QGVAR(strafeApproach),nil,true];
+_vehicle setVariable [QGVAR(bombMagazines),nil,true];
+_vehicle setVariable [QGVAR(relativeVelocity),nil,true];
 
-private _driver = driver _vehicle;
+// Remove targeting dummy (for missile locks)
+[{deleteVehicle _this},_vehicle getVariable [QGVAR(targetDummy),objNull],10] call CBA_fnc_waitAndExecute;
 
+// Reset pylon bays
 {
-	[QGVAR(enableAIFeature),[_driver,_x],_driver] call CBA_fnc_targetEvent;
-} forEach (_driver getVariable [QGVAR(strafeAIFeatures),[["AUTOTARGET",true],["TARGET",true]]]);
+	private _pylonIndex = _forEachIndex + 1;
+	_vehicle animateBay [_pylonIndex,-1,false];
+} forEach getPylonMagazines _vehicle;
 
-_driver setVariable [QGVAR(strafeAIFeatures),nil,true];
+// Reset AI abilities
+{
+	private _unit = _x;
 
-[QGVAR(strafeCleanup),[_vehicle]] call CBA_fnc_localEvent;
+	{
+		[QGVAR(enableAIFeature),[_unit,_x],_unit] call CBA_fnc_targetEvent;
+	} forEach (_unit getVariable [QGVAR(strafeAIFeatures),[["AUTOTARGET",true],["TARGET",true]]]);
 
-//private _entity = _vehicle getVariable [QPVAR(entity),objNull];
-//
-//if (!isNull _entity) then {
-//	[QEGVAR(common,flyInHeight),[
-//		_vehicle,
-//		_entity getVariable [QPVAR(flyHeightATL),_vehicle getVariable [QGVAR(strafeHeight),100]]
-//	],_vehicle] call CBA_fnc_targetEvent;
-//};
+	_unit setVariable [QGVAR(strafeAIFeatures),nil];
+} forEach (_vehicle getVariable [QGVAR(strafeAI),[]]);
 
-[QEGVAR(common,flyInHeightASL),[
-	_vehicle,
-	(_vehicle getVariable [QPVAR(entity),objNull]) getVariable [QPVAR(flyHeightASL),100]
-],_vehicle] call CBA_fnc_targetEvent;
+_vehicle setVariable [QGVAR(strafeAI),nil];
 
+// Reset camera locks
+{_vehicle lockCameraTo [objNull,_x,true]} forEach ([[-1]] + allTurrets _vehicle);
+
+// Reset speed
+private _entity = _vehicle getVariable [QPVAR(entity),objNull];
+
+[QGVAR(limitSpeed),[_vehicle,_entity getVariable [QPVAR(speed),-1]],_vehicle] call CBA_fnc_targetEvent;
+
+// Reset flying height
+if (_completed) then {
+	[QGVAR(flyInHeight),[_vehicle,50 max (getPos _vehicle # 2 - 30)],_vehicle] call CBA_fnc_targetEvent;
+	[QGVAR(flyInHeightASL),[_vehicle,50],_vehicle] call CBA_fnc_targetEvent;
+
+	[{
+		private _vehicle = _this;
+		private _entity = _vehicle getVariable [QPVAR(entity),objNull];
+		
+		if (_entity getVariable [QPVAR(service),""] == "CAS") then {
+			[{
+				private _vehicle = _this;
+				[QGVAR(flyInHeight),[_vehicle,_vehicle getVariable [QGVAR(strafeHeightATL),100]],_vehicle] call CBA_fnc_targetEvent;
+				[QGVAR(flyInHeightASL),[_vehicle,_vehicle getVariable [QGVAR(strafeHeightASL),100]],_vehicle] call CBA_fnc_targetEvent;
+			},_vehicle,10] call CBA_fnc_waitAndExecute;
+		} else {
+			[QGVAR(flyInHeight),[_vehicle,_entity getVariable [QPVAR(altitudeATL),100]],_vehicle] call CBA_fnc_targetEvent;
+			[QGVAR(flyInHeightASL),[_vehicle,_entity getVariable [QPVAR(altitudeASL),100]],_vehicle] call CBA_fnc_targetEvent;
+		};
+			
+	},_vehicle,5] call CBA_fnc_waitAndExecute;
+} else {
+	[QGVAR(flyInHeight),[_vehicle,_entity getVariable [QPVAR(altitudeATL),_vehicle getVariable [QGVAR(strafeHeightATL),100]]],_vehicle] call CBA_fnc_targetEvent;
+	[QGVAR(flyInHeightASL),[_vehicle,_entity getVariable [QPVAR(altitudeASL),_vehicle getVariable [QGVAR(strafeHeightASL),100]]],_vehicle] call CBA_fnc_targetEvent;
+};
+
+// CBA Event
+[QGVAR(strafeCleanup),[_vehicle,_completed]] call CBA_fnc_globalEvent;

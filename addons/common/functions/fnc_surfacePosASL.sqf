@@ -1,6 +1,6 @@
 #include "script_component.hpp"
 
-if (canSuspend) exitWith {[FUNC(heliSurfacePosASL),_this] call CBA_fnc_directCall};
+if (canSuspend) exitWith {[FUNC(surfacePosASL),_this] call CBA_fnc_directCall};
 
 params ["_vehicle","_posASL",["_procedure","LAND"],"_args"];
 
@@ -29,16 +29,16 @@ switch (toUpper _procedure) do {
 		_posASL
 	};
 	case "SEA" : {
-		_args params [["_driftHeight",0]];
+		_args params [["_hoverHeight",0]];
 
 		private _waveHeight = linearConversion [0,1,waves,0,getNumber (configFile >> "CfgWorlds" >> worldName >> "Sea" >> "maxTide")];
 		private _maxDepth = getNumber (configOf _vehicle >> "maxFordingDepth");
 		_posASL set [2,(getTerrainHeightASL _posASL) max (_waveHeight - _maxDepth * 0.4)];
 
-		_posASL vectorAdd [0,0,_driftHeight]
+		_posASL vectorAdd [0,0,_hoverHeight]
 	};
 	default {
-		WARNING_1("Invalid procedure: %1",_procedure);
+		LOG_WARNING_1("Invalid procedure: %1",_procedure);
 		_posASL
 	};
 };

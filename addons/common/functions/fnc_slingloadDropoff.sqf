@@ -28,7 +28,7 @@ if (_ix isNotEqualTo []) then {_posASL = _ix # 0 # 0};
 	[],
 	60,
 	50,
-	-6,
+	-9,
 	[{
 		[_vehicle,objNull] call FUNC(slingload);
 		true

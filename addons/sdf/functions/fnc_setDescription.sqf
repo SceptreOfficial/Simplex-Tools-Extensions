@@ -8,6 +8,8 @@ private _ctrlDescription = _ctrl getVariable [QGVAR(ctrlDescription),controlNull
 private _params = _ctrl getVariable QGVAR(parameters);
 
 _description params [["_descriptionText","",[""]],["_descriptionTooltip","",[""]]];
+if (isLocalized _descriptionText) then {_descriptionText = localize _descriptionText};
+if (isLocalized _descriptionTooltip) then {_descriptionTooltip = localize _descriptionTooltip};
 _description = [_descriptionText,_descriptionTooltip];
 
 _params set [1,_description];

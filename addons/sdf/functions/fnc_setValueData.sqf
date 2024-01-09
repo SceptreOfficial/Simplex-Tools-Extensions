@@ -7,8 +7,8 @@ if (_ctrl isEqualType 0) then {
 	_ctrl = (uiNamespace getVariable QGVAR(controls)) # _ctrl;
 };
 
-private _title = uiNamespace getVariable QGVAR(title);
-private _params = _ctrl getVariable QGVAR(parameters);
+private _title = uiNamespace getVariable [QGVAR(title),""];
+private _params = _ctrl getVariable [QGVAR(parameters),[]];
 _params params ["_type","_description"];
 
 switch _type do {
@@ -158,9 +158,9 @@ switch _type do {
 
 	case "LISTNBOXCB" : {
 		private _paramsArray = if (GVAR(cache) == GVAR(gridCache)) then {
-			[["_rows",[],[[]]],["_selection",[],[[]]],["_returnData",[],[[]]]]
+			[["_rows",[],[[]]],["_selection",[],[[],false]],["_returnData",[],[[]]]]
 		} else {
-			[["_rows",[],[[]]],["_selection",[],[[]]],["_height",1,[0]],["_returnData",[],[[]]]]
+			[["_rows",[],[[]]],["_selection",[],[[],false]],["_height",1,[0]],["_returnData",[],[[]]]]
 		};
 
 		_valueData params _paramsArray;
@@ -205,8 +205,17 @@ switch _type do {
 			} forEach _columns;
 		} forEach _rows;
 		
-		_selection = _selection apply {
-			if !(_selection isEqualType 0) then {_returnData find _x} else {_x}
+		if (_selection isEqualType []) then {
+			_selection = _selection apply {
+				if !(_selection isEqualType 0) then {_returnData find _x} else {_x}
+			};
+		} else {
+			if (_selection) then {
+				_selection = [];
+				{_selection pushBack _forEachIndex} forEach _rows;
+			} else {
+				_selection = [];
+			};
 		};
 
 		_ctrl setVariable [QGVAR(selection),_selection];

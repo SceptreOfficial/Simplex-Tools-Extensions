@@ -34,7 +34,6 @@ _ctrl setVariable [QGVAR(areaData),_areaData];
 _ctrl setVariable [QGVAR(lineData),_lineData];
 _ctrl setVariable [QGVAR(mode),_mode];
 _ctrl setVariable [QGVAR(modeCache),[_points,_area,_path]];
-_ctrl setVariable [QGVAR(markers),_markers];
 _ctrl setVariable [QGVAR(multiPoint),false];
 _ctrl setVariable [QGVAR(areaSpecial),false];
 _ctrl setVariable [QGVAR(areaSpecialMoving),{}];
@@ -50,8 +49,7 @@ _controls pushBack _ctrl;
 
 	if (_button != 0) exitWith {};
 
-	private _pos = _ctrl ctrlMapScreenToWorld [_xPos,_yPos];
-	_pos set [2,0];
+	private _pos = _ctrl posScreenToWorld [_xPos,_yPos];
 
 	_ctrl setVariable [QGVAR(start),_pos];
 	_ctrl setVariable [QGVAR(down),true];
@@ -93,7 +91,7 @@ _controls pushBack _ctrl;
 	private _pos = _ctrl getVariable QGVAR(start);
 	_pos set [2,0];
 	private _value = _ctrl getVariable QGVAR(value);
-	private _markers = _ctrl getVariable QGVAR(markers);
+	private _markers = _ctrl getVariable [QGVAR(markers),[]];
 
 	if (_ctrl getVariable QGVAR(ctrlDown) && _ctrl getVariable QGVAR(multiPoint)) then {
 		_value pushBack _pos;
@@ -131,16 +129,15 @@ _controls pushBack _ctrl;
 
 	if (_ctrl getVariable QGVAR(mode) != 1) exitWith {};
 
-	private _current = _ctrl ctrlMapScreenToWorld getMousePosition;
-	_current set [2,0];
-	private _markers = _ctrl getVariable QGVAR(markers);
+	private _current = _ctrl posScreenToWorld getMousePosition;
+	private _markers = _ctrl getVariable [QGVAR(markers),[]];
 	private _marker = _markers # 0;
 
 	if (_current inArea _marker) then {
 		if (_ctrl getVariable QGVAR(areaSpecial)) then {
-			_ctrl ctrlSetTooltip format [localize "STR_SDF_MapToolTipSpecial",_ctrl getVariable QGVAR(areaSpecialTip)];
+			_ctrl ctrlSetTooltip format [LLSTRING(mapTooltipSpecial),_ctrl getVariable QGVAR(areaSpecialTip)];
 		} else {
-			_ctrl ctrlSetTooltip localize "STR_SDF_MapToolTip";
+			_ctrl ctrlSetTooltip LLSTRING(mapTooltip);
 		};
 	} else {
 		_ctrl ctrlSetTooltip "";
@@ -236,9 +233,8 @@ _controls pushBack _ctrl;
 	_ctrl setVariable [QGVAR(lineBuffer),CBA_missionTime + 0.05];
 
 	private _value = _ctrl getVariable QGVAR(value);
-	private _markers = _ctrl getVariable QGVAR(markers);
-	private _current = _ctrl ctrlMapScreenToWorld getMousePosition;
-	_current set [2,0];
+	private _markers = _ctrl getVariable [QGVAR(markers),[]];
+	private _current = _ctrl posScreenToWorld getMousePosition;
 
 	_value pushBack _current;
 
@@ -256,7 +252,7 @@ _controls pushBack _ctrl;
 // Deleting temp marker when control deletion
 [_ctrl,"Destroy",{
 	params ["_ctrl"];
-	{deleteMarkerLocal _x} forEach (_ctrl getVariable QGVAR(markers));
+	{deleteMarkerLocal _x} forEach (_ctrl getVariable [QGVAR(markers),[]]);
 }] call CBA_fnc_addBISEventHandler;
 
 // Handle focus between map and control group since map isn't inside group

@@ -11,21 +11,21 @@
 #define GD_W(N) GRID_W(N * 1.5)
 #define GD_H(N) GRID_H(N * 1.5)
 
-#define BUFFER_W GRID_W(0.2)
-#define BUFFER_H GRID_H(0.2)
+#define BUFFER_W GD_W(0.1)
+#define BUFFER_H GD_H(0.1)
 
 #define MAIN_X(N) ((safezoneXAbs + (safezoneWAbs / 2)) - (GD_W(N) / 2))
 #define MAIN_Y(N) ((safezoneY + (safezoneH / 2)) - (GD_H(N) / 2))
 
 #define TITLE_X(N) (MAIN_X(N) - BUFFER_W)
-#define TITLE_Y(N) (MAIN_Y(N) - (BUFFER_H * 0.5) - GD_H(1))
+#define TITLE_Y(N) (MAIN_Y(N) - GD_H(1) - BUFFER_H)
 #define TITLE_W(N) (GD_W(N) + (BUFFER_W * 2))
-#define TITLE_H (GD_H(1) - BUFFER_H)
+#define TITLE_H GD_H(1)
 
 #define BG_X(N) (MAIN_X(N) - BUFFER_W)
 #define BG_Y(N) (MAIN_Y(N) - BUFFER_H)
 #define BG_W(N) (GD_W(N) + (BUFFER_W * 2))
-#define BG_H(N) (GD_H(N) + (BUFFER_H * 3.5))
+#define BG_H(N) (GD_H(N) + (BUFFER_H * 2))
 
 #define GROUP_X(N) MAIN_X(N)
 #define GROUP_Y(N) MAIN_Y(N)

@@ -11,7 +11,7 @@ if (isNull _display) exitWith {};
 private _ctrlMessage = _display displayCtrl IDC_RSCDISPLAYCURATOR_FEEDBACKMESSAGE;
 
 playSound _sound;
-_ctrlMessage ctrlSetText _message;
+_ctrlMessage ctrlSetText toUpper _message;
 _ctrlMessage ctrlSetFade 0;
 _ctrlMessage ctrlCommit 0;
 

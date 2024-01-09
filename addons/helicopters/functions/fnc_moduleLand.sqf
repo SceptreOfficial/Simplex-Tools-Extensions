@@ -10,7 +10,7 @@ if (!local _logic) exitWith {};
 	private _vehicle = attachedTo _logic;
 	deleteVehicle _logic;
 
-	if (!alive _vehicle || !(_vehicle isKindOf "Helicopter")) exitWith {
+	if (!alive _vehicle || !(_vehicle isKindOf "Helicopter" || _vehicle isKindOf "VTOL_Base_F")) exitWith {
 		"NO HELICOPTER SELECTED" call EFUNC(common,zeusMessage);
 	};
 

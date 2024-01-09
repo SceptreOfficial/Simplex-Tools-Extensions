@@ -9,7 +9,7 @@ if (_ctrlMap isEqualType 0) then {
 
 private _value = _ctrlMap getVariable QGVAR(value);
 private _modeCache = _ctrlMap getVariable QGVAR(modeCache);
-private _markers = _ctrlMap getVariable QGVAR(markers);
+private _markers = _ctrlMap getVariable [QGVAR(markers),[]];
 
 _modeCache set [_ctrlMap getVariable QGVAR(mode),+_value];
 _ctrlMap setVariable [QGVAR(mode),_mode];

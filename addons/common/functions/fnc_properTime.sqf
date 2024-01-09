@@ -26,10 +26,10 @@ private _description = [];
 {
 	if (_x != 0) then {
 		switch _forEachIndex do {
-			case 0 : {_description pushBack format [[LLSTRING(day),LLSTRING(dayPlural)] select (_x > 1),_x]};
-			case 1 : {_description pushBack format [[LLSTRING(hour),LLSTRING(hourPlural)] select (_x > 1),_x]};
-			case 2 : {_description pushBack format [[LLSTRING(minute),LLSTRING(minutePlural)] select (_x > 1),_x]};
-			case 3 : {_description pushBack format [[LLSTRING(second),LLSTRING(secondPlural)] select (_x > 1),_x]};
+			case 0 : {_description pushBack format ["%1 %2",_x,[LLSTRING(Day),LLSTRING(DayPlural)] select (_x > 1)]};
+			case 1 : {_description pushBack format ["%1 %2",_x,[LLSTRING(Hour),LLSTRING(HourPlural)] select (_x > 1)]};
+			case 2 : {_description pushBack format ["%1 %2",_x,[LLSTRING(Minute),LLSTRING(MinutePlural)] select (_x > 1)]};
+			case 3 : {_description pushBack format ["%1 %2",_x,[LLSTRING(Second),LLSTRING(SecondPlural)] select (_x > 1)]};
 		};
 	};
 } forEach [floor (_minutes / 60 / 24),floor (_minutes / 60) % 24,_minutes % 60,_time % 60];

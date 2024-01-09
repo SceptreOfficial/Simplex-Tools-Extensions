@@ -1,7 +1,7 @@
 #include "script_component.hpp"
 
 disableSerialization;
-params [["_ctrl",0,[0,controlNull]],["_tip",localize "STR_SDF_Special",[""]],["_shiftMovingCode",{},[{}]],["_shiftDownCode",{},[{}]]];
+params [["_ctrl",0,[0,controlNull]],["_tip",LLSTRING(special),[""]],["_shiftMovingCode",{},[{}]],["_shiftDownCode",{},[{}]]];
 
 if (_ctrl isEqualType 0) then {
 	_ctrl = (uiNamespace getVariable QGVAR(controls)) # _ctrl;

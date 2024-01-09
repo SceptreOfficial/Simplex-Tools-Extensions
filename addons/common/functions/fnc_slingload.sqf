@@ -11,11 +11,15 @@ params [
 
 {ropeDestroy _x} forEach (_vehicle getVariable [QGVAR(slingloadRopes),[]]);
 
-if !([_vehicle,_cargo,_massOverride] call FUNC(canSlingLoad)) exitWith {false};
+if !([_vehicle,_cargo,_massOverride] call FUNC(canSlingLoad)) exitWith {
+	_vehicle setVariable [QGVAR(slingloadCargo),nil,true];
+	false
+};
 
 // Run locally
 if (!local _vehicle) exitWith {
 	[QGVAR(execute),[_this,QFUNC(slingload)],_vehicle] call CBA_fnc_targetEvent;
+	false
 };
 
 private _maxMass = getNumber (configOf _vehicle >> "slingLoadMaxCargoMass") max 1;
@@ -83,6 +87,7 @@ private _cargoHeight = abs (_cargoBoundingMin # 2 - _cargoBoundingMax # 2);
 private _targetHeight = (_centerOfMass # 2 + _cargoHeight * 0.2) min (_cargoBoundingMax # 2);
 
 if (_moveCargo) then {
+	_cargo setDir getDirVisual _vehicle;
 	_cargo setPosWorld (_vehicle modelToWorldVisualWorld (_source vectorAdd [0,0,-12 - _targetHeight]));
 };
 
@@ -113,6 +118,11 @@ _vehicle setVariable [QGVAR(slingloadRopeLength),_length,true];
 _vehicle setVariable [QGVAR(slingloadRopes),_ropes,true];
 _vehicle setVariable [QGVAR(slingloadCargo),_cargo,true];
 
+if (_moveCargo) then {
+	_cargo setVelocity velocity _vehicle;
+	{{_x setVelocity velocity _vehicle} forEach (ropeSegments _x)} forEach _ropes;
+};
+
 [QGVAR(execute),[[_vehicle,_cargo],{
 	params ["_vehicle","_cargo"];
 
@@ -121,6 +131,11 @@ _vehicle setVariable [QGVAR(slingloadCargo),_cargo,true];
 
 		if (_object == _thisArgs) then {
 			_vehicle removeEventHandler [_thisType,_thisID];
+
+			if (_vehicle getVariable [QGVAR(frameDrop),false]) exitWith {
+				[{_this setVariable [QGVAR(frameDrop),nil,true]},_vehicle] call CBA_fnc_execNextFrame;
+			};
+
 			_vehicle setVariable [QGVAR(slingloadCargo),nil,true];
 		};
 	},_cargo] call CBA_fnc_addBISEventHandler;

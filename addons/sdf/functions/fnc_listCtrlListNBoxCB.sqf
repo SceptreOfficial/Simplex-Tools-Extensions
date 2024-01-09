@@ -1,6 +1,6 @@
 #include "script_component.hpp"
 
-_valueData params [["_rows",[],[[]]],["_selection",[],[[]]],["_height",1,[0]],["_returnData",[],[[]]]];
+_valueData params [["_rows",[],[[]]],["_selection",[],[[],false]],["_height",1,[0]],["_returnData",[],[[]]]];
 _height = ITEM_H * ((round _height) max 1);
 
 private _ctrlDescription = _display ctrlCreate [QGVAR(Text),-1,_ctrlGroup];
@@ -56,8 +56,17 @@ private _columnsCount = 3;
 	} forEach _columns;
 } forEach _rows;
 
-_selection = _selection apply {
-	if !(_selection isEqualType 0) then {_returnData find _x} else {_x}
+if (_selection isEqualType []) then {
+	_selection = _selection apply {
+		if !(_selection isEqualType 0) then {_returnData find _x} else {_x}
+	};
+} else {
+	if (_selection) then {
+		_selection = [];
+		{_selection pushBack _forEachIndex} forEach _rows;
+	} else {
+		_selection = [];
+	};
 };
 
 {

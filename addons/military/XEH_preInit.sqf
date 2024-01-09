@@ -55,7 +55,7 @@ GVAR(occupationPresets) = profileNamespace getVariable [QGVAR(occupationPresets)
 		
 		[{
 			if ({alive _x} count units _this isEqualTo 0) exitWith {};
-			CHAT_WARNING_1("%1: Waypoint deleted. Resetting group.",_this);
+			LOG_WARNING_1("%1: Waypoint deleted. Resetting group.",_this);
 		},_group] call CBA_fnc_execNextFrame;
 	}] call CBA_fnc_addBISEventHandler;
 }] call CBA_fnc_addClassEventHandler;

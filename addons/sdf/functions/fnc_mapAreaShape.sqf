@@ -10,7 +10,7 @@ if (_ctrl isEqualType 0) then {
 if (_ctrl getVariable QGVAR(mode) != 1) exitWith {};
 
 private _value = _ctrl getVariable QGVAR(value);
-private _markers = _ctrl getVariable QGVAR(markers);
+private _markers = _ctrl getVariable [QGVAR(markers),[]];
 
 _value set [4,_isRectangle];
 _ctrl setVariable [QGVAR(value),_value];

@@ -15,7 +15,10 @@ if (_format isEqualTo 0) then {
 	_type = toUpper _type;
 
 	_description params [["_descriptionText","",[""]],["_descriptionTooltip","",[""]]];
+	if (isLocalized _descriptionText) then {_descriptionText = localize _descriptionText};
+	if (isLocalized _descriptionTooltip) then {_descriptionTooltip = localize _descriptionTooltip};
 	_description = [_descriptionText,_descriptionTooltip];
+
 
 	if (_enableCondition isEqualType true) then {
 		_enableCondition = [{false},{true}] select _enableCondition;
@@ -62,6 +65,8 @@ if (_format isEqualTo 0) then {
 	];
 
 	_description params [["_descriptionText","",[""]],["_descriptionTooltip","",[""]]];
+	if (isLocalized _descriptionText) then {_descriptionText = localize _descriptionText};
+	if (isLocalized _descriptionTooltip) then {_descriptionTooltip = localize _descriptionTooltip};
 	_description = [_descriptionText,_descriptionTooltip];
 
 	if (_enableCondition isEqualType true) then {

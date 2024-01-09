@@ -1,5 +1,3 @@
-#include "script_component.hpp"
-
 class RscText;
 class RscCheckbox;
 class RscEdit;
@@ -46,6 +44,7 @@ class GVAR(Checkbox) : RscCheckbox {
 	h = QUOTE(CHECKBOX_H);
 	color[] = {1,1,1,1};
 	colorDisabled[] = {COLOR_DISABLED};
+	style = "0x02 + 0x30 + 0x800";
 };
 
 class GVAR(Editbox) : RscEdit {
@@ -142,7 +141,7 @@ class GVAR(ListNBox) : RscListNBox {
 	sizeEx = QUOTE(GRID_H(1));
 	disableOverflow = 0;
 	tooltipPerColumn = 1;
-	class ListScrollBar : ScrollBar {
+	class ListScrollBar : Scrollbar {
 		color[] = {1,1,1,1};
 	};
 };
@@ -168,6 +167,14 @@ class GVAR(Toolbox): ctrlToolbox {
 	//colorSelectedBg[] = {QGVAR(toolboxSelectedBG_R),QGVAR(toolboxSelectedBG_G),QGVAR(toolboxSelectedBG_B),1};
 	rows = QGVAR(toolboxRows);
 	columns = QGVAR(toolboxColumns);
+};
+
+class GVAR(ToolboxLoiter): GVAR(Toolbox) {
+	style = "0x02 + 0x30 + 0x800";
+	columns = 2;
+	rows = 1;
+	strings[] = {"\A3\3DEN\Data\Attributes\LoiterDirection\cw_ca.paa","\A3\3DEN\Data\Attributes\LoiterDirection\ccw_ca.paa"};
+	values[] = {0,1};
 };
 
 class GVAR(ButtonSimple) : RscButton {
@@ -263,7 +270,7 @@ class GVAR(Tree) : RscTree {
 	colorDisabled[] = {COLOR_DISABLED};
 	idcSearch = -1;
 	colorBorder[] = {0.7,0.7,0.7,1};
-	colorSearch[] =	{1,1,1,0};
+	colorSearch[] =	{1,1,1,1};
 	rowHeight = QUOTE(GRID_H(0.));
 	borderSize = 1;
 };
@@ -330,13 +337,13 @@ class GVAR(Dialog_Zeus) : GVAR(ControlsGroupNoScrollbars) {
 				class Cancel : GVAR(ButtonSimple) {
 					idc = 4;
 					onButtonClick = QUOTE([ARR_2(uiNamespace getVariable QQGVAR(onCancel),false)] call FUNC(close));
-					text = "$STR_SDF_CANCEL";
+					text = CSTRING(cancel);
 					font = "PuristaMedium";
 				};
 				class Confirm : GVAR(ButtonSimple) {
 					idc = 5;
 					onButtonClick = QUOTE([ARR_2(uiNamespace getVariable QQGVAR(onConfirm),true)] call FUNC(close));
-					text = "$STR_SDF_CONFIRM";
+					text = CSTRING(confirm);
 					font = "PuristaMedium";
 				};
 			};
@@ -370,13 +377,13 @@ class GVAR(Dialog) {
 		class Cancel : GVAR(ButtonSimple) {
 			idc = 4;
 			onButtonClick = QUOTE([ARR_2(uiNamespace getVariable QQGVAR(onCancel),false)] call FUNC(close));
-			text = "$STR_SDF_CANCEL";
+			text = CSTRING(cancel);
 			font = "PuristaMedium";
 		};
 		class Confirm : GVAR(ButtonSimple) {
 			idc = 5;
 			onButtonClick = QUOTE([ARR_2(uiNamespace getVariable QQGVAR(onConfirm),true)] call FUNC(close));
-			text = "$STR_SDF_CONFIRM";
+			text = CSTRING(confirm);
 			font = "PuristaMedium";
 		};
 	};
@@ -424,12 +431,12 @@ class GVAR(CustomDialog) {
 		};
 		class Cancel : GVAR(ButtonSimple) {
 			idc = 4;
-			text = "$STR_SDF_CANCEL";
+			text = CSTRING(cancel);
 			font = "PuristaMedium";
 		};
 		class Confirm : GVAR(ButtonSimple) {
 			idc = 5;
-			text = "$STR_SDF_CONFIRM";
+			text = CSTRING(confirm);
 			font = "PuristaMedium";
 		};
 	};

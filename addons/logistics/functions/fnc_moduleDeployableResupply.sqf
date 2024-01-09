@@ -9,7 +9,7 @@ if (!local _logic) exitWith {};
 	
 	if (isNull findDisplay IDD_RSCDISPLAYCURATOR) then {
 		if (_synced isEqualTo []) exitWith {
-			ALERT("No objects synced");
+			LOG_WARNING("No objects synced");
 		};
 
 		private _arguments = [
@@ -41,18 +41,18 @@ if (!local _logic) exitWith {};
 		[LLSTRING(moduleDeployableResupplyName),[
 			["CHECKBOX",[LLSTRING(MunitionDefaultsOnlyName),LLSTRING(MunitionDefaultsOnlyInfo)],false,false],
 			["CHECKBOX",[LLSTRING(MedicalDefaultsOnlyName),LLSTRING(MedicalDefaultsOnlyInfo)],true,false],
-			["SLIDER",LLSTRING(MagazineCountName),[[0,100,0],20],false],
-			["CHECKBOX",[LLSTRING(MagazinesMultiplyName),LLSTRING(countMultiply)],false,false],
-			["SLIDER",LLSTRING(UnderbarrelCountName),[[0,100,0],10],false],
-			["CHECKBOX",[LLSTRING(UnderbarrelMultiplyName),LLSTRING(countMultiply)],false,false],
-			["SLIDER",LLSTRING(RocketCountName),[[0,100,0],10],false],
-			["CHECKBOX",[LLSTRING(RocketMultiplyName),LLSTRING(countMultiply)],false,false],
-			["SLIDER",LLSTRING(ThrowableCountName),[[0,100,0],10],false],
-			["CHECKBOX",[LLSTRING(ThrowableMultiplyName),LLSTRING(countMultiply)],false,false],
-			["SLIDER",LLSTRING(PlaceableCountName),[[0,100,0],10],false],
-			["CHECKBOX",[LLSTRING(PlaceableMultiplyName),LLSTRING(countMultiply)],false,false],
-			["SLIDER",LLSTRING(MedicalCountName),[[0,100,0],20],false],
-			["CHECKBOX",[LLSTRING(MedicalMultiplyName),LLSTRING(countMultiply)],false,false]
+			["SLIDER",LLSTRING(MagazineCountName),[[0,100,0],missionNamespace getVariable [QGVAR(autoFillMagazineCount),20]],false],
+			["CHECKBOX",[LLSTRING(MagazinesMultiplyName),LLSTRING(countMultiply)],missionNamespace getVariable [QGVAR(autoFillMagazineMultiply),false],false],
+			["SLIDER",LLSTRING(UnderbarrelCountName),[[0,100,0],missionNamespace getVariable [QGVAR(autoFillUnderbarrelCount),10]],false],
+			["CHECKBOX",[LLSTRING(UnderbarrelMultiplyName),LLSTRING(countMultiply)],missionNamespace getVariable [QGVAR(autoFillUnderbarrelMultiply),false],false],
+			["SLIDER",LLSTRING(RocketCountName),[[0,100,0],missionNamespace getVariable [QGVAR(autoFillRocketCount),10]],false],
+			["CHECKBOX",[LLSTRING(RocketMultiplyName),LLSTRING(countMultiply)],missionNamespace getVariable [QGVAR(autoFillRocketMultiply),false],false],
+			["SLIDER",LLSTRING(ThrowableCountName),[[0,100,0],missionNamespace getVariable [QGVAR(autoFillThrowableCount),10]],false],
+			["CHECKBOX",[LLSTRING(ThrowableMultiplyName),LLSTRING(countMultiply)],missionNamespace getVariable [QGVAR(autoFillThrowableMultiply),false],false],
+			["SLIDER",LLSTRING(PlaceableCountName),[[0,100,0],missionNamespace getVariable [QGVAR(autoFillPlaceableCount),10]],false],
+			["CHECKBOX",[LLSTRING(PlaceableMultiplyName),LLSTRING(countMultiply)],missionNamespace getVariable [QGVAR(autoFillPlaceableMultiply),false],false],
+			["SLIDER",LLSTRING(MedicalCountName),[[0,100,0],missionNamespace getVariable [QGVAR(autoFillMedicalCount),20]],false],
+			["CHECKBOX",[LLSTRING(MedicalMultiplyName),LLSTRING(countMultiply)],missionNamespace getVariable [QGVAR(autoFillMedicalMultiply),false],false]
 		],{
 			params ["_values","_object"];
 			_values params [

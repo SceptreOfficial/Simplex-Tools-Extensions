@@ -1,99 +1,100 @@
 #include "script_component.hpp"
+#define INDEX_FIRE_START 15
+#define INDEX_REL_VEL 12
+#define INDEX_ROTATIONS 17
+#define INDEX_PATH 18
 
-// Called via fnc_strafeSim scope
-//private _perf = diag_tickTime;
-_ammoData params ["_initSpeed","_airFriction","_timeToLive","_simulationStep"];
-_speedLimits params ["_minSpeed","_maxSpeed"];
+_ammoData # _weaponIndex params ["_initSpeed","_airFriction","_timeToLive","_simStep","_simulation","_canLock","_sensorLock","_airLock","_laserLock"];
 _relVel params ["_xRelVel","_yRelVel","_zRelVel"];
-_rotations  params ["_dir","_pitch","_bank"];
+_rotations params ["_dir","_pitch","_bank"];
 
+private _rate = 8;
+private _G = GRAVITY;
 private _pos = _lastPos;
 private _velPos = _pos vectorAdd (_lastVelocity vectorMultiply 0.5);
-
-_yRelVel = _minSpeed max (_yRelVel * 0.999) min _maxSpeed;
 private _ammoSpeed = _yRelVel + _initSpeed;
-private _rate = 6;
-private _G = 9.8;
+private _targetASL = [_velPos,_target,_ammoSpeed] call FUNC(getTargetPos);
 
-private _targetASL = if (_target isEqualType objNull) then {
-	private _targetASL = getPosASL _target;
-	private _distance = _velPos distance2D _targetASL;
-	private _pitch = (_ammoSpeed^2 - sqrt (_ammoSpeed^4 - _G * (_G * _distance^2 + 2 * (_targetASL # 2 - _velPos # 2) * _ammoSpeed^2))) atan2 (_G * _distance);
-	private _ETA = ((_ammoSpeed * sin _pitch) + sqrt ((_ammoSpeed * sin _pitch) ^ 2 - 2 * _G * (_targetASL # 2 - _velPos # 2))) / _G;
-	if (!finite _ETA) then {_ETA = 0};
-	private _estPos = _targetASL vectorAdd (velocity _target vectorMultiply _ETA * linearConversion [1200,100,_ammoSpeed,2,6,true]);
+// Abort height
+if ((_pos vectorAdd (_lastVelocity vectorMultiply 2)) # 2 < _abortHeight + getTerrainHeightASL _velPos) exitWith {_abort = true};
 
-	[_estPos # 0,_estPos # 1,getTerrainHeightASL _estPos]
-} else {_target};
-
-_targetASL set [2,_targetASL # 2 max getTerrainHeightASL _targetASL];
-
-//_pos # 2 < 50 + _targetASL # 2 ||
-if (_pos # 2 < ([150,50] select (_vehicle isKindOf "Helicopter")) + getTerrainHeightASL _pos) exitWith {_abort = true};
-
-private _strafeDir = _pos getDir _targetASL;
-private _strafeStart = _targetASL getPos [-_spread/2,_strafeDir];
+// Update linear spread
+private _strafeDir = _velPos getDir _targetASL;
+private _strafeStart = _targetASL getPos [-_spread,_strafeDir];
 _strafeStart set [2,_targetASL # 2];
 
 if (_fireStart > 0) then {
-	_targetASL = _strafeStart getPos [0 max (_spread * ((CBA_missionTime - _fireStart + 0.8) / _duration)) min _spread,_strafeDir];
+	_targetASL = _strafeStart getPos [0 max (_spread * 2 * ((CBA_missionTime - _fireStart + 1) / (_durations param [_weaponIndex,1]))) min (_spread * 2),_strafeDir];
 	_targetASL set [2,_strafeStart # 2];
+
+	private _dummy = _vehicle getVariable [QGVAR(targetDummy),objNull];
+
+	if (isNull _dummy) then {
+		if (_laserLock) then {
+			_dummy = (["LaserTargetE","LaserTargetW"] select ([side group _vehicle,west] call BIS_fnc_sideIsFriendly)) createVehicle [0,0,0];
+		} else {
+			_dummy = (createGroup [sideLogic,true]) createUnit ["Logic",[0,0,0],[],0,"CAN_COLLIDE"];
+		};
+
+		_vehicle setVariable [QGVAR(targetDummy),_dummy];
+
+		if (_target isEqualType objNull) then {
+			_dummy attachTo [_target,[0,0,0.1]];
+		};
+	};
+
+	if (_target isEqualType []) then {
+		_dummy setPosASL _targetASL;
+	};
 } else {
 	_targetASL = _strafeStart;
 };
+
+//private _helper = "Sign_Arrow_F" createVehicle [0,0,0]; _helper setPosASL _targetASL;
 
 private _dirDiff = (_strafeDir - _dir) call CBA_fnc_simplifyAngle;
 _dirDiff = [_dirDiff,_dirDiff - 360] select (_dirDiff > 180);
 _dir = _dir + (-_rate max _dirDiff min _rate);
 
+// Abort if turned around
+//if (abs _dirDiff > 90) exitWith {_abort = true};
+
 private _bankDiff = (-80 max (_dirDiff * 3) min 80) - _bank;
 _bank = _bank + (-_rate max _bankDiff min _rate);
 
+private _distance = _velPos distance2D _targetASL;
 private "_pitchDiff";
 
-if (_pos distance2D _targetASL > ((_ammoSpeed * sqrt (2 * _G * (_pos # 2 - _targetASL # 2)) / _G) * 0.9) min _minRange) then {
+// If out of range keep flying ahead, otherwise aim at the target
+if (_distance > (0.9 * (_ammoSpeed * sqrt (2 * _G * (_velPos # 2 - _targetASL # 2)) / _G)) min _aimRange) then {
 	_pitchDiff = -1 - _pitch;
 	_pitch = _pitch + (-_rate max _pitchDiff min _rate);
 } else {
-	private _distance = _velPos distance2D _targetASL;
-	private _targetZ = _targetASL # 2;
-	private _angle = (_ammoSpeed^2 - sqrt (_ammoSpeed^4 - _G * (_G * _distance^2 + 2 * (_targetZ - _velPos # 2) * _ammoSpeed^2))) atan2 (_G * _distance);
-	if (!finite _angle) then {_angle = asin ((_velPos vectorFromTo _targetASL) # 2)};
+	private _elevOffset = _elevOffsets param [_weaponIndex,0];
 
-	_pitchDiff = if (_initSpeed > 0) then {
-		private _mVel = [[0,_ammoSpeed,0],[0,0,0]];
-		private _mBank = [[1,0,0],[0,1,0],[0,0,1]];
-		private _mDir = [[cos -_dir,sin -_dir,0],[-sin -_dir,cos -_dir,0],[0,0,1]];
-		private _GV = [0,0,-_G];
-		private ["_velocity","_simPos"];
-		
-		while {
-			_angle = _angle + 0.5;
-			_simPos = _velPos;
-			_velocity = (_mVel matrixMultiply _mBank matrixMultiply [[1,0,0],[0,cos _angle,sin _angle],[0,-sin _angle,cos _angle]] matrixMultiply _mDir) # 0;
+	_pitchDiff = if (_initSpeed <= 0 || (_canLock && (_sensorLock || _airLock))) then {
+		private _elevation = (_ammoSpeed^2 - sqrt (_ammoSpeed^4 - _G * (_G * _distance^2 + 2 * (_targetASL # 2 - _velPos # 2) * _ammoSpeed^2))) atan2 (_G * _distance);
+		if (!finite _elevation) then {_elevation = asin ((_velPos vectorFromTo _targetASL) # 2)};
 
-			for "_i" from 0 to (_timeToLive + 1) step _simulationStep do {
-				_velocity = _velocity vectorMultiply vectorMagnitude _velocity vectorMultiply _airFriction vectorAdd _GV vectorMultiply _simulationStep vectorAdd _velocity;
-				_simPos = _velocity vectorMultiply _simulationStep vectorAdd _simPos;
-				if (_simPos # 2 <= _targetZ) exitWith {};
-			};
-
-			_angle < 0 && abs ((_simPos getDir _targetASL) - _dir) < 30	
-		} do {};
-		
-		(_angle - 0.4) - _pitch
+		_elevOffset + _elevation - _pitch
 	} else {
-		_angle - _pitch
+		private _aim = [[_ammoSpeed,_airFriction,_timeToLive,_simStep,_simulation],_velPos,[0,0,0],_targetASL,linearConversion [6000,2500,_distance,7,3.5,true]] call FUNC(getAimSim);
+		_aim = [_aim,(_aim # 0) atan2 (_aim # 1)] call FUNC(rotateVector2D);
+
+		_elevOffset + ((_aim # 2) atan2 (_aim # 1)) - _pitch
 	};
 
 	_pitch = _pitch + (-_rate max _pitchDiff min _rate);
 
 	if (abs _dirDiff < 2 && abs _pitchDiff < 2 && _fireStart == 0) then {
-		_thisArgs set [15,CBA_missionTime + 3];
+		_thisArgs set [INDEX_FIRE_START,CBA_missionTime + 3.2];
+		[QGVAR(strafeFireReady),[_vehicle,CBA_missionTime + 3.2]] call CBA_fnc_localEvent;
+
+		_vehicle lockCameraTo [_vehicle getVariable [QGVAR(targetDummy),objNull],_turrets param [_weaponIndex,[]],false];
 	};
 };
 
-if (_pitch < -80) exitWith {_abort = true};
+if (_pitch < -89) exitWith {_abort = true};
 
 _rate = 0.2;
 
@@ -103,9 +104,9 @@ _relVel = [
 	_zRelVel * 0.95 - ((abs _bankDiff / 2) min _rate) + (-_rate max _pitchDiff min _rate)
 ];
 
-_thisArgs set [12,_relVel];
-_thisArgs set [17,[_dir,_pitch,_bank]];
-_thisArgs set [11,[[
+_thisArgs set [INDEX_REL_VEL,_relVel];
+_thisArgs set [INDEX_ROTATIONS,[_dir,_pitch,_bank]];
+_thisArgs set [INDEX_PATH,[[
 	_pos,
 	_velPos,
 	_pos vectorAdd ([_relVel,_dir,_pitch,_bank] call FUNC(modelToWorld))
@@ -115,8 +116,6 @@ _thisArgs set [11,[[
 ],[
 	vectorUp _vehicle,
 	[[sin _bank,0,cos _bank],-_dir] call FUNC(rotateVector2D)
-],_tick]];
+],_lastTime]];
 
-_vehicle setVariable [QGVAR(strafeRelVel),_relVel];
-
-//systemChat str (ceil ((diag_tickTime - _perf) * 1000));
+_vehicle setVariable [QGVAR(relativeVelocity),_relVel];

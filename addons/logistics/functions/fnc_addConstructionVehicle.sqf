@@ -19,9 +19,7 @@ params [["_vehicle",objNull,[objNull]],["_maxBudget",1000,[0]],["_inventory",[],
 		};
 
 		if (_buildTime < 0) then {
-			private _dummy = _class createVehicleLocal [0,0,0];
-			_buildTime = sizeOf _class * 2;
-			deleteVehicle _dummy;
+			_buildTime = 2 * (_class call EFUNC(common,sizeOf));
 		};
 		
 		[_class,_name,_cost,_buildTime,_initFnc]

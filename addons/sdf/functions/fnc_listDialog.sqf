@@ -138,7 +138,7 @@ GVAR(keyDownEHID) = [_display,"KeyDown",{
 
 	if (_key in [DIK_LSHIFT,DIK_RSHIFT]) then {GVAR(shiftKey) = true};
 	if (_key in [DIK_UP,DIK_DOWN,DIK_LEFT,DIK_RIGHT]) exitWith {false};
-	if (_key == DIK_ESCAPE) then {[uiNamespace getVariable (onCancel),false] call FUNC(close)};
+	if (_key == DIK_ESCAPE) then {[uiNamespace getVariable QGVAR(onCancel),false] call FUNC(close)};
 	if (!isNull findDisplay IDD_RSCDISPLAYCURATOR && visibleMap) exitWith {
 		private _ctrl = uiNamespace getVariable [QGVAR(editFocus),controlNull];
 

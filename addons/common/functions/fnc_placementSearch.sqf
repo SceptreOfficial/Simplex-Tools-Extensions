@@ -5,9 +5,7 @@
 #define TOLERATION_ANGLE 20
 #define SURFACE_SIZE_COEF 0.6
 
-if (canSuspend) exitWith {
-	[FUNC(getSafePosAndUp),_this] call CBA_fnc_directCall;
-};
+if (canSuspend) exitWith {[FUNC(placementSearch),_this] call CBA_fnc_directCall};
 
 params [
 	["_object",objNull,[objNull,""]],
@@ -53,15 +51,15 @@ private _surfaceSize = _objectRadius * SURFACE_SIZE_COEF;
 private _surfaceChecks = [0,60,120,180,240,300];
 private _drop = [0,0,-(0 max _dropLimit max 10)];
 private _raise = [0,0,1];
+private ["_safe","_searchPos","_ix","_surfPos","_angle","_center"];
 
-//private _dt = diag_tickTime;
 while {
 	scopeName "search";
-	private _safe = true;
-	private _searchPos = _posASL vectorAdd [_searchRadius * cos _searchAngle,_searchRadius * sin _searchAngle,0];
+	_safe = true;
+	_searchPos = _posASL vectorAdd [_searchRadius * cos _searchAngle,_searchRadius * sin _searchAngle,0];
 	
 	if (_checkSurface) then {
-		private _ix = lineIntersectsSurfaces [_searchPos vectorAdd _raise,_searchPos vectorAdd _drop,objNull,objNull,true,1,"GEOM","FIRE"];
+		_ix = lineIntersectsSurfaces [_searchPos vectorAdd _raise,_searchPos vectorAdd _drop,objNull,objNull,true,1,"GEOM","FIRE"];
 
 		if (_ix isNotEqualTo [] && {acos ([0,0,1] vectorCos (_ix # 0 # 1)) < _maxSurfaceAngle}) then {
 			if (_ix # 0 # 0 # 2 - _searchPos # 2 > _dropLimit) exitWith {_safe = false};
@@ -70,8 +68,8 @@ while {
 			_searchPos = _ix # 0 # 0;
 
 			{
-				private _surfPos = _searchPos vectorAdd [_surfaceSize * cos _x,_surfaceSize * sin _x,0];
-				private _ix = lineIntersectsSurfaces [_surfPos vectorAdd _raise,_surfPos vectorAdd _drop,objNull,objNull,true,1,"GEOM","FIRE"];
+				_surfPos = _searchPos vectorAdd [_surfaceSize * cos _x,_surfaceSize * sin _x,0];
+				_ix = lineIntersectsSurfaces [_surfPos vectorAdd _raise,_surfPos vectorAdd _drop,objNull,objNull,true,1,"GEOM","FIRE"];
 
 				if (_ix isEqualTo [] || {
 					abs ((_ix # 0 # 0 # 2 - _searchPos # 2) atan2 _surfaceSize) > _maxSurfaceAngle	
@@ -83,11 +81,11 @@ while {
 	};
 	
 	if (_safe && {(ASLtoAGL _searchPos) nearEntities _objectRadius isEqualTo []}) then {
-		private _angle = 0;
+		_angle = 0;
 		
 		for "_height" from 0.05 to _objectHeight step 0.005 do {
-			private _center = _searchPos vectorAdd (_safeUp vectorMultiply _height);
-			private _ix = lineIntersectsSurfaces [_center,_center vectorAdd ([_objectRadius * cos _angle,_objectRadius * sin _angle,0] vectorCrossProduct _safeUp),objNull,objNull,true,1,"GEOM","FIRE"];
+			_center = _searchPos vectorAdd (_safeUp vectorMultiply _height);
+			_ix = lineIntersectsSurfaces [_center,_center vectorAdd ([_objectRadius * cos _angle,_objectRadius * sin _angle,0] vectorCrossProduct _safeUp),objNull,objNull,true,1,"GEOM","FIRE"];
 
 			//[{drawLine3D _this},{},[
 			//	ASLtoAGL (_center),
@@ -108,6 +106,7 @@ while {
 
 	if (_safe) exitWith {
 		_safePos = _searchPos vectorAdd (_safeUp vectorMultiply 0.1);
+		false
 	};
 
 	_searchAngle = _searchAngle + (RADIUS_ANGLE_COEF / _searchRadius);
@@ -119,10 +118,11 @@ while {
 
 	_searchRadius < _maxSearchRadius
 } do {};
-//systemChat str ["getSafePosAndUp ms",ceil ((diag_tickTime - _dt) * 1000)];
 
 if (_safePos isNotEqualTo []) then {
+	DEBUG("Placement search successful");
 	[_safePos,_safeUp]
 } else {
-	[[],[]]
+	DEBUG("Placement search failed");
+	[]
 };

@@ -1,8 +1,8 @@
 #define COMPONENT sdf
 #include "\z\stx\addons\main\script_mod.hpp"
 
-// #define DEBUG_MODE_FULL
-// #define DISABLE_COMPILE_CACHE
+//#define DEBUG_MODE_FULL
+//#define DISABLE_COMPILE_CACHE
 
 #ifdef DEBUG_ENABLED_SDF
 	#define DEBUG_MODE_FULL
@@ -12,8 +12,8 @@
 #endif
 
 #include "\z\stx\addons\main\script_macros.hpp"
-#include "\a3\ui_f\hpp\definedikcodes.inc"
 #include "\a3\ui_f_curator\ui\defineresincldesign.inc"
+#include "\a3\ui_f\hpp\definedikcodes.inc"
 #include "gui_macros.hpp"
 
 // Control types

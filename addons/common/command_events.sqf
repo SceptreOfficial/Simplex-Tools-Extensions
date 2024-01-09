@@ -29,3 +29,15 @@ if (isServer) then {
 	params ["_vehicle","_height"];
 	_vehicle flyInHeightASL [_height,_height,_height];
 }] call CBA_fnc_addEventHandler;
+
+[QGVAR(limitSpeed),{
+	params ["_object","_speed"];
+	
+	if (_speed <= 0) then {
+		_object limitSpeed 99999999;
+		_object forceSpeed -1;
+	} else {
+		_object limitSpeed _speed;
+		_object forceSpeed (_speed / 3.6);
+	};
+}] call CBA_fnc_addEventHandler;

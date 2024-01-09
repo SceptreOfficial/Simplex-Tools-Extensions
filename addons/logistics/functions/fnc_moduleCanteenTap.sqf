@@ -9,7 +9,7 @@ if (!local _logic) exitWith {};
 
 	if (isNull findDisplay IDD_RSCDISPLAYCURATOR) then {
 		if (_synced isEqualTo []) exitWith {
-			ALERT("No objects synced");
+			LOG_WARNING("No objects synced");
 		};
 
 		{_x call FUNC(addCanteenTap)} forEach _synced;

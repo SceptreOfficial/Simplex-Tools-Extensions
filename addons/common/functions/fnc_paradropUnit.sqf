@@ -7,20 +7,24 @@ params [
 ];
 
 if (!local _unit) exitWith {
-	[QGVAR(execute),[_this,QFUNC(paradropUnit)],_this] call CBA_fnc_targetEvent;
+	[QGVAR(execute),[_this,QFUNC(paradropUnit)],_unit] call CBA_fnc_targetEvent;
 };
 
 if (_parachuteClass isEqualTo "") then {
 	_parachuteClass = "B_Parachute";
 };
 
+if (_openAltitude <= 0) then {
+	_openAltitude = getPos _unit # 2 + 999;
+};
+
 _unit setVariable [QGVAR(paradropLoadout),getUnitLoadout _unit];
 removeBackpack _unit;
 
 if (isPlayer _unit) then {
-	_unit addBackpack "B_Parachute";
+	_unit addBackpack _parachuteClass;
 
-	if (GVAR(autoParachute)) then {
+	if (OPTION(autoParachute)) then {
 		[{
 			params ["_unit","_openAltitude"];
 			isNull _unit || getPos _unit # 2 <= _openAltitude
@@ -34,10 +38,10 @@ if (isPlayer _unit) then {
 		params ["_unit","_openAltitude"];
 		isNull _unit || getPos _unit # 2 <= _openAltitude
 	},{
-		params ["_unit"];
-		_unit addBackpack "B_Parachute";
+		params ["_unit","","_parachuteClass"];
+		_unit addBackpack _parachuteClass;
 		_unit action ["OpenParachute",_unit];
-	},[_unit,_openAltitude]] call CBA_fnc_waitUntilAndExecute;
+	},[_unit,_openAltitude,_parachuteClass]] call CBA_fnc_waitUntilAndExecute;
 };
 
 [{

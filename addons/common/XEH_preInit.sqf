@@ -98,4 +98,19 @@ if (isServer) then {
 	_vehicle setVariable [QPVAR(fastropeUnits),(_vehicle getVariable [QPVAR(fastropeUnits),[]]) - [_unit],true];
 }] call CBA_fnc_addEventHandler;
 
+// STRAFE
+#include "strafeElevationOffsets.sqf"
+
+[QGVAR(strafeFireReady),{
+	params ["_vehicle","_fireStart"];
+	if !(_vehicle getVariable [QGVAR(strafeCountermeasures),true]) exitWith {};
+	[_vehicle,1.5,0.1] call FUNC(fireCountermeasures);
+}] call CBA_fnc_addEventHandler;
+
+[QGVAR(strafeCleanup),{
+	params ["_vehicle","_completed"];
+	if (!_completed || !(_vehicle getVariable [QGVAR(strafeCountermeasures),true])) exitWith {};
+	[_vehicle,1.5,0.1] call FUNC(fireCountermeasures);
+}] call CBA_fnc_addEventHandler;
+
 ADDON = true;

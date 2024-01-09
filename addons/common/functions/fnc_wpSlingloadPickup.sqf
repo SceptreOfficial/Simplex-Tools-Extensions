@@ -25,7 +25,7 @@ waitUntil {
 
 	sleep 0.2;
 
-	!isTouchingGround _vehicle && _vehicle distance2D _wpPos < HELO_TAKEOVER_DISTANCE
+	!isTouchingGround _vehicle && _vehicle distance2D _wpPos < HELO_PILOT_DISTANCE
 };
 
 if (isNull _attachedObject) exitWith {true};

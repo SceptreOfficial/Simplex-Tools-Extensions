@@ -1,6 +1,6 @@
 #include "script_component.hpp"
 
-params ["_string",["_simple",true]];
+params [["_string",""],["_simple",true]];
 
 if (_string isEqualType []) exitWith {_string};
 if (_string isEqualTo "") exitWith {[]};
