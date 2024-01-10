@@ -1,17 +1,23 @@
 #include "script_component.hpp"
 /*
 	Example:
-
 	[[0,1,2,3],{systemChat str _this},[],1] call FUNC(iterate);
 */
 
-params [["_array",[],[[],0]],["_code",{},[{}]],["_args",[]],["_delay",1,[0]],["_delayBeforeExec",false,[false]],["_endCode",{},[{}]]];
+params [
+	["_array",[],[[],0]],
+	["_code",{},[{}]],
+	["_args",[]],
+	["_delay",1,[0]],
+	["_delayBeforeExec",false,[false]],
+	["_endCode",{},[{}]]
+];
 
 if (_array isEqualType 0) then {
 	private _int = -1;
 	private _newArray = [];
 	_newArray resize _array;
-	_array = _newArray apply {_init = _int + 1; _int};
+	_array = _newArray apply {_int = _int + 1; _int};
 };
 
 private _fnc_PFH = {
@@ -22,7 +28,7 @@ private _fnc_PFH = {
 		_iteratePFHID call CBA_fnc_removePerFrameHandler;
 	};
 
-	private _element = (_this # 0 # 0) deleteAt 0;
+	private _element = _array deleteAt 0;
 	_element call _thisCode;
 
 	if (_array isEqualTo []) then {

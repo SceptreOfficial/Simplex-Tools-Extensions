@@ -15,12 +15,12 @@ private _civ = GVAR(brainList) deleteAt 0;
 if (GVAR(brainList) isEqualTo []) then {
 	GVAR(brainTick) = CBA_missionTime + 10;
 } else {
-	GVAR(brainTick) = CBA_missionTime + 0.5;
+	GVAR(brainTick) = CBA_missionTime + 0.2;
 };
 
-if (!alive _civ || !unitReady _civ ||
+if (!alive _civ ||
 	{_civ getVariable [QGVAR(panicking),false]} ||
-	{_civ getVariable [QGVAR(moveTick),-1] > CBA_missionTime}
+	{!(unitReady _civ || _civ getVariable [QGVAR(moveTick),-1] < CBA_missionTime)}
 ) exitWith {};
 
 _civ setVariable [QGVAR(moveTick),CBA_missionTime + 200];
