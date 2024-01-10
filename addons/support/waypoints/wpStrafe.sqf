@@ -39,7 +39,7 @@ waitUntil {
 [
 	_vehicle,
 	[_attachedObject,ATLtoASL waypointPosition [_group,currentWaypoint _group]] select (isNull _attachedObject),
-	[_weapon,[_duration,true],_triggerDelay],
+	[[_weapon,[_duration,true],_triggerDelay]],
 	_infiniteAmmo,
 	_spread,
 	_approachDir

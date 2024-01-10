@@ -195,7 +195,7 @@
 // Auto-deploy parachute
 
 [
-	QGVAR(autoParachute),
+	QOPTION(autoParachute),
 	"CHECKBOX",
 	["Auto deploy parachute"],//[LSTRING(slingloadMassOverrideName),LSTRING(slingloadMassOverrideInfo)],
 	[LSTRING(category),"Parachute"],//[LSTRING(category),LSTRING(slingloading)],

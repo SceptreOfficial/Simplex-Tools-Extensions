@@ -12,6 +12,3 @@
 #endif
 
 #include "\z\stx\addons\main\script_macros.hpp"
-
-#define HELO_PILOT_DISTANCE 650
-#define VTOL_PILOT_DISTANCE 800

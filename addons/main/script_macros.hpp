@@ -46,4 +46,10 @@
 #define ZEUS_MESSAGE(MSG) [objNull,MSG] call BIS_fnc_showCuratorFeedbackMessage
 #define ZEUS_ERROR(MSG) ZEUS_MESSAGE(MSG); playSound QPVAR(failure)
 
+// Command macros
+#define PRIMARY_CREW(VEH) (crew VEH arrayIntersect units group VEH)
 
+// Misc constants
+#define GRAVITY 9.8066
+#define HELO_PILOT_DISTANCE 650
+#define VTOL_PILOT_DISTANCE 800

@@ -232,11 +232,11 @@ _vehicle setVariable [QGVAR(strafeAI),_units];
 	_target = [_target,side group _vehicle,_search] call FUNC(targetSearch);
 
 	if (_target isEqualType objNull && {isNull _target}) exitWith {
-		NOTIFY(_vehicle,LSTRING(strafeNoTarget));
+		//NOTIFY(_vehicle,LSTRING(strafeNoTarget));
 		false call FUNC(strafeCleanup);
 	};
 
-	NOTIFY(_vehicle,LSTRING(strafeFiring));
+	//NOTIFY(_vehicle,LSTRING(strafeFiring));
 
 	// Open pylon bays
 	{
@@ -245,7 +245,6 @@ _vehicle setVariable [QGVAR(strafeAI),_units];
 	} forEach getPylonMagazines _vehicle;
 
 	// Begin simulation
-	if (OPTION(debug)) then {setAccTime 1};
 	private _ID = addMissionEventHandler ["EachFrame",{call FUNC(strafeSim)},[
 		_vehicle,
 		_target,

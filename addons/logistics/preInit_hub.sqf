@@ -79,7 +79,7 @@
 						_args params ["_pos","_caller"];
 
 						private _box = _boxClass createVehicle [0,0,0];
-						[_box,_pos vectorAdd ((getPosASL _caller vectorDiff _pos) vectorMultiply 0.5)] call EFUNC(common,getSafePosAndUp) params ["_safePos","_safeUp"];
+						[_box,_pos vectorAdd ((getPosASL _caller vectorDiff _pos) vectorMultiply 0.5)] call EFUNC(common,placementSearch) params ["_safePos","_safeUp"];
 
 						_box setDir (getDirVisual _caller - 180);
 

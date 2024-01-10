@@ -149,7 +149,7 @@ if (isServer) then {
 			_transport removeAction _id;
 
 			private _pos = getPosASL _transport;
-			[_cargo,_pos vectorAdd ((getPosASL _caller vectorDiff _pos) vectorMultiply 0.5)] call EFUNC(common,getSafePosAndUp) params ["_safePos","_safeUp"];
+			[_cargo,_pos vectorAdd ((getPosASL _caller vectorDiff _pos) vectorMultiply 0.5)] call EFUNC(common,placementSearch) params ["_safePos","_safeUp"];
 
 			if (_safePos isNotEqualTo []) then {
 				[_cargo,_safePos,[vectorDir _caller,_safeUp]] call FUNC(cargoUnload);
