@@ -22,6 +22,9 @@
 		<Key ID="STR_stx_civilians_SettingCategory_CivilianInteraction">
 			<English>Civilian Interaction</English>
 		</Key>
+		<Key ID="STR_stx_civilians_SettingCategory_Caching">
+			<English>Caching</English>
+		</Key>
 		
 		<!-- Settings -->
 
@@ -151,11 +154,35 @@
 		<Key ID="STR_stx_civilians_SettingInfo_minPanicTime">
 			<English>Minimum time in seconds civilians will stay in a panicked state</English>
 		</Key>
+		<Key ID="STR_stx_civilians_SettingName_useAgents">
+			<English>Use agents</English>
+		</Key>
+		<Key ID="STR_stx_civilians_SettingInfo_useAgents">
+			<English>Use agents instead of regular AI</English>
+		</Key>
 		<Key ID="STR_stx_civilians_SettingName_goAwayAction">
 			<English>"Go away" action</English>
 		</Key>
 		<Key ID="STR_stx_civilians_SettingInfo_goAwayAction">
 			<English>Toggles the availabilty of the "Go away" action</English>
+		</Key>
+		<Key ID="STR_stx_civilians_SettingName_cachingEnabled">
+			<English>Simple caching system</English>
+		</Key>
+		<Key ID="STR_stx_civilians_SettingInfo_cachingEnabled">
+			<English>Caches assigned AI when players are beyond caching distance</English>
+		</Key>
+		<Key ID="STR_stx_civilians_SettingName_cachingDefault">
+			<English>Cache by default</English>
+		</Key>
+		<Key ID="STR_stx_civilians_SettingInfo_cachingDefault">
+			<English>Automatically flags assigned groups to be cached</English>
+		</Key>
+		<Key ID="STR_stx_civilians_SettingName_cachingDistance">
+			<English>Caching distance</English>
+		</Key>
+		<Key ID="STR_stx_civilians_SettingInfo_cachingDistance">
+			<English>How far away players must before AI is cached</English>
 		</Key>
 
 		<!-- Modules -->

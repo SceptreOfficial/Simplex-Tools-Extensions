@@ -196,6 +196,15 @@
 	false
 ] call CBA_fnc_addSetting;
 
+[QGVAR(useAgents),"CHECKBOX",
+	[LSTRING(SettingName_useAgents),LSTRING(SettingInfo_useAgents)],
+	[LSTRING(category),LSTRING(SettingCategory_CiviliansExperimental)],
+	true,
+	true,
+	{},
+	false
+] call CBA_fnc_addSetting;
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 // Civilian Interaction
 
@@ -203,6 +212,36 @@
 	[LSTRING(SettingName_goAwayAction),LSTRING(SettingInfo_goAwayAction)],
 	[LSTRING(category),LSTRING(SettingCategory_CivilianInteraction)],
 	true,
+	true,
+	{},
+	false
+] call CBA_fnc_addSetting;
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+// Caching
+
+[QGVAR(cachingEnabled),"CHECKBOX",
+	[LSTRING(SettingName_cachingEnabled),LSTRING(SettingInfo_cachingEnabled)],
+	[LSTRING(category),LSTRING(SettingCategory_Caching)],
+	true,
+	true,
+	{},
+	true
+] call CBA_fnc_addSetting;
+
+[QGVAR(cachingDefault),"CHECKBOX",
+	[LSTRING(SettingName_cachingDefault),LSTRING(SettingInfo_cachingDefault)],
+	[LSTRING(category),LSTRING(SettingCategory_Caching)],
+	false,
+	true,
+	{},
+	false
+] call CBA_fnc_addSetting;
+
+[QGVAR(cachingDistance),"SLIDER",
+	[LSTRING(SettingName_cachingDistance),LSTRING(SettingInfo_cachingDistance)],
+	[LSTRING(category),LSTRING(SettingCategory_Caching)],
+	[0,10000,2000,0],
 	true,
 	{},
 	false

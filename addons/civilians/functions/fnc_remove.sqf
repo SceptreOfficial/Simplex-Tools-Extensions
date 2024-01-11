@@ -61,7 +61,7 @@ private _type = _spawnPoint getVariable QGVAR(type);
 			_x setVariable [QGVAR(moveTick),-1];
 		};
 
-		if (side group _vehicle == civilian) then {
+		if (side _vehicle == civilian) then {
 			deleteVehicleCrew _vehicle;
 			deleteVehicle _vehicle;
 		};

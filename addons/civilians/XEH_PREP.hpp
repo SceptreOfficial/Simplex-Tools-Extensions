@@ -1,7 +1,9 @@
 PREP(addPanic);
+PREP(ambientCivilians);
 PREP(brain);
-PREP(clockwork);
+PREP(cache);
 PREP(create);
+PREP(initMan);
 PREP(moduleAddPanic);
 PREP(moduleBlacklistArea);
 PREP(modulePopulate);
@@ -16,3 +18,4 @@ PREP(spawnParked);
 PREP(spawnPedestrian);
 PREP(toggleAircraft);
 PREP(toggleCivilians);
+PREP(uncache);

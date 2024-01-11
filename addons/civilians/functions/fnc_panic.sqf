@@ -1,64 +1,79 @@
 #include "script_component.hpp"
 
-params ["_civ","_firer"];
+params ["_unit","_firer"];
 
-if (!local _civ || !alive _civ || {side group vehicle _civ != civilian}) exitWith {};
+if (!local _unit || !alive _unit || {side vehicle _unit != civilian}) exitWith {};
 
-if (_civ in _civ) then {
-	if !(_civ getVariable [QGVAR(panicking),false]) then {
-		switch (round random 2) do {
-			case 0 : {_civ switchMove "ApanPercMstpSnonWnonDnon_G01"};
-			case 1 : {_civ playMoveNow "ApanPknlMstpSnonWnonDnon_G01"};
-			case 2 : {_civ playMoveNow "ApanPpneMstpSnonWnonDnon_G01"};
-		};
+if !(_unit isKindOf "CAManBase") then {
+	_unit = driver _unit;
+};
+
+if (_unit getVariable [QGVAR(panicking),false]) exitWith {};
+
+if (_unit in _unit) then {
+	switch (round random 2) do {
+		case 0 : {_unit switchMove "ApanPercMstpSnonWnonDnon_G01"};
+		case 1 : {_unit playMoveNow "ApanPknlMstpSnonWnonDnon_G01"};
+		case 2 : {_unit playMoveNow "ApanPpneMstpSnonWnonDnon_G01"};
 	};
 } else {
 	// 50/50 chance to get out of vehicle
-	if (!(_civ getVariable [QGVAR(panicking),false]) && random 1 < 0.5) then {
-		unassignVehicle _civ;
-		[_civ] orderGetIn false;
+	if (random 1 < 0.5) exitWith {};
 
-		[{!alive _this || _this in _this},{
-			if (!alive _this) exitWith {};
-
-			switch (round random 2) do {
-				case 0 : {_this switchMove "ApanPercMstpSnonWnonDnon_G01"};
-				case 1 : {_this playMoveNow "ApanPknlMstpSnonWnonDnon_G01"};
-				case 2 : {_this playMoveNow "ApanPpneMstpSnonWnonDnon_G01"};
-			};
-		},_civ] call CBA_fnc_waitUntilAndExecute;
+	if (isNull group _unit) then {
+		moveOut _unit;
+	} else {
+		unassignVehicle _unit;
+		[_unit] orderGetIn false;
 	};
+
+	[{!alive _this || _this in _this},{
+		if (!alive _this) exitWith {};
+
+		switch (round random 2) do {
+			case 0 : {_this switchMove "ApanPercMstpSnonWnonDnon_G01"};
+			case 1 : {_this playMoveNow "ApanPknlMstpSnonWnonDnon_G01"};
+			case 2 : {_this playMoveNow "ApanPpneMstpSnonWnonDnon_G01"};
+		};
+	},_unit] call CBA_fnc_waitUntilAndExecute;
 };
 
 // Flee
-doStop _civ;
-_civ doFollow _civ;
-_civ forceSpeed 999;
-_civ doMove (_civ getPos [150 + random 150,(_firer getDir _civ) + random [-75,0,75]]);
+private _pos = _unit getPos [150 + random 150,(_firer getDir _unit) + random [-60,0,60]];
+
+_unit forceSpeed 999;
+
+if (isNull group _unit) then {
+	_unit moveTo _pos;
+} else {
+	doStop _unit;
+	_unit doFollow _unit;
+	_unit doMove _pos;	
+};
 
 #ifdef DEBUG_MODE_FULL
-	systemChat format ["%1 - Panicking",name _civ];
+	systemChat format ["%1 - Panicking",name _unit];
 #endif
 
 // Return to normal state after it's safe
-_civ setVariable [QGVAR(panicTimeout),CBA_missionTime + GVAR(minPanicTime)];
+_unit setVariable [QGVAR(panicTimeout),CBA_missionTime + GVAR(minPanicTime)];
 
-if (_civ getVariable [QGVAR(panicPFHID),-1] != -1) exitWith {};
+if (_unit getVariable [QGVAR(panicPFHID),-1] != -1) exitWith {};
 
-_civ setVariable [QGVAR(panicking),true,true];
-_civ setVariable [QGVAR(panicPFHID),
+_unit setVariable [QGVAR(panicking),true,true];
+_unit setVariable [QGVAR(panicPFHID),
 	[{
-		params ["_civ","_PFHID"];
+		params ["_unit","_PFHID"];
 
-		if (_civ getVariable [QGVAR(panicTimeout),-1] < CBA_missionTime) then {
-			_civ switchMove "";
-			_civ forceSpeed -1;
-			_civ setSpeedMode "LIMITED";
-			_civ setVariable [QGVAR(panicPFHID),nil];
-			_civ setVariable [QGVAR(panicTimeout),nil];
-			_civ setVariable [QGVAR(panicking),nil,true];
+		if (_unit getVariable [QGVAR(panicTimeout),-1] < CBA_missionTime) then {
+			_unit switchMove "";
+			_unit forceSpeed -1;
+			_unit setSpeedMode "LIMITED";
+			_unit setVariable [QGVAR(panicPFHID),nil];
+			_unit setVariable [QGVAR(panicTimeout),nil];
+			_unit setVariable [QGVAR(panicking),nil,true];
 			_PFHID call CBA_fnc_removePerFrameHandler;
 		};
-	},30,_civ] call CBA_fnc_addPerFrameHandler
+	},30,_unit] call CBA_fnc_addPerFrameHandler
 ];
 

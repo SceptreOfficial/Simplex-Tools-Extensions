@@ -1,7 +1,7 @@
 #include "script_component.hpp"
 
-params [["_civ",objNull,[objNull]]];
+params [["_unit",objNull,[objNull]]];
 
-if (!alive _civ) exitWith {};
+if (!alive _unit) exitWith {};
 
-[QGVAR(addPanicServer),_civ] call CBA_fnc_serverEvent;
+[QGVAR(addPanicServer),_unit] call CBA_fnc_serverEvent;

@@ -43,6 +43,8 @@ private _vehicle = createVehicle [_vehClass,[0,0,999 + round random 999],[],0,"C
 _vehicle allowDamage false;
 _vehicle setDir _dir;
 
+_vehicle call FUNC(addPanic);
+
 [{
 	params ["_vehicle","_randPos"];
 	_vehicle setVelocity [0,0,0];
@@ -50,46 +52,37 @@ _vehicle setDir _dir;
 	[EFUNC(common,spawnCleanup),_vehicle,2] call CBA_fnc_waitAndExecute;
 },[_vehicle,_randPos],1] call CBA_fnc_waitAndExecute;
 
-private _group = createGroup [civilian,true];
-
-private _manClass = if (_unitClasses isEqualTypeAll "") then {
+private _unitClass = if (_unitClasses isEqualTypeAll "") then {
 	selectRandom _unitClasses
 } else {
 	selectRandomWeighted _unitClasses
 };
 
-private _man = _group createUnit [_manClass,_randPos,[],0,"NONE"];
-_man allowDamage false;
-[{_this allowDamage true},_man,4] call CBA_fnc_waitAndExecute;
-doStop _man;
+private _unit = objNull;
 
-_man setVariable [QGVAR(hasBrain),true,true];
-_man setVariable [QGVAR(inhabitancy),_area,true];
+if (GVAR(useAgents)) then {
+	_unit = createAgent [_unitClass,[0,0,0],[],0,"CAN_COLLIDE"];
+} else {
+	private _group = createGroup [civilian,true];
+	_group setSpeedMode "LIMITED";
+	_group setBehaviour "CARELESS";
+	_group addVehicle _vehicle;
 
-[QGVAR(setSpeaker),[_man,"NoVoice"]] call CBA_fnc_globalEvent;
+	_unit = _group createUnit [_unitClass,_randPos,[],0,"NONE"];
+	doStop _unit;
+};
 
-_man disableAI "TARGET";
-_man disableAI "AUTOTARGET";
-_man disableAI "FSM";
-_man disableAI "AIMINGERROR";
-_man disableAI "AUTOCOMBAT";
-_man disableAI "SUPPRESSION";
-_man disableAI "MINEDETECTION";
-_man disableAI "COVER";
-_man disableAI "WEAPONAIM";
-_man setSkill 0;
+[_unit,_area] call FUNC(initMan);
 
-_man assignAsDriver _vehicle;
-_man moveInDriver _vehicle;
+_unit assignAsDriver _vehicle;
+_unit moveInDriver _vehicle;
 
-_group setSpeedMode "LIMITED";
-_group setBehaviour "CARELESS";
-_man setSpeedMode "LIMITED";
+if (!_ambCiv && GVAR(cachingDefault)) then {
+	_unit setVariable [QGVAR(allowCaching),true,true];
+	_vehicle setVariable [QGVAR(allowCaching),true,true];
+};
 
-[_man,_customArgs] call _customInit;
+[_unit,_customArgs] call _customInit;
 [_vehicle,_customArgs] call _customInit;
 
-_man call FUNC(addPanic);
-
-[QGVAR(manCreated),_man] call CBA_fnc_serverEvent;
-[QGVAR(vehicleCreated),_vehicle] call CBA_fnc_serverEvent;
+[QGVAR(driverSpawned),[_unit,_vehicle]] call CBA_fnc_serverEvent;

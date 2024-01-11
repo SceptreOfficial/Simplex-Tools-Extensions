@@ -1,6 +1,6 @@
 #include "script_component.hpp"
 
-_thisArgs params ["_pedGroup","_area","_blacklist","_unitClasses","_customInit","_customArgs","_ambCiv"];
+_thisArgs params ["_group","_area","_blacklist","_unitClasses","_customInit","_customArgs","_ambCiv"];
 
 if (_ambCiv && {isNull _customArgs}) exitWith {};
 
@@ -38,34 +38,25 @@ private _class = if (_unitClasses isEqualTypeAll "") then {
 	selectRandomWeighted _unitClasses
 };
 
-private _man = _pedGroup createUnit [_class,_randPos,[],0,"NONE"];
-_man allowDamage false;
-[{_this allowDamage true},_man,3] call CBA_fnc_waitAndExecute;
-_man setDir random 360;
-doStop _man;
+private _unit = objNull;
 
-_man setVariable [QGVAR(hasBrain),true,true];
-_man setVariable [QGVAR(inhabitancy),_area,true];
+if (GVAR(useAgents)) then {
+	_unit = createAgent [_class,_randPos,[],0,"NONE"];
+} else {
+	_unit = _group createUnit [_class,_randPos,[],0,"NONE"];
+	doStop _unit;
+};
 
-[QGVAR(setSpeaker),[_man,"NoVoice"]] call CBA_fnc_globalEvent;
+_unit allowDamage false;
+[{_this allowDamage true},_unit,3] call CBA_fnc_waitAndExecute;
+_unit setDir random 360;
 
-_man disableAI "TARGET";
-_man disableAI "AUTOTARGET";
-_man disableAI "FSM";
-_man disableAI "AIMINGERROR";
-_man disableAI "AUTOCOMBAT";
-_man disableAI "SUPPRESSION";
-_man disableAI "MINEDETECTION";
-_man disableAI "COVER";
-_man disableAI "WEAPONAIM";
-_man setSkill 0;
+[_unit,_area] call FUNC(initMan);
 
-_pedGroup setSpeedMode "LIMITED";
-_pedGroup setBehaviour "CARELESS";
-_man setSpeedMode "LIMITED";
+if (!_ambCiv && GVAR(cachingDefault)) then {
+	_unit setVariable [QGVAR(allowCaching),true,true];
+};
 
-[_man,_customArgs] call _customInit;
+[_unit,_customArgs] call _customInit;
 
-_man call FUNC(addPanic);
-
-[QGVAR(manCreated),_man] call CBA_fnc_serverEvent;
+[QGVAR(pedestrianSpawned),_unit] call CBA_fnc_serverEvent;

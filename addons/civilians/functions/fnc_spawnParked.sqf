@@ -109,6 +109,10 @@ _vehicle setDir _dir;
 	[EFUNC(common,spawnCleanup),_vehicle,2] call CBA_fnc_waitAndExecute;
 },[_vehicle,_spawnPos],1] call CBA_fnc_waitAndExecute;
 
+if (!_ambCiv && GVAR(cachingDefault)) then {
+	_vehicle setVariable [QGVAR(allowCaching),true,true];
+};
+
 [_vehicle,_customArgs] call _customInit;
 
-[QGVAR(vehicleCreated),_vehicle] call CBA_fnc_serverEvent;
+[QGVAR(parkedSpawn),_vehicle] call CBA_fnc_serverEvent;

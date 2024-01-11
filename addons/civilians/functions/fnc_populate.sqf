@@ -41,7 +41,15 @@ if (_ambCiv) then {
 };
 
 // Spawn pedestrians
-[_pedestrianCount,FUNC(spawnPedestrian),[createGroup [civilian,true],_area,_blacklist,_unitClasses,_customInit,_customArgs,_ambCiv],_spawnDelays # 0,true] call EFUNC(common,iterate);
+private _group = grpNull;
+
+if (!GVAR(useAgents)) then {
+	_group = createGroup [civilian,true];
+	_group setSpeedMode "LIMITED";
+	_group setBehaviour "CARELESS";
+};
+
+[_pedestrianCount,FUNC(spawnPedestrian),[_group,_area,_blacklist,_unitClasses,_customInit,_customArgs,_ambCiv],_spawnDelays # 0,true] call EFUNC(common,iterate);
 
 // Spawn moving vehicles/drivers
 [_driverCount,FUNC(spawnDriver),[_area,_blacklist,_unitClasses,_vehicleClasses,_customInit,_customArgs,_ambCiv],_spawnDelays # 1,true] call EFUNC(common,iterate);
@@ -49,7 +57,7 @@ if (_ambCiv) then {
 // Spawn parked vehicles
 [_parkedCount,FUNC(spawnParked),[_area,_blacklist,_vehicleClasses,_customInit,_customArgs,_ambCiv],_spawnDelays # 2,true] call EFUNC(common,iterate);
 
-GVAR(brainTick) = CBA_missionTime + 2;
+GVAR(brainTick) = CBA_missionTime + selectMin _spawnDelays;
 
 if (isNil QGVAR(brainEFID)) then {
 	GVAR(brainList) = [];

@@ -13,7 +13,7 @@ if (GVAR(ambientCivilians)) then {
 	GVAR(activePoints) = [];
 	GVAR(inactivePoints) = [];
 	GVAR(isolatedPoints) = [];
-	GVAR(PFHID) = [FUNC(clockwork),0.1] call CBA_fnc_addPerFrameHandler;
+	GVAR(PFHID) = [FUNC(ambientCivilians),0.1] call CBA_fnc_addPerFrameHandler;
 
 	missionNamespace setVariable [QGVAR(ambientCivilians),true,true];
 };

@@ -6,23 +6,24 @@ ADDON = false;
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
 [QGVAR(addPanic),{
-	params ["_civ"];
-	[_civ,"FiredNear",FUNC(panic)] call CBA_fnc_addBISEventHandler;
+	params ["_unit"];
+	[_unit,"FiredNear",FUNC(panic)] call CBA_fnc_addBISEventHandler;
 }] call CBA_fnc_addEventHandler;
 
 if (isServer) then {
 	[QGVAR(addPanicServer),{
-		params ["_civ"];
+		params ["_unit"];
 
-		if (_civ getVariable [QGVAR(willPanic),false]) exitWith {};
-		_civ setVariable [QGVAR(willPanic),true,true];
+		if (_unit getVariable [QGVAR(panic),false]) exitWith {};
+		_unit setVariable [QGVAR(panic),true,true];
 
-		private _JIPID = [QGVAR(addPanic),_civ] call CBA_fnc_globalEventJIP;
-		[_JIPID,_civ] call CBA_fnc_removeGlobalEventJIP;
+		private _JIPID = [QGVAR(addPanic),_unit] call CBA_fnc_globalEventJIP;
+		[_JIPID,_unit] call CBA_fnc_removeGlobalEventJIP;
 
 		// Mod compat
-		(group _civ) setVariable ["lambs_danger_disableGroupAI",true,true];
-		_civ setVariable ["lambs_danger_disableAI",true,true];
+		(group _unit) setVariable ["Vcm_Disable",true,true];
+		(group _unit) setVariable ["lambs_danger_disableGroupAI",true,true];
+		_unit setVariable ["lambs_danger_disableAI",true,true];
 	}] call CBA_fnc_addEventHandler;
 };
 
@@ -46,6 +47,9 @@ GVAR(aircraftRunner) = objNull;
 GVAR(civiliansRunner) = objNull;
 GVAR(ambientAircraft) = false;
 GVAR(ambientCivilians) = false;
+GVAR(parked) = [];
+GVAR(cache) = [];
+GVAR(brainTick) = 0;
 
 if (isServer) then {
 	// Handle HC disconnect
@@ -119,7 +123,6 @@ if (isServer) then {
 	// Always run on the server in case of locality transfer/disconnect
 	[QGVAR(populated),{
 		if (isNil QGVAR(brainEFID)) then {
-			GVAR(brainTick) = 0;
 			GVAR(brainList) = [];
 			GVAR(brainEFID) = addMissionEventHandler ["EachFrame",{call FUNC(brain)}];
 		};
@@ -135,7 +138,13 @@ if (isServer) then {
 		GVAR(blacklist) pushBack _area;
 		publicVariable QGVAR(blacklist);
 	}] call CBA_fnc_addEventHandler;
-};
 
+	[QGVAR(parkedSpawn),{
+		params ["_vehicle"];
+		GVAR(parked) = GVAR(parked) - [objNull];
+		GVAR(parked) pushBack _vehicle;
+		publicVariable QGVAR(parked);
+	}] call CBA_fnc_addEventHandler;
+};
 
 ADDON = true;
