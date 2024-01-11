@@ -94,7 +94,7 @@ while {
 } do {};
 
 // If no good spots are found, just stop trying
-if (_spawnPos isEqualTo _randPos && {random 1 < 0.8}) exitWith {
+if (_spawnPos isEqualTo _randPos && {random 1 < 0.9}) exitWith {
 	_iteratePFHID call CBA_fnc_removePerFrameHandler;
 };
 

@@ -163,7 +163,7 @@
 [QGVAR(pedSpawnDelay),"SLIDER",
 	[LSTRING(SettingName_pedSpawnDelay),LSTRING(SettingInfo_pedSpawnDelay)],
 	[LSTRING(category),LSTRING(SettingCategory_CiviliansExperimental)],
-	[0,5,0.5,2],
+	[0,5,0.2,2],
 	true,
 	{},
 	false
@@ -172,7 +172,7 @@
 [QGVAR(driverSpawnDelay),"SLIDER",
 	[LSTRING(SettingName_driverSpawnDelay),LSTRING(SettingInfo_driverSpawnDelay)],
 	[LSTRING(category),LSTRING(SettingCategory_CiviliansExperimental)],
-	[0,5,0.65,2],
+	[0,5,0.3,2],
 	true,
 	{},
 	false
@@ -181,7 +181,7 @@
 [QGVAR(parkedSpawnDelay),"SLIDER",
 	[LSTRING(SettingName_parkedSpawnDelay),LSTRING(SettingInfo_parkedSpawnDelay)],
 	[LSTRING(category),LSTRING(SettingCategory_CiviliansExperimental)],
-	[0,5,0.8,2],
+	[0,5,0.35,2],
 	true,
 	{},
 	false

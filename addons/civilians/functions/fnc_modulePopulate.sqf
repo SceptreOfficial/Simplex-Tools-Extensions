@@ -54,10 +54,10 @@ if (!local _logic) exitWith {};
 			[[0,4,6,1],"TEXT",LLSTRING(SettingName_driverCount)],
 			[[0,5,6,1],"TEXT",LLSTRING(SettingName_parkedCount)],
 			[[0,6,6,1],"TEXT",[LLSTRING(Locality),LLSTRING(LocalityGroupsInfo)]],
-			[[0,19,9,1],"BUTTON",localize "STR_SDF_CANCEL",{{
+			[[0,19,9,1],"BUTTON",LELSTRING(sdf,cancel),{{
 				{deleteMarkerLocal _x} forEach GVAR(blacklistTempMarkers);
 			} call EFUNC(SDF,close)}],
-			[[9,19,9,1],"BUTTON",localize "STR_SDF_CONFIRM",{[{
+			[[9,19,9,1],"BUTTON",LELSTRING(sdf,confirm),{[{
 				{deleteMarkerLocal _x} forEach GVAR(blacklistTempMarkers);
 
 				params ["_values","_pos"];
@@ -66,7 +66,7 @@ if (!local _logic) exitWith {};
 				_unitClasses = _unitClasses call EFUNC(common,parseArray);
 				_vehClasses = _vehClasses call EFUNC(common,parseArray);
 
-				private _params = [_area,_unitClasses,_vehClasses,[_pedestrians,_drivers,_parked],[],{},[],false,[0,0.3,0.4]];
+				private _params = [_area,_unitClasses,_vehClasses,[_pedestrians,_drivers,_parked],[],{},[],false,[0,0.2,0.3]];
 
 				if (_localitySelection > 0) then {
 					[QGVAR(localityExec),[_localitySelection,_params,QFUNC(populate)]] call CBA_fnc_serverEvent;
