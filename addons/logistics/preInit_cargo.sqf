@@ -1,3 +1,5 @@
+#include "script_component.hpp"
+
 if (isServer) then {
 	["All","Deleted",{
 		params ["_object"];

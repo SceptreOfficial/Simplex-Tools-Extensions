@@ -33,7 +33,7 @@ private _ctrlGroup = _display displayCtrl IDC_GROUP;
 ];
 
 // Cancel button
-[_display displayCtrl IDC_CANCEL,"ButtonClick",{closeDialog 0}] call CBA_fnc_addBISEventHandler;
+[_display displayCtrl IDC_CLOSE,"ButtonClick",{closeDialog 0}] call CBA_fnc_addBISEventHandler;
 
 // Confirm button
 [_display displayCtrl IDC_CONFIRM,"ButtonClick",{
@@ -121,7 +121,7 @@ _ctrlBlacklist lbSetCurSel ([_ctrlBlacklist,"",1] call EFUNC(sdf,getCache));
 	{_x ctrlShow false} forEach [
 		_display displayCtrl IDC_TITLE,
 		_display displayCtrl IDC_BG,
-		_display displayCtrl IDC_CANCEL,
+		_display displayCtrl IDC_CLOSE,
 		_display displayCtrl IDC_CONFIRM,
 		_display displayCtrl IDC_GROUP
 	];
@@ -134,7 +134,7 @@ _ctrlBlacklist lbSetCurSel ([_ctrlBlacklist,"",1] call EFUNC(sdf,getCache));
 		{_x ctrlShow true} forEach [
 			_display displayCtrl IDC_TITLE,
 			_display displayCtrl IDC_BG,
-			_display displayCtrl IDC_CANCEL,
+			_display displayCtrl IDC_CLOSE,
 			_display displayCtrl IDC_CONFIRM,
 			_display displayCtrl IDC_GROUP
 		];
@@ -148,7 +148,7 @@ _ctrlBlacklist lbSetCurSel ([_ctrlBlacklist,"",1] call EFUNC(sdf,getCache));
 	{_x ctrlShow false} forEach [
 		_display displayCtrl IDC_TITLE,
 		_display displayCtrl IDC_BG,
-		_display displayCtrl IDC_CANCEL,
+		_display displayCtrl IDC_CLOSE,
 		_display displayCtrl IDC_CONFIRM,
 		_display displayCtrl IDC_GROUP
 	];
@@ -161,7 +161,7 @@ _ctrlBlacklist lbSetCurSel ([_ctrlBlacklist,"",1] call EFUNC(sdf,getCache));
 		{_x ctrlShow true} forEach [
 			_display displayCtrl IDC_TITLE,
 			_display displayCtrl IDC_BG,
-			_display displayCtrl IDC_CANCEL,
+			_display displayCtrl IDC_CLOSE,
 			_display displayCtrl IDC_CONFIRM,
 			_display displayCtrl IDC_GROUP
 		];

@@ -41,14 +41,14 @@ class GVAR(HubMenu) {
 			w = QUOTE(BG_W(HUB_W));
 			h = QUOTE(BG_H(HUB_H));
 		};
-		class Cancel : EGVAR(sdf,ButtonSimple) {
-			idc = IDC_CANCEL;
+		class Close : EGVAR(sdf,ButtonSimple) {
+			idc = IDC_CLOSE;
 			x = QUOTE(CANCEL_X(HUB_W));
 			y = QUOTE(CANCEL_Y(HUB_H));
 			w = QUOTE(MAIN_BUTTON_W);
 			h = QUOTE(MAIN_BUTTON_H);
 			font = "PuristaMedium";
-			text = "CANCEL";
+			text = "CLOSE";
 		};
 		class Confirm : EGVAR(sdf,ButtonSimple) {
 			idc = IDC_CONFIRM;
@@ -287,14 +287,14 @@ class GVAR(ResupplyMenu) {
 			w = QUOTE(BG_W(RESUPPLY_W));
 			h = QUOTE(BG_H(RESUPPLY_H));
 		};
-		class Cancel : EGVAR(sdf,ButtonSimple) {
-			idc = IDC_CANCEL;
+		class Close : EGVAR(sdf,ButtonSimple) {
+			idc = IDC_CLOSE;
 			x = QUOTE(CANCEL_X(RESUPPLY_W));
 			y = QUOTE(CANCEL_Y(RESUPPLY_H));
 			w = QUOTE(MAIN_BUTTON_W);
 			h = QUOTE(MAIN_BUTTON_H);
 			font = "PuristaMedium";
-			text = "CANCEL";
+			text = "CLOSE";
 		};
 		class Confirm : EGVAR(sdf,ButtonSimple) {
 			idc = IDC_CONFIRM;

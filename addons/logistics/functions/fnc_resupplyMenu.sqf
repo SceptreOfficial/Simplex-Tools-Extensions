@@ -8,7 +8,7 @@ uiNamespace setVariable [QEGVAR(sdf,displayClass),QGVAR(ResupplyMenu)];
 private _ctrlGroup = _display displayCtrl IDC_GROUP;
 GVAR(uiSpeed) = 0;
 
-[_display displayCtrl IDC_CANCEL,"ButtonClick",{closeDialog 0}] call CBA_fnc_addBISEventHandler;
+[_display displayCtrl IDC_CLOSE,"ButtonClick",{closeDialog 0}] call CBA_fnc_addBISEventHandler;
 
 [_display displayCtrl IDC_CONFIRM,"ButtonClick",{
 	_thisArgs params ["_display"];

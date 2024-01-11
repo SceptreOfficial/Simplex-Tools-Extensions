@@ -1,5 +1,7 @@
+#include "script_component.hpp"
+
 [
-	QGVAR(debug),
+	QOPTION(debug),
 	"CHECKBOX",
 	[LSTRING(debugName),LSTRING(debugInfo)],
 	[LSTRING(category),LSTRING(categoryGeneral)],

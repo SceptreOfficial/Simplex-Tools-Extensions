@@ -25,7 +25,7 @@ private _ctrlBlacklistEdit = _ctrlContentsGroup controlsGroupCtrl IDC_RESUPPLY_B
 	{_x ctrlShow false} forEach [
 		_display displayCtrl IDC_TITLE,
 		_display displayCtrl IDC_BG,
-		_display displayCtrl IDC_CANCEL,
+		_display displayCtrl IDC_CLOSE,
 		_display displayCtrl IDC_CONFIRM,
 		_display displayCtrl IDC_GROUP
 	];
@@ -38,7 +38,7 @@ private _ctrlBlacklistEdit = _ctrlContentsGroup controlsGroupCtrl IDC_RESUPPLY_B
 		{_x ctrlShow true} forEach [
 			_display displayCtrl IDC_TITLE,
 			_display displayCtrl IDC_BG,
-			_display displayCtrl IDC_CANCEL,
+			_display displayCtrl IDC_CLOSE,
 			_display displayCtrl IDC_CONFIRM,
 			_display displayCtrl IDC_GROUP
 		];
@@ -54,7 +54,7 @@ private _ctrlBlacklistEdit = _ctrlContentsGroup controlsGroupCtrl IDC_RESUPPLY_B
 	{_x ctrlShow false} forEach [
 		_display displayCtrl IDC_TITLE,
 		_display displayCtrl IDC_BG,
-		_display displayCtrl IDC_CANCEL,
+		_display displayCtrl IDC_CLOSE,
 		_display displayCtrl IDC_CONFIRM,
 		_display displayCtrl IDC_GROUP
 	];
@@ -67,7 +67,7 @@ private _ctrlBlacklistEdit = _ctrlContentsGroup controlsGroupCtrl IDC_RESUPPLY_B
 		{_x ctrlShow true} forEach [
 			_display displayCtrl IDC_TITLE,
 			_display displayCtrl IDC_BG,
-			_display displayCtrl IDC_CANCEL,
+			_display displayCtrl IDC_CLOSE,
 			_display displayCtrl IDC_CONFIRM,
 			_display displayCtrl IDC_GROUP
 		];

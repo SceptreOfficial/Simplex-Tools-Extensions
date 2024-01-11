@@ -23,7 +23,7 @@
 
 #define IDC_TITLE 		1
 #define IDC_BG 			2
-#define IDC_CANCEL 		3
+#define IDC_CLOSE 		3
 #define IDC_CONFIRM 	4
 #define IDC_GROUP 		5
 
