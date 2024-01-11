@@ -16,7 +16,7 @@ private _group = GVAR(list) deleteAt 0;
 if (GVAR(list) isEqualTo []) then {
 	GVAR(tick) = CBA_missionTime + 10;
 } else {
-	GVAR(tick) = CBA_missionTime + 0.5;
+	GVAR(tick) = CBA_missionTime + 0.2;
 };
 
 if (_group isEqualType grpNull &&
