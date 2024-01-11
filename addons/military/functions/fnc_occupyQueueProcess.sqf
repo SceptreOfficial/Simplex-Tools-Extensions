@@ -120,7 +120,7 @@ switch (_assignmentType) do {
 
 		private _group = [_randPos,_side,_config] call EFUNC(common,spawnGroup);
 		_group setVariable [QGVAR(allowCaching),false,true];
-		[{_this setVariable [QGVAR(allowCaching),nil,true]},_group,6] call CBA_fnc_waitAndExecute;
+		[{_this setVariable [QGVAR(allowCaching),GVAR(cachingDefault),true]},_group,6] call CBA_fnc_waitAndExecute;
 
 		private _dir = random 360;
 		_group setFormDir _dir;
@@ -139,7 +139,7 @@ switch (_assignmentType) do {
 
 		private _group = [_randPos,_side,_config] call EFUNC(common,spawnGroup);
 		_group setVariable [QGVAR(allowCaching),false,true];
-		[{_this setVariable [QGVAR(allowCaching),nil,true]},_group,6] call CBA_fnc_waitAndExecute;
+		[{_this setVariable [QGVAR(allowCaching),GVAR(cachingDefault),true]},_group,6] call CBA_fnc_waitAndExecute;
 
 		private _dir = random 360;
 		_group setFormDir _dir;
@@ -152,7 +152,7 @@ switch (_assignmentType) do {
 
 		private _group = [_spawnPos,_side,_config,nil,nil,nil,nil,nil,_dir] call EFUNC(common,spawnGroup);
 		_group setVariable [QGVAR(allowCaching),false,true];
-		[{_this setVariable [QGVAR(allowCaching),nil,true]},_group,6] call CBA_fnc_waitAndExecute;
+		[{_this setVariable [QGVAR(allowCaching),GVAR(cachingDefault),true]},_group,6] call CBA_fnc_waitAndExecute;
 
 		_group setFormDir _dir;
 		leader _group setDir _dir;
@@ -164,7 +164,7 @@ switch (_assignmentType) do {
 
 		private _group = [_spawnPos,_side,_config,nil,nil,nil,nil,nil,_dir] call EFUNC(common,spawnGroup);
 		_group setVariable [QGVAR(allowCaching),false,true];
-		[{_this setVariable [QGVAR(allowCaching),nil,true]},_group,6] call CBA_fnc_waitAndExecute;
+		[{_this setVariable [QGVAR(allowCaching),GVAR(cachingDefault),true]},_group,6] call CBA_fnc_waitAndExecute;
 
 		_group setFormDir _dir;
 		leader _group setDir _dir;

@@ -48,9 +48,7 @@ if (_origin isEqualTo []) then {
 	_group setVariable [QGVAR(origin),_origin,true];
 };
 
-if (!GVAR(cachingDefault)) then {
-	_group setVariable [QGVAR(allowCaching),false,true];
-};
+_group setVariable [QGVAR(allowCaching),GVAR(cachingDefault),true];
 
 switch (_assignment) do {
 	case "FREE" : {

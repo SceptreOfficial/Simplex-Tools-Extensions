@@ -2,6 +2,8 @@
 
 params ["_id","_cachePos"];
 
+GVAR(cache) deleteAt (GVAR(cache) find _this);
+
 private _cache = GVAR(cacheHash) get _id;
 
 if (isNil "_cache") exitWith {
