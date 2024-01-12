@@ -66,7 +66,7 @@ if (!local _logic) exitWith {};
 				_unitClasses = _unitClasses call EFUNC(common,parseArray);
 				_vehClasses = _vehClasses call EFUNC(common,parseArray);
 
-				private _params = [_area,_unitClasses,_vehClasses,[_pedestrians,_drivers,_parked],[],{},[],false,[0,0.2,0.3]];
+				private _params = [_area,_unitClasses,_vehClasses,[_pedestrians,_drivers,_parked],[],{},[],false,[0.2,0.2,0.3]];
 
 				if (_localitySelection > 0) then {
 					[QGVAR(localityExec),[_localitySelection,_params,QFUNC(populate)]] call CBA_fnc_serverEvent;
