@@ -29,13 +29,6 @@ if (isServer) then {
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
-[QGVAR(setSpeaker),{
-	params ["_unit","_voice"];
-	_unit setSpeaker _voice;
-}] call CBA_fnc_addEventHandler;
-
-///////////////////////////////////////////////////////////////////////////////////////////////////
-
 GVAR(blacklist) = []; // Blacklist areas (Can be of type: marker, trigger, location, area array)
 GVAR(spawnPoints) = [];
 GVAR(aircraftRunner) = objNull;

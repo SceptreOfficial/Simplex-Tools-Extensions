@@ -44,6 +44,11 @@ if (isServer) then {
 	};
 }] call CBA_fnc_addEventHandler;
 
+[QGVAR(setSpeaker),{
+	params ["_unit","_voice"];
+	_unit setSpeaker _voice;
+}] call CBA_fnc_addEventHandler;
+
 [QGVAR(doMove),{
 	params ["_unit","_pos"];
 	_unit doMove _pos;

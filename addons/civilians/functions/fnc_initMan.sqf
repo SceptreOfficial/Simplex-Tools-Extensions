@@ -5,7 +5,7 @@ params ["_unit","_inhabitancy"];
 _unit setVariable [QGVAR(brain),true,true];
 _unit setVariable [QGVAR(inhabitancy),_inhabitancy,true];
 
-[QGVAR(setSpeaker),[_unit,"NoVoice"]] call CBA_fnc_globalEvent;
+//[QEGVAR(common,setSpeaker),[_unit,"NoVoice"]] call CBA_fnc_globalEvent;
 
 _unit setSkill 0;
 _unit setSpeedMode "LIMITED";
