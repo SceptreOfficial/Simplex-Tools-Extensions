@@ -47,13 +47,13 @@ if (isNull group _unit) then {
 	_unit moveTo _pos;
 } else {
 	doStop _unit;
-	_unit doFollow _unit;
-	_unit doMove _pos;	
-};
 
-#ifdef DEBUG_MODE_FULL
-	systemChat format ["%1 - Panicking",name _unit];
-#endif
+	[{
+		params ["_unit","_pos"];
+		_unit doFollow _unit;
+		_unit doMove _pos;
+	},[_unit,_pos],1] call CBA_fnc_waitAndExecute;
+};
 
 // Return to normal state after it's safe
 _unit setVariable [QGVAR(panicTimeout),CBA_missionTime + GVAR(minPanicTime)];
