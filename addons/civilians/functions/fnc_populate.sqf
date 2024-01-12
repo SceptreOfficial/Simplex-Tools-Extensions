@@ -57,7 +57,7 @@ if (!GVAR(useAgents)) then {
 // Spawn parked vehicles
 [_parkedCount,FUNC(spawnParked),[_area,_blacklist,_vehicleClasses,_customInit,_customArgs,_ambCiv],_spawnDelays # 2,true] call EFUNC(common,iterate);
 
-GVAR(brainTick) = CBA_missionTime + selectMin _spawnDelays;
+GVAR(brainTick) = CBA_missionTime + selectMax _spawnDelays;
 
 if (isNil QGVAR(brainEFID)) then {
 	GVAR(brainList) = [];
