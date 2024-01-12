@@ -43,3 +43,13 @@ if (isServer) then {
 		_object forceSpeed (_speed / 3.6);
 	};
 }] call CBA_fnc_addEventHandler;
+
+[QGVAR(doMove),{
+	params ["_unit","_pos"];
+	_unit doMove _pos;
+}] call CBA_fnc_addEventHandler;
+
+[QGVAR(moveTo),{
+	params ["_unit","_pos"];
+	_unit moveTo _pos;
+}] call CBA_fnc_addEventHandler;

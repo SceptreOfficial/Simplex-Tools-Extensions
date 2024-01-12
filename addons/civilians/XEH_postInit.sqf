@@ -10,11 +10,17 @@
 		
 		private _dir = getDirVisual _player;
 		private _center = _player getPos [18,_dir];
-		private _area = [_center,10,18,_dir,false];
+		private _area = [_center,10,20,_dir,false];
 
 		{
-			if (side _x isEqualTo civilian && {_x inArea _area}) then {
-				[QGVAR(doMove),[_x,_x getPos [150 + random 150,_dir + random [-60,0,60]]],_x] call CBA_fnc_targetEvent;
+			if (side _x != civilian || {!(_x inArea _area)}) then {continue};
+			
+			private _pos = _x getPos [150 + random 150,_dir + random [-60,0,60]];
+
+			if (isNull group _x) then {
+				[QEGVAR(common,moveTo),[_x,_pos],_x] call CBA_fnc_targetEvent;
+			} else {
+				[QEGVAR(common,doMove),[_x,_pos],_x] call CBA_fnc_targetEvent;
 			};
 		} forEach (_center nearEntities 20);
 	},

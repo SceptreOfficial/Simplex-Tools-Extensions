@@ -52,7 +52,13 @@ if (GVAR(cachingEnabled) &&
 
 if (!(_unit isKindOf "CAManBase") ||
 	_unit getVariable [QGVAR(panicking),false] ||
-	{!(unitReady _unit || _unit getVariable [QGVAR(moveTick),-1] < CBA_missionTime)}
+	{
+		if (isNull group _unit) then {
+			!(moveToCompleted _unit || _unit getVariable [QGVAR(moveTick),-1] < CBA_missionTime)
+		} else {
+			!(unitReady _unit || _unit getVariable [QGVAR(moveTick),-1] < CBA_missionTime)
+		}
+	}
 ) exitWith {};
 
 _unit setVariable [QGVAR(moveTick),CBA_missionTime + 200];

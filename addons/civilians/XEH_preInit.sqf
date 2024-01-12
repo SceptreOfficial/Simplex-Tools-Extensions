@@ -34,11 +34,6 @@ if (isServer) then {
 	_unit setSpeaker _voice;
 }] call CBA_fnc_addEventHandler;
 
-[QGVAR(doMove),{
-	params ["_unit","_pos"];
-	_unit doMove _pos;
-}] call CBA_fnc_addEventHandler;
-
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
 GVAR(blacklist) = []; // Blacklist areas (Can be of type: marker, trigger, location, area array)
