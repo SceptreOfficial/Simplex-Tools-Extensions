@@ -7,7 +7,7 @@ ADDON = false;
 
 [QGVAR(addPanic),{
 	params ["_unit"];
-	[_unit,"FiredNear",FUNC(panic)] call CBA_fnc_addBISEventHandler;
+	[_unit,"FiredNear",{[FUNC(panic),_this,random 2] call CBA_fnc_waitAndExecute}] call CBA_fnc_addBISEventHandler;
 }] call CBA_fnc_addEventHandler;
 
 if (isServer) then {
