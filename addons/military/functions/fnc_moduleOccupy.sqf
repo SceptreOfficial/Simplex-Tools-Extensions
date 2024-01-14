@@ -283,7 +283,7 @@ if (!local _logic) exitWith {};
 			];
 
 			if (_localitySelection > 0) then {
-				[QGVAR(localityExec),[_localitySelection,_occupyParams,QFUNC(occupy)]] call CBA_fnc_serverEvent;
+				[QEGVAR(common,localityExec),[_localitySelection,_occupyParams,QFUNC(occupy)]] call CBA_fnc_serverEvent;
 			} else {
 				_occupyParams call FUNC(occupy);
 			};

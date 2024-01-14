@@ -36,6 +36,22 @@ if (isServer) then {
 		GVAR(headlessClients) pushBackUnique _entity;
 		publicVariable QGVAR(headlessClients);
 	}] call CBA_fnc_addEventHandler;
+
+	[QGVAR(localityExec),{
+		params ["_localitySelection","_params","_fncVar"];
+
+		if (_localitySelection > (count EGVAR(common,headlessClients) + 1)) exitWith {
+			diag_log ("Headless client(s) disconnected during selection. Cancelling execution of " + _fncVar);
+		};
+
+		if (_localitySelection == 1) exitWith {
+			_params call (missionNamespace getVariable [_fncVar,{}]);
+		};
+
+		if (_localitySelection > 1) then {
+			[QEGVAR(common,execute),[[],_fncVar],EGVAR(common,headlessClients) # (_localitySelection - 2)] call CBA_fnc_targetEvent;
+		};
+	}] call CBA_fnc_addEventHandler;
 };
 
 // Remote execution

@@ -69,7 +69,7 @@ if (!local _logic) exitWith {};
 				private _params = [_area,_unitClasses,_vehClasses,[_pedestrians,_drivers,_parked],[],{},[],false,[0.2,0.2,0.3]];
 
 				if (_localitySelection > 0) then {
-					[QGVAR(localityExec),[_localitySelection,_params,QFUNC(populate)]] call CBA_fnc_serverEvent;
+					[QEGVAR(common,localityExec),[_localitySelection,_params,QFUNC(populate)]] call CBA_fnc_serverEvent;
 				} else {
 					_params call FUNC(populate);
 				};
