@@ -17,7 +17,9 @@ params ["_respondingGroups","_side","_regroupPos"];
 	// Regroup and attack
 	_group setVariable [QGVAR(regroupComplete),false];
 
-	[_group,_regroupPos,20,"UNLOAD","AWARE","GREEN","NORMAL","WEDGE",[format ["(group this) getVariable %1",QGVAR(available)],"
+	[_group,_regroupPos,20,"MOVE","SAFE","YELLOW","NORMAL","WEDGE",["true",""],[0,0,0],50] call EFUNC(common,addWaypoint);
+
+	[_group,_regroupPos,20,"MOVE","SAFE","YELLOW","NORMAL","WEDGE",["true","
 		{
 			_x enableAI 'AUTOCOMBAT';
 			if (!(_x in _x) && {(assignedVehicleRole _x) # 0 == 'cargo'}) then {
@@ -26,6 +28,8 @@ params ["_respondingGroups","_side","_regroupPos"];
 			};
 		} forEach units group this;
 	"],[0,0,0],50] call EFUNC(common,addWaypoint);
+
+	[_group,_regroupPos,20,"MOVE","SAFE","YELLOW","NORMAL","WEDGE",[format ["(group this) getVariable [%1,true]",QGVAR(regroupComplete)],""],[0,0,0],50] call EFUNC(common,addWaypoint);
 
 	[_group,_targetPos,0,"SAD","AWARE","YELLOW","NORMAL","WEDGE",[
 		format ["(group this) getVariable %1",QGVAR(available)],
@@ -40,7 +44,7 @@ params ["_respondingGroups","_side","_regroupPos"];
 	{(leader _x distance2D _regroupPos) > 150 || ({alive _x} count units _x) != 0} count _respondingGroups == 0
 },{
 	{_x setVariable [QGVAR(regroupComplete),true]} forEach (_this # 0);
-},[_respondingGroups,_regroupPos],120 + round random 30,{
+},[_respondingGroups,_regroupPos],90,{
 	{_x setVariable [QGVAR(regroupComplete),true]} forEach (_this # 0);
 }] call CBA_fnc_waitUntilAndExecute;
 

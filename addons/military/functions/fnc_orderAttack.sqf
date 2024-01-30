@@ -25,7 +25,9 @@ params ["_respondingGroups"];
 		private _leader = leader _group;
 		private _flankPos = _target getPos [200,(_target getDir _leader) + selectRandom [-90,90]];
 
-		[_group,_flankPos,0,"UNLOAD","AWARE","GREEN","FULL","WEDGE",["true","
+		[_group,_flankPos,0,"MOVE","SAFE","YELLOW","FULL","WEDGE",["true",""],[0,0,0],_completionRadius] call EFUNC(common,addWaypoint);
+
+		[_group,_flankPos,0,"MOVE","SAFE","YELLOW","FULL","WEDGE",["true","
 			{
 				if (!(_x in _x) && {(assignedVehicleRole _x) # 0 == 'cargo'}) then {
 					unassignVehicle _x;
