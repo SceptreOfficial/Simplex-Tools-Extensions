@@ -75,7 +75,7 @@
 [QGVAR(AssistCoef),"SLIDER",
 	[LSTRING(SettingName_AssistCoef),LSTRING(SettingInfo_AssistCoef)],
 	[LSTRING(category),LSTRING(SettingCategory_Spotting)],
-	[1,10,1.3,1],
+	[1,10,1.4,1],
 	true,
 	{},
 	false
@@ -84,7 +84,7 @@
 [QGVAR(QRFRatio),"SLIDER",
 	[LSTRING(SettingName_QRFRatio),LSTRING(SettingInfo_QRFRatio)],
 	[LSTRING(category),LSTRING(SettingCategory_Spotting)],
-	[0.1,1,0.65,0,true],
+	[0.1,1,0.7,1,true],
 	true,
 	{},
 	false
