@@ -5,8 +5,8 @@
 
 #define DIALOG_CANCEL [objNull,"Assignment Cancelled"] call BIS_fnc_showCuratorFeedbackMessage;
 #define DEFAULT_DIALOG_OPTIONS \
-	["SLIDER",["Assistance request distance","Group(s) will request assistance from other groups within this distance"],[[0,10000,0],800],false], \
-	["SLIDER",["Max assistance response distance","Group(s) will only respond to assistance requests that are within this distance"],[[0,10000,0],800],false], \
+	["SLIDER",["Assistance request distance","Group(s) will request assistance from other groups within this distance"],[[0,10000,0],1200],false], \
+	["SLIDER",["Max assistance response distance","Group(s) will only respond to assistance requests that are within this distance"],[[0,10000,0],1200],false], \
 	["COMBOBOX",["Transfer locality","Transfers group locality to specified machine"],[["Keep current locality","Transfer to Server"] + (EGVAR(common,headlessClients) apply {"HC: " + str _x}),0],false]
 
 params [["_groups",grpNull,[grpNull,[]]],["_assignment","",[""]]];
