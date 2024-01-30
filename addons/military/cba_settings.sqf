@@ -72,6 +72,15 @@
 	false
 ] call CBA_fnc_addSetting;
 
+[QGVAR(RatingInfantry),"SLIDER",
+	[LSTRING(SettingName_RatingInfantry),LSTRING(SettingInfo_RatingInfantry)],
+	[LSTRING(category),LSTRING(SettingCategory_Spotting)],
+	[1,20,1,1],
+	true,
+	{},
+	false
+] call CBA_fnc_addSetting;
+
 [QGVAR(AssistCoef),"SLIDER",
 	[LSTRING(SettingName_AssistCoef),LSTRING(SettingInfo_AssistCoef)],
 	[LSTRING(category),LSTRING(SettingCategory_Spotting)],

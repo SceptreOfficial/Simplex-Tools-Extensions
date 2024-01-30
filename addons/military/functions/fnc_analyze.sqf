@@ -2,6 +2,7 @@
 #define RATING_HELI GVAR(RatingHelicopter)
 #define RATING_TANK GVAR(RatingTank)
 #define RATING_CAR GVAR(RatingCar)
+#define RATING_INFANTRY GVAR(RatingInfantry)
 
 params ["_group","_side","_targets"];
 
@@ -13,7 +14,7 @@ private _strength = 0;
 // Calculate enemy threat and assist ratios
 ([_targets,false] call FUNC(getTypes)) params ["_enemyInfantry","","_enemyTanks","_enemyCars"];
 
-private _threatRating = count _enemyInfantry + count _enemyTanks * RATING_TANK + count _enemyCars * RATING_CAR;
+private _threatRating = count _enemyInfantry * RATING_INFANTRY + count _enemyTanks * RATING_TANK + count _enemyCars * RATING_CAR;
 private _assistRatio = _threatRating * GVAR(AssistCoef);
 private _QRFRatio = _assistRatio * GVAR(QRFRatio);
 //private _vehicleRatio = _assistRatio * 0.3;
@@ -24,7 +25,7 @@ if (_group getVariable QGVAR(available)) then {
 
 	([units _group,true] call FUNC(getTypes)) params ["_infantry","_groupAT","_tanks","_cars","_helis"];
 
-	_strength = _strength + count _infantry + count _tanks * RATING_TANK + count _cars * RATING_CAR + count _helis * RATING_HELI;
+	_strength = _strength + count _infantry * RATING_INFANTRY + count _tanks * RATING_TANK + count _cars * RATING_CAR + count _helis * RATING_HELI;
 	_canEngage = count _groupAT >= count _enemyTanks;
 
 	_target = if (_canEngage && _enemyTanks isNotEqualTo []) then {
@@ -67,7 +68,7 @@ private _urgentUnits = [];
 
 // Calculate immediate strength
 private _urgentStrength = _strength + (
-	count (_urgentUnits arrayIntersect _nearestInfantry) +
+	count (_urgentUnits arrayIntersect _nearestInfantry) * RATING_INFANTRY +
 	count (_urgentUnits arrayIntersect _nearestAT) * RATING_TANK * 0.75 +
 	count (_urgentUnits arrayIntersect _nearestTanks) * RATING_TANK +
 	count (_urgentUnits arrayIntersect _nearestCars) * RATING_CAR +
@@ -83,7 +84,7 @@ if (_enemyTanks isNotEqualTo []) then {
 			if (_respondingGroups pushBackUnique _grp isNotEqualTo -1) then {
 				([units _grp,false] call FUNC(getTypes)) params ["_infantry","","_tanks","_cars","_helis"];
 				
-				_strength = _strength + count _infantry + count _tanks * RATING_TANK + count _cars * RATING_CAR + count _helis * RATING_HELI;
+				_strength = _strength + count _infantry * RATING_INFANTRY + count _tanks * RATING_TANK + count _cars * RATING_CAR + count _helis * RATING_HELI;
 				
 				_grp setVariable [QGVAR(target),_x,true];
 
@@ -99,7 +100,7 @@ if (_enemyTanks isNotEqualTo []) then {
 			if (_respondingGroups pushBackUnique _grp isNotEqualTo -1) then {
 				([units _grp,false] call FUNC(getTypes)) params ["_infantry","","_tanks","_cars","_helis"];
 				
-				_strength = _strength + count _infantry + count _tanks * RATING_TANK + count _cars * RATING_CAR + count _helis * RATING_HELI;
+				_strength = _strength + count _infantry * RATING_INFANTRY + count _tanks * RATING_TANK + count _cars * RATING_CAR + count _helis * RATING_HELI;
 				
 				_grp setVariable [QGVAR(target),_x,true];
 
@@ -121,7 +122,7 @@ if (_nearestQRF isNotEqualTo []) then {
 		if (_respondingGroups pushBackUnique _x isNotEqualTo -1) then {
 			([units _x,false] call FUNC(getTypes)) params ["_infantry","","_tanks","_cars","_helis"];
 			
-			_strength = _strength + count _infantry + count _tanks * RATING_TANK + count _cars * RATING_CAR + count _helis * RATING_HELI;
+			_strength = _strength + count _infantry * RATING_INFANTRY + count _tanks * RATING_TANK + count _cars * RATING_CAR + count _helis * RATING_HELI;
 
 			_x setVariable [QGVAR(target),selectRandom _targets,true];
 		};
@@ -136,7 +137,7 @@ if (_nearestGroups isNotEqualTo []) then {
 		if (_respondingGroups pushBackUnique _x isNotEqualTo -1) then {
 			([units _x,false] call FUNC(getTypes)) params ["_infantry","","_tanks","_cars","_helis"];
 			
-			_strength = _strength + count _infantry + count _tanks * RATING_TANK + count _cars * RATING_CAR + count _helis * RATING_HELI;
+			_strength = _strength + count _infantry * RATING_INFANTRY + count _tanks * RATING_TANK + count _cars * RATING_CAR + count _helis * RATING_HELI;
 
 			_x setVariable [QGVAR(target),selectRandom _targets,true];
 		};

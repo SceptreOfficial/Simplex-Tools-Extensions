@@ -50,19 +50,25 @@
 			<English>Rating: Helicopter</English>
 		</Key>
 		<Key ID="STR_stx_military_SettingInfo_RatingHelicopter">
-			<English>How AI rates the encountered threat</English>
+			<English>How this type of object is rated for engagements</English>
 		</Key>
 		<Key ID="STR_stx_military_SettingName_RatingTank">
 			<English>Rating: Tank</English>
 		</Key>
 		<Key ID="STR_stx_military_SettingInfo_RatingTank">
-			<English>How AI rates the encountered threat</English>
+			<English>How this type of object is rated for engagements</English>
 		</Key>
 		<Key ID="STR_stx_military_SettingName_RatingCar">
 			<English>Rating: Car</English>
 		</Key>
 		<Key ID="STR_stx_military_SettingInfo_RatingCar">
-			<English>How AI rates the encountered threat</English>
+			<English>How this type of object is rated for engagements</English>
+		</Key>
+		<Key ID="STR_stx_military_SettingName_RatingInfantry">
+			<English>Rating: Infantry</English>
+		</Key>
+		<Key ID="STR_stx_military_SettingInfo_RatingInfantry">
+			<English>How this type of object is rated for engagements</English>
 		</Key>
 		<Key ID="STR_stx_military_SettingName_AssistCoef">
 			<English>Assistance multiplier</English>
