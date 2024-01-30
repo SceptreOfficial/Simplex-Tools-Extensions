@@ -132,4 +132,4 @@ if (_respondingGroups isEqualTo []) exitWith {
 	_args set [1,_respondingGroups];
 	_args set [2,_targets];
 	_args set [3,_newUnknownTargets];
-},60,[_side,_respondingGroups,_targets,[]]] call CBA_fnc_addPerFrameHandler;
+},30,[_side,_respondingGroups,_targets,[]]] call CBA_fnc_addPerFrameHandler;
