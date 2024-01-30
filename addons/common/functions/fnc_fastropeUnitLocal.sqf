@@ -18,6 +18,24 @@ if (!isNil "WMO_noRoadway") then {WMO_noRoadway pushBack _vehicle};
 private _endHeight = getPosASL _hook # 2 - _length - 0.3;
 //private _endHeight = getPosASL _anchor # 2;
 
+private _fnc_reset = {
+	params ["_unit","_vehicle"];
+
+	_unit switchMove "";
+	_unit setVectorUp [0,0,1];
+	_unit setVariable [QPVAR(fastroping),nil,true];
+	
+	// Tell AI to make room
+	if (!isPlayer _unit) then {
+		[{(_this # 0) doMove (_this # 1)},[_unit,_vehicle getPos [sizeOf typeOf _vehicle / 2,random 360]],2] call CBA_fnc_execAfterNFrames;
+	};
+
+	// mod compat
+	if (!isNil "WMO_noRoadway") then {WMO_noRoadway deleteAt (WMO_noRoadway find _vehicle)};
+	
+	[QGVAR(fastropingDone),[_unit,_vehicle],_vehicle] call CBA_fnc_targetEvent;
+};
+
 [{
 	params ["_unit","_vehicle","_endHeight","_lastTime"];
 
@@ -30,16 +48,5 @@ private _endHeight = getPosASL _hook # 2 - _length - 0.3;
 
 	_this set [3,CBA_missionTime];
 
-	!alive _unit || _height < 0.1 || isTouchingGround _unit
-},{
-	params ["_unit","_vehicle"];
-
-	_unit switchMove "";
-	_unit setVectorUp [0,0,1];
-	_unit setVariable [QPVAR(fastroping),nil,true];
-
-	// mod compat
-	if (!isNil "WMO_noRoadway") then {WMO_noRoadway deleteAt (WMO_noRoadway find _vehicle)};
-	
-	[QGVAR(fastropingDone),[_unit,_vehicle],_vehicle] call CBA_fnc_targetEvent;
-},[_unit,_vehicle,_endHeight,CBA_missionTime]] call CBA_fnc_waitUntilAndExecute;
+	!alive _unit || _height < 0.1 || {isTouchingGround _unit && _unit getVariable [QPVAR(fastroping),false]}
+},_fnc_reset,[_unit,_vehicle,_endHeight,CBA_missionTime],60,_fnc_reset] call CBA_fnc_waitUntilAndExecute;
