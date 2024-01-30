@@ -1,5 +1,4 @@
 #include "script_component.hpp"
-#define COMPLETION_RADIUS_VEHICLE 200
 
 params ["_respondingGroups","_side","_regroupPos"];
 

@@ -26,7 +26,7 @@ if (leader _group distance2D _target >= 400) then {
 	} forEach units _group;
 
 	if (_vehicles isNotEqualTo []) then {
-		_completionRadius = COMPLETION_RADIUS_VEHICLE;
+		_completionRadius = 200;
 
 		{
 			private _openVehicle = selectRandom (_vehicles select {_x emptyPositions "Cargo" > 0});

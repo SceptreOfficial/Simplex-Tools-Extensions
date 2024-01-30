@@ -1,5 +1,4 @@
 #include "script_component.hpp"
-#define COMPLETION_RADIUS_VEHICLE 200
 
 params ["_respondingGroups"];
 
@@ -15,7 +14,7 @@ params ["_respondingGroups"];
 	private _completionRadius = call FUNC(embark);
 
 	// Attack
-	if ((random 1 < 0.5 && _completionRadius < COMPLETION_RADIUS_VEHICLE) || leader _group distance2D _targetPos < 400) then {
+	if ((random 1 < 0.5 && _completionRadius < 200) || leader _group distance2D _targetPos < 400) then {
 		[_group,_targetPos,0,"SAD","AWARE","YELLOW","NORMAL","WEDGE",[
 			format ["(group this) getVariable %1",QGVAR(available)],
 			format ["[%1,group this,group this] call CBA_fnc_targetEvent;",QGVAR(returnToOrigin)]
