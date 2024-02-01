@@ -6,7 +6,7 @@ if !(_vehicle getVariable [QGVAR(pilotHelicopterReached),false]) then {
 	doStop _vehicle;
 
 	if (_fastrope) then {
-		[_vehicle,_fastropeUnits] call FUNC(fastrope);
+		//[_vehicle,_fastropeUnits] call FUNC(fastrope);
 	};
 };
 
