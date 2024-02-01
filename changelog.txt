@@ -1,0 +1,16 @@
+v0.3.3
+- Military: Added infantry rating setting
+- Military: Tweaked assist coefficient and qrf ratio setting defaults
+- Military: Increased default response and request parameters to 1200m
+- Military: Adjustments to try and keep QRF troops in their vehicles before arriving
+- Logistic: Resupply auto fill would not work with default munitions
+- Military: Regrouping was not working correctly
+- More SSS script migration
+- Strafe compatibility for RHS AH6
+
+v0.2.5
+- Civilian management will update quicker after populating
+- Increased pedestrian spawn delay for populate module
+- Added random delay to civilian panic
+- Fixed 'Go away' action not working for agents
+- Fixed locality selection for military occupy module

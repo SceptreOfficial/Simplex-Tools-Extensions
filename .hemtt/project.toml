@@ -13,6 +13,6 @@ include = [
 
 [version]
 major = 0
-minor = 2
-patch = 5
+minor = 3
+patch = 3
 git_hash = 0
