@@ -11,7 +11,8 @@ params [
 	["_formation","NO CHANGE",[""]],
 	["_statements",["true",""],[[]],2],
 	["_timeout",[0,0,0],[[]],3],
-	["_completionRadius",0,[0]]
+	["_completionRadius",0,[0]],
+	["_script","",[""]]
 ];
 
 if (_position isEqualTo []) exitWith {};
@@ -23,6 +24,11 @@ if (_formation isEqualTo "") then {_formation = "NO CHANGE"};
 
 private _WP = _target addWaypoint [_position,_radius];
 _WP setWaypointType _type;
+
+if (_type == "SCRIPTED") then {
+	_WP setWaypointScript _script;
+};
+
 _WP setWaypointStatements _statements;
 _WP setWaypointTimeout _timeout;
 _WP setWaypointCompletionRadius _completionRadius;
