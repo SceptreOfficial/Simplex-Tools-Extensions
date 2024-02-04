@@ -1,4 +1,4 @@
-#include "script_component.hpp"
+#include "..\script_component.hpp"
 
 private _ctrlWhitelist = _ctrlContentsGroup controlsGroupCtrl IDC_RESUPPLY_WHITELIST;
 private _ctrlWhitelistEdit = _ctrlContentsGroup controlsGroupCtrl IDC_RESUPPLY_WHITELIST_EDIT;

@@ -1,4 +1,4 @@
-#include "script_component.hpp"
+#include "..\script_component.hpp"
 
 params ["_box","_unit","_args"];
 _args params ["_vehicle","_class","_name","_cost","_buildTime","_initFnc","_pos","_dir","_up"];

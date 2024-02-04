@@ -2,7 +2,7 @@
 ADDON = false;
 #include "XEH_PREP.hpp"
 
-#include "preInit_halo.sqf"
-#include "preInit_virtualDriver.sqf"
+#include "preInit_halo.inc.sqf"
+#include "preInit_virtualDriver.inc.sqf"
 
 ADDON = true;

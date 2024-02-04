@@ -1,4 +1,4 @@
-#include "script_component.hpp"
+#include "..\script_component.hpp"
 
 private _ctrlSide = _ctrlApplicationGroup controlsGroupCtrl IDC_RESUPPLY_SIDE;
 private _ctrlFaction = _ctrlApplicationGroup controlsGroupCtrl IDC_RESUPPLY_FACTION;

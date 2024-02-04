@@ -1,13 +1,13 @@
 #include "script_component.hpp"
 ADDON = false;
 #include "XEH_PREP.hpp"
-#include "cba_settings.sqf"
+#include "initSettings.inc.sqf"
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 // Occupation
 
 GVAR(occupationPresets) = profileNamespace getVariable [QGVAR(occupationPresets),
-	#include "default_occupy_presets.sqf"
+	#include "default_occupy_presets.inc.sqf"
 ];
 
 [QGVAR(occupationETA),{

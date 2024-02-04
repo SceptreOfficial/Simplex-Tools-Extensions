@@ -1,4 +1,4 @@
-#include "script_component.hpp"
+#include "..\script_component.hpp"
 
 params [["_source",sideUnknown,[sideUnknown,objNull]],["_pool",0,[0]]];
 

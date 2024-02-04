@@ -1,4 +1,4 @@
-#include "script_component.hpp"
+#include "..\script_component.hpp"
 
 params ["_dialogResults","_args"];
 _args params ["_groups","_assignment"];

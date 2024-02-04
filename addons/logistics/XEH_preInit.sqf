@@ -2,10 +2,10 @@
 ADDON = false;
 #include "XEH_PREP.hpp"
 
-#include "preInit_canteen.sqf"
-#include "preInit_construction.sqf"
-#include "preInit_fuelConsumption.sqf"
-#include "preInit_hub.sqf"
-#include "preInit_resupply.sqf"
+#include "preInit_canteen.inc.sqf"
+#include "preInit_construction.inc.sqf"
+#include "preInit_fuelConsumption.inc.sqf"
+#include "preInit_hub.inc.sqf"
+#include "preInit_resupply.inc.sqf"
 
 ADDON = true;

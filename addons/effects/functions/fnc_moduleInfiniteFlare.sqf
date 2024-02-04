@@ -1,4 +1,4 @@
-#include "script_component.hpp"
+#include "..\script_component.hpp"
 
 params ["_logic"];
 
@@ -8,7 +8,7 @@ if (!local _logic) exitWith {};
 	params ["_logic","_synced"];
 
 	if (isNull findDisplay IDD_RSCDISPLAYCURATOR) then {
-		private _class = _logic getVariable ["Color","F_40mm_White_Infinite"],
+		private _class = _logic getVariable ["Color","F_40mm_White_Infinite"];
 		private _object = _class createVehicle [0,0,0];
 		_object allowDamage false;
 		_object attachTo [_logic,[0,0,0]];

@@ -1,4 +1,4 @@
-#include "script_component.hpp"
+#include "..\script_component.hpp"
 
 [QEGVAR(common,execute),[_this,{
 	params [

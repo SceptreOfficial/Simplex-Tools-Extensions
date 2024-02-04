@@ -1,4 +1,4 @@
-#include "script_component.hpp"
+#include "..\script_component.hpp"
 
 params [["_aircraftClass","",[""]],["_startPos",[],[[]]],["_endPos",[],[[]]],["_altitude",500,[0]]];
 

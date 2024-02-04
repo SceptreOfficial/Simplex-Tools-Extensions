@@ -1,4 +1,4 @@
-#include "script_component.hpp"
+#include "..\script_component.hpp"
 
 private _ctrlGroup = _display displayCtrl IDC_GROUP;
 private _ctrlApplication = _ctrlGroup controlsGroupCtrl IDC_RESUPPLY_APPLICATION;

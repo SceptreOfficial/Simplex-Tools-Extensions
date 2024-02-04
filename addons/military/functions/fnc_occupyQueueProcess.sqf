@@ -1,4 +1,4 @@
-#include "script_component.hpp"
+#include "..\script_component.hpp"
 
 params ["_assignmentType","_details"];
 _details params ["_area","_side","_config","_settings"];

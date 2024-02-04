@@ -1,4 +1,4 @@
-#include "script_component.hpp"
+#include "..\script_component.hpp"
 /*-----------------------------------------------------------------------------------------------//
 Authors: Sceptre
 Returns ammo usage flags from an ammo (or supplied magazine) type.

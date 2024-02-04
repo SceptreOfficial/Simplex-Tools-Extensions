@@ -1,4 +1,4 @@
-#include "script_component.hpp"
+#include "..\script_component.hpp"
 
 _thisArgs params ["_group","_area","_blacklist","_unitClasses","_customInit","_customArgs","_ambCiv"];
 

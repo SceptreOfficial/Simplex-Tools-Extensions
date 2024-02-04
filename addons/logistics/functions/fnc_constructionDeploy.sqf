@@ -1,4 +1,4 @@
-#include "script_component.hpp"
+#include "..\script_component.hpp"
 
 params ["_unit","_helper","_object","_construction"];
 _construction params ["_vehicle","_class","_name","_cost","_buildTime","_initFnc"];

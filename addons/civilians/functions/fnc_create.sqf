@@ -1,4 +1,4 @@
-#include "script_component.hpp"
+#include "..\script_component.hpp"
 
 params [["_targetPosition",[],[[]]],["_spawnRadius",-1,[0]],["_type",-1,[0]]];
 

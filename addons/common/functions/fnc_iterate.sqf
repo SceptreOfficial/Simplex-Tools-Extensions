@@ -1,4 +1,4 @@
-#include "script_component.hpp"
+#include "..\script_component.hpp"
 /*
 	Example:
 	[[0,1,2,3],{systemChat str _this},[],1] call FUNC(iterate);

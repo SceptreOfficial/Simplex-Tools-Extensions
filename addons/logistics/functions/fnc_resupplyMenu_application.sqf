@@ -1,4 +1,4 @@
-#include "script_component.hpp"
+#include "..\script_component.hpp"
 
 [_ctrlApplication,"LBSelChanged",{
 	params ["_ctrlApplication","_lbCurSel"];

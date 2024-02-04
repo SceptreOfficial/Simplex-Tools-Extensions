@@ -1,4 +1,4 @@
-#include "script_component.hpp"
+#include "..\script_component.hpp"
 #define DIALOG_CONFIRM \
 	[QGVAR(assignmentDialogConfirmed),_this] call CBA_fnc_serverEvent; \
 	[objNull,"Assignment Confirmed"] call BIS_fnc_showCuratorFeedbackMessage;

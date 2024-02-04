@@ -1,4 +1,4 @@
-#include "script_component.hpp"
+#include "..\script_component.hpp"
 #define MAX_AE1RESERVE 4000000
 #define MAX_AE2RESERVE 84000
 #define MAX_ANRESERVE 2300

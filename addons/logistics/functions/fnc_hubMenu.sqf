@@ -1,4 +1,4 @@
-#include "script_component.hpp"
+#include "..\script_component.hpp"
 #include "\z\stx\addons\sdf\gui_macros.hpp"
 
 params ["_display"];

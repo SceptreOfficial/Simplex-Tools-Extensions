@@ -1,4 +1,4 @@
-#include "script_component.hpp"
+#include "..\script_component.hpp"
 
 params [["_vehicle",objNull,[objNull]],["_maxBudget",1000,[0]],["_inventory",[],[[]]],["_initFnc",{},[{}]]];
 

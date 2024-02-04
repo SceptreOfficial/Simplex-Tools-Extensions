@@ -1,4 +1,4 @@
-#include "script_component.hpp"
+#include "..\script_component.hpp"
 #define CARGO [getItemCargo _object,getWeaponCargo _object,getMagazineCargo _object,getBackpackCargo _object]
 
 params ["_object",["_format",0,[0]]];

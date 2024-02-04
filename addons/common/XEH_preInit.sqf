@@ -1,8 +1,8 @@
 #include "script_component.hpp"
 ADDON = false;
 #include "XEH_PREP.hpp"
-#include "cba_settings.sqf"
-#include "command_events.sqf"
+#include "initSettings.inc.sqf"
+#include "command_events.inc.sqf"
 
 GVAR(slingLoadConditions) = [];
 
@@ -116,7 +116,7 @@ if (isServer) then {
 }] call CBA_fnc_addEventHandler;
 
 // STRAFE
-#include "strafeElevationOffsets.sqf"
+#include "strafeElevationOffsets.inc.sqf"
 
 [QGVAR(strafeFireReady),{
 	params ["_vehicle","_fireStart"];

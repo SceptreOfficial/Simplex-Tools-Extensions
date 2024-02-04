@@ -1,4 +1,4 @@
-#include "script_component.hpp"
+#include "..\script_component.hpp"
 /*
 	File: spawnGroup.sqf
 	Author: Joris-Jan van 't Land, Thomas Ryan, modified by Sceptre

@@ -1,4 +1,4 @@
-#include "script_component.hpp"
+#include "..\script_component.hpp"
 
 if (!isNil {uiNamespace getVariable QGVAR(boxHash)}) exitWith {
 	uiNamespace getVariable QGVAR(boxHash)

@@ -1,4 +1,4 @@
-#include "script_component.hpp"
+#include "..\script_component.hpp"
 /*
 	(https://community.bistudio.com/wiki/CfgAmmo_Config_Reference#aiAmmoUsageFlags):
 

@@ -1,4 +1,4 @@
-#include "script_component.hpp"
+#include "..\script_component.hpp"
 // Adapted from ACE3 - `ace_fortify_fnc_deployObject`
 //https://github.com/acemod/ACE3/blob/master/addons/fortify/functions/fnc_deployObject.sqf
 params ["_vehicle","_unit","_args"];

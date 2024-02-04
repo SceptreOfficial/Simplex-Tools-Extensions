@@ -1,4 +1,4 @@
-#include "script_component.hpp"
+#include "..\script_component.hpp"
 #define SIDE_ICONS [ \
 	"\a3\3DEN\Data\Displays\Display3DEN\PanelRight\side_west_ca.paa", \
 	"\a3\3DEN\Data\Displays\Display3DEN\PanelRight\side_east_ca.paa", \

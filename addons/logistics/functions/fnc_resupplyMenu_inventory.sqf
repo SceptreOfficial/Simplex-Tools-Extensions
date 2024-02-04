@@ -1,4 +1,4 @@
-#include "script_component.hpp"
+#include "..\script_component.hpp"
 
 private _ctrlBoxClass = _ctrlApplicationGroup controlsGroupCtrl IDC_RESUPPLY_BOX_CLASS;
 

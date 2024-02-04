@@ -1,4 +1,4 @@
-#include "script_component.hpp"
+#include "..\script_component.hpp"
 
 if (GVAR(playerlist) isEqualTo []) exitWith {
 	GVAR(playerlist) = allPlayers select {!(_x isKindOf "HeadlessClient_F")};

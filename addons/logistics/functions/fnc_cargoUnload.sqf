@@ -1,4 +1,4 @@
-#include "script_component.hpp"
+#include "..\script_component.hpp"
 
 params [["_cargo",objNull,[objNull,""]],["_posASL",[],[[]]],["_dirAndUp",[[0,1,0],[0,0,1]],[[]]]];
 

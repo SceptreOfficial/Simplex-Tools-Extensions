@@ -1,4 +1,4 @@
-#include "script_component.hpp"
+#include "..\script_component.hpp"
 #define RATING_HELI GVAR(RatingHelicopter)
 #define RATING_TANK GVAR(RatingTank)
 #define RATING_CAR GVAR(RatingCar)
