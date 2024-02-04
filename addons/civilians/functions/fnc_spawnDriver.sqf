@@ -78,8 +78,8 @@ _unit assignAsDriver _vehicle;
 _unit moveInDriver _vehicle;
 
 if (!_ambCiv && GVAR(cachingDefault)) then {
-	_unit setVariable [QGVAR(allowCaching),true,true];
-	_vehicle setVariable [QGVAR(allowCaching),true,true];
+	[{_this setVariable [QGVAR(allowCaching),true,true]},_unit,2.5] call CBA_fnc_waitAndExecute;
+	[{_this setVariable [QGVAR(allowCaching),true,true]},_vehicle,2.5] call CBA_fnc_waitAndExecute;
 };
 
 [_unit,_customArgs] call _customInit;

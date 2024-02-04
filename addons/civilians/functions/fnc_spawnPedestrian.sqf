@@ -54,7 +54,7 @@ _unit setDir random 360;
 [_unit,_area] call FUNC(initMan);
 
 if (!_ambCiv && GVAR(cachingDefault)) then {
-	_unit setVariable [QGVAR(allowCaching),true,true];
+	[{_this setVariable [QGVAR(allowCaching),true,true]},_unit,2.5] call CBA_fnc_waitAndExecute;
 };
 
 [_unit,_customArgs] call _customInit;

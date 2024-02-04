@@ -35,7 +35,7 @@ switch _type do {
 		_vehicle setVectorDirAndUp _dirAndUp;
 
 		private _unit = if (GVAR(useAgents)) then {
-			createAgent [_class,[0,0,0],[],0,"CAN_COLLIDE"];
+			createAgent [_driverClass,[0,0,0],[],0,"CAN_COLLIDE"];
 		} else {
 			private _group = createGroup [civilian,true];
 			_group addVehicle _vehicle;
