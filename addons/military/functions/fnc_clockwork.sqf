@@ -7,14 +7,14 @@ if (GVAR(list) isEqualTo []) exitWith {
 	GVAR(list) append GVAR(cache);
 
 	if (GVAR(list) isEqualTo []) then {
-		GVAR(tick) = CBA_missionTime + 10;
+		GVAR(tick) = CBA_missionTime + 5;
 	};
 };
 
 private _group = GVAR(list) deleteAt 0;
 
 if (GVAR(list) isEqualTo []) then {
-	GVAR(tick) = CBA_missionTime + 10;
+	GVAR(tick) = CBA_missionTime + 5;
 } else {
 	GVAR(tick) = CBA_missionTime + 0.2;
 };
