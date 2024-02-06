@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="stx">
+	<Package name="reserve">
+		<Key ID="STR_stx_reserve_component">
+			<English>Simplex Reserve</English>
+		</Key>
+		<Key ID="STR_stx_reserve_category">
+			<English>STX Reserve</English>
+		</Key>
+
+		<!-- Setting Categories -->
+		
+		<!-- Settings -->
+
+		<Key ID="STR_stx_reserve_loadDistance_name">
+			<English>Load distance</English>
+		</Key>
+		<Key ID="STR_stx_reserve_loadDistance_info">
+			<English>Distance away from players the AI will spawn</English>
+		</Key>
+		<Key ID="STR_stx_reserve_saveDistance_name">
+			<English>Save distance</English>
+		</Key>
+		<Key ID="STR_stx_reserve_saveDistance_info">
+			<English>Distance away from players the AI will be cached</English>
+		</Key>
+
+		<!-- Modules -->
+
+		<Key ID="STR_stx_reserve_moduleSave_name">
+			<English>Save</English>
+		</Key>
+		<Key ID="STR_stx_reserve_moduleSave_info">
+			<English>Cache synced AI groups. Sync to a trigger to override default behavior</English>
+		</Key>
+		<Key ID="STR_stx_reserve_moduleSpawnArea_name">
+			<English>Spawn area</English>
+		</Key>
+		<Key ID="STR_stx_reserve_moduleSpawnArea_info">
+			<English>Define an area where AI will randomly spawn. Sync to 'save' modules.</English>
+		</Key>
+
+		<!-- Other -->
+		
+		<Key ID="STR_stx_reserve_RespawnCategory">
+			<English>Respawn attributes</English>
+		</Key>
+		<Key ID="STR_stx_reserve_OtherCategory">
+			<English>Other attributes</English>
+		</Key>
+		<Key ID="STR_stx_reserve_RespawnDelay_name">
+			<English>Delay</English>
+		</Key>
+		<Key ID="STR_stx_reserve_RespawnDelay_info">
+			<English></English>
+		</Key>
+		<Key ID="STR_stx_reserve_RespawnQuantity_name">
+			<English>Quantity</English>
+		</Key>
+		<Key ID="STR_stx_reserve_RespawnQuantity_info">
+			<English></English>
+		</Key>
+		<Key ID="STR_stx_reserve_RespawnRatio_name">
+			<English>Ratio</English>
+		</Key>
+		<Key ID="STR_stx_reserve_RespawnRatio_info">
+			<English></English>
+		</Key>
+		<Key ID="STR_stx_reserve_RespawnWaveMode_name">
+			<English>Wave mode</English>
+		</Key>
+		<Key ID="STR_stx_reserve_RespawnWaveMode_info">
+			<English></English>
+		</Key>
+		<Key ID="STR_stx_reserve_GroupInit_name">
+			<English>Group init</English>
+		</Key>
+		<Key ID="STR_stx_reserve_GroupInit_info">
+			<English>'_this' refers to the group</English>
+		</Key>
+
+	</Package>
+</Project>

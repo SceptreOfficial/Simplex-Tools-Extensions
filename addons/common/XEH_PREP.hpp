@@ -15,6 +15,7 @@ PREP(fired);
 PREP(firedBomb);
 PREP(flyby);
 PREP(formatTime);
+PREP(getAIFeatures);
 PREP(getAim);
 PREP(getAimSim);
 PREP(getArsenalAnimation);
