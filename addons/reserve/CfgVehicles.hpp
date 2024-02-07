@@ -97,12 +97,12 @@ class CfgVehicles {
 		scopeCurator = 2;
 		curatorCanAttach = 1;
 		canSetArea = 1;
-		canSetAreaHeight = 1;
+		canSetAreaHeight = 0;
 		canSetAreaShape = 1;
 
 		class AttributeValues {
 			isRectangle = 1;
-			size3[] = {50,50,50};
+			size3[] = {50,50,-1};
 		};
 
 		class Attributes: AttributesBase {

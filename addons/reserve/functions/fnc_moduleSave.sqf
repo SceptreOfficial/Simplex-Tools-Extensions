@@ -18,7 +18,9 @@ if (!local _logic) exitWith {};
 		{
 			switch true do {
 				case (_x isKindOf QGVAR(moduleSpawnArea)) : {
-					_spawnAreas pushBackUnique ([getPos _x] + (_x getVariable ["ObjectArea",[]]));
+					private _area = _x getVariable ["ObjectArea",[]];
+					_area deleteAt 4;
+					_spawnAreas pushBackUnique ([getPos _x] + _area);
 				};
 				case (_x isKindOf "EmptyDetector") : {_triggers pushBackUnique _x};
 				case (side group _x in _sides) : {_groups pushBackUnique group _x};
