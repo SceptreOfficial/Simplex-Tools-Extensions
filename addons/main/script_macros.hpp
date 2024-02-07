@@ -52,7 +52,7 @@
 // Misc constants
 #define GRAVITY 9.8066
 #define HELO_PILOT_DISTANCE 650
-#define VTOL_PILOT_DISTANCE 800
+#define VTOL_PILOT_DISTANCE 1300
 
 // Module macros
 #define LNAME(V1) QUOTE(TRIPLES(STR,ADDON,DOUBLES(V1,name)))
