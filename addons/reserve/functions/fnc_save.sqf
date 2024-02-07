@@ -1,5 +1,7 @@
 #include "..\script_component.hpp"
 
+if (!isServer) exitWith {[QGVAR(save),_this] call CBA_fnc_serverEvent};
+
 params [
 	["_group",grpNull,[grpNull,objNull]],
 	["_respawn",[]],
@@ -17,7 +19,9 @@ _respawn params [
 ];
 
 if (_group isEqualType objNull) then {_group = group _group};
-if (isNull _group || {(units _group) findIf {isPlayer _x} > -1}) exitWith {};
+if (isNull _group || {(units _group) findIf {isPlayer _x} > -1} || {_group getVariable [QGVAR(saved),false]}) exitWith {};
+
+_group setVariable [QGVAR(saved),true];
 
 private _objects = [];
 private _vehicles = [];

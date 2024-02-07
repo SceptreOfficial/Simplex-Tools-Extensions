@@ -28,7 +28,7 @@ private _offset = if (_areas isNotEqualTo []) then {
 
 		if (_doStop) then {
 			doStop _unit;
-			_unit setVariable [QGVAR(doStop),true,true];
+			_unit setVariable [QGVAR(doStop),true];
 		};
 	} else {
 		_x params ["_class","_posASL","_normals","_customization","_crew"];
@@ -69,10 +69,10 @@ if (_consume) then {
 _init params [["_init",{}],["_thisArgs",[]]];
 _group call _init;
 
-_group setVariable [QGVAR(respawn),+_respawn,true];
-_group setVariable [QGVAR(count),_count,true];
-//_group setVariable [QGVAR(loadTrigger),_loadTrigger,true];
-_group setVariable [QGVAR(saveTrigger),_saveTrigger,true];
+_group setVariable [QGVAR(respawn),+_respawn];
+_group setVariable [QGVAR(count),_count];
+//_group setVariable [QGVAR(loadTrigger),_loadTrigger];
+_group setVariable [QGVAR(saveTrigger),_saveTrigger];
 
 if (_quantity > 0) then {
 	if (_waveMode) then {
@@ -80,7 +80,7 @@ if (_quantity > 0) then {
 		GVAR(max) = count GVAR(list) - 1;
 		_cache set ["_waveTick",CBA_missionTime + _delay];
 	} else {
-		_group setVariable [QGVAR(id),_id,true];
+		_group setVariable [QGVAR(id),_id];
 	};
 } else {
 	GVAR(cache) setVariable [_id,nil];

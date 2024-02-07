@@ -44,8 +44,8 @@ if (_item isEqualType grpNull) then {
 		//systemChat str ["respawn",_group];
 		[FUNC(load),[_group getVariable QGVAR(id),true],_delay] call CBA_fnc_waitAndExecute;
 		_respawn set ["_quantity",-1];
-		_group setVariable [QGVAR(respawn),+_respawn,true];
-		_group setVariable [QGVAR(id),nil,true];
+		_group setVariable [QGVAR(respawn),+_respawn];
+		_group setVariable [QGVAR(id),nil];
 	};
 
 	private _center = units _group call stx_common_fnc_positionAvg;
