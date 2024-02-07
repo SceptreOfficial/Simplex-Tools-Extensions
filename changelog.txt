@@ -1,3 +1,9 @@
+v0.3.7
+- Added "Reserve" component: Editor-based AI caching system with bonus respawn features.
+- Civilians: Fixed caching issues
+- Military: Reduced clockwork pause interval
+- HEMTT build system update & file structure changes
+
 v0.3.3
 - Military: Added infantry rating setting
 - Military: Tweaked assist coefficient and qrf ratio setting defaults
