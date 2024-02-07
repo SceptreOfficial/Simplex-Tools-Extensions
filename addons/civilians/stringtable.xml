@@ -254,9 +254,6 @@
 		<Key ID="STR_stx_civilians_LocalityToggleInfo">
 			<English>Start on specified machine</English>
 		</Key>
-		<Key ID="STR_stx_civilians_Locality">
-			<English>Locality</English>
-		</Key>
 		<Key ID="STR_stx_civilians_Local">
 			<English>Local</English>
 		</Key>

@@ -107,7 +107,7 @@ class CfgVehicles {
 			};
 			class ArsenalWhitelistUsage : Combo {
 				displayName = CSTRING(ArsenalWhitelistUsageName);
-				tooltip = CSTRING(ArsenalWhitelistUsageInfo);
+				//tooltip = CSTRING(ArsenalWhitelistUsageInfo);
 				property = QGVAR(moduleHub_ArsenalWhitelistUsage);
 				typeName = "NUMBER";
 				defaultValue = 0;
@@ -140,7 +140,7 @@ class CfgVehicles {
 			};
 			class ArsenalBlacklistUsage : Combo {
 				displayName = CSTRING(ArsenalBlacklistUsageName);
-				tooltip = CSTRING(ArsenalBlacklistUsageInfo);
+				//tooltip = CSTRING(ArsenalBlacklistUsageInfo);
 				property = QGVAR(moduleHub_ArsenalBlacklistUsage);
 				typeName = "NUMBER";
 				defaultValue = 1;
